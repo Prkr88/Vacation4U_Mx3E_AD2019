@@ -1,5 +1,6 @@
 package MVC;
 
+import java.io.File;
 import java.util.HashMap;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
