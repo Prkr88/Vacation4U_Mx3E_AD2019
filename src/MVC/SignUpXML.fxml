@@ -26,9 +26,9 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="signUP_DD" layoutX="179.0" layoutY="241.0" prefHeight="25.0" prefWidth="40.0" promptText="Date of Birth" text="DD" />
-      <TextField fx:id="signUP_MM" layoutX="229.0" layoutY="241.0" prefHeight="25.0" prefWidth="40.0" promptText="Date of Birth" text="MM" />
-      <TextField fx:id="signUP_YYYY" layoutX="277.0" layoutY="241.0" prefHeight="25.0" prefWidth="50.0" promptText="Date of Birth" text="YYYY" />
+      <TextField fx:id="signUP_DD" layoutX="179.0" layoutY="241.0" prefHeight="25.0" prefWidth="40.0"  promptText="DD" />
+      <TextField fx:id="signUP_MM" layoutX="229.0" layoutY="241.0" prefHeight="25.0" prefWidth="40.0"  promptText="MM" />
+      <TextField fx:id="signUP_YYYY" layoutX="277.0" layoutY="241.0" prefHeight="25.0" prefWidth="50.0" promptText="YYYY" />
       <Text layoutX="179.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth" wrappingWidth="85.47001647949219" />
       <Text layoutX="222.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" wrappingWidth="7.470032153651118" />
       <Text layoutX="270.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" wrappingWidth="7.47003173828125" />
