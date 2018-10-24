@@ -17,12 +17,18 @@ public class UpdateApp extends SqlApp{
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             // set the corresponding param
-            pstmt.setString(1, password);
-            pstmt.setString(2, bDate);
-            pstmt.setString(3, pName);
-            pstmt.setString(4, lName);
-            pstmt.setString(5, city);
-            pstmt.setString(6, userName);
+            if (!password.equals(""))
+                pstmt.setString(1, password);
+            if (!bDate.equals(""))
+                pstmt.setString(2, bDate);
+            if (!pName.equals(""))
+                pstmt.setString(3, pName);
+            if (!lName.equals(""))
+                pstmt.setString(4, lName);
+            if (!city.equals(""))
+                pstmt.setString(5, city);
+            if (!userName.equals(""))
+                pstmt.setString(6, userName);
             // update Parmeters
             pstmt.executeUpdate();
         } catch (SQLException e) {

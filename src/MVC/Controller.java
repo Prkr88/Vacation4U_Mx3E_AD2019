@@ -54,10 +54,8 @@ public class Controller implements ControlledScreen{
 
     @FXML
     private void signUp(ActionEvent event) {
-
         myController.setScreen(MVC.Main.screenSignUpID);
     }
-
 
 
     public void showMainMenu() throws IOException{

@@ -4,6 +4,11 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Jars/guava-26.0-jre.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Jars/hamcrest-junit-2.0.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Jars/testFx-3.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Jars/testfx-core-4.0.15-alpha.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Jars/testfx-junit-4.0.15-alpha.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

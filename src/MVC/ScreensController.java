@@ -11,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
@@ -39,10 +40,12 @@ public class ScreensController  extends StackPane {
 
     //Loads the fxml file, add the screen to the screens collection and
     //finally injects the screenPane to the controller.
-    public boolean loadScreen(String name, String resource) {
+    public boolean loadScreen(String name, String resource, int width, int height) {
         try {
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
             Parent loadScreen = (Parent) myLoader.load();
+            Scene currScene = new Scene(loadScreen,width,height);
+            Main.pStage.setScene(currScene);
             ControlledScreen myScreenControler = ((ControlledScreen) myLoader.getController());
             myScreenControler.setScreenParent(this);
             addScreen(name, loadScreen);
@@ -76,13 +79,16 @@ public class ScreensController  extends StackPane {
                             }
                         }, new KeyValue(opacity, 0.0)));
                 fade.play();
+                Main.pStage.setTitle(name);
+                Main.pStage.show();
+
 
             } else {
                 setOpacity(0.0);
                 getChildren().add(screens.get(name));       //no one else been displayed, then just show
                 Timeline fadeIn = new Timeline(
                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
-                        new KeyFrame(new Duration(2500), new KeyValue(opacity, 1.0)));
+                        new KeyFrame(new Duration(1000), new KeyValue(opacity, 1.0)));
                 fadeIn.play();
             }
             return true;

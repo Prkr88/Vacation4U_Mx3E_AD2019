@@ -10,7 +10,8 @@ public class SQLiteJDBCDriverConnection {
         Connection conn = null;
         try {
             // db parameters
-            String url = "jdbc:sqlite:C:\\Users\\Prkr_Xps\\Documents\\InformationSystems\\Year_C\\SQLTester\\Vacation.db";
+            String url = "jdbc:sqlite:resources/Vacation.db";
+            //String url = "jdbc:sqlite:C:/Users/edoli/IdeaProjects/Vacation4U_Mx3E_AD2019/resources/Vacation.db";
             // create a connection to the database
             conn = DriverManager.getConnection(url);
 
@@ -38,7 +39,8 @@ public class SQLiteJDBCDriverConnection {
      */
     public static void createNewDatabase(String fileName) {
 
-        String url = "jdbc:sqlite:C:\\Users\\Prkr_Xps\\Documents\\InformationSystems\\Year_C\\SQLTester\\" + fileName;
+        String url = "jdbc:sqlite:resources/Vacation.db" + fileName;
+        //String url = "jdbc:sqlite:C:/Users/edoli/IdeaProjects/Vacation4U_Mx3E_AD2019/resources/" + fileName;
 
         try (Connection conn = DriverManager.getConnection(url)) {
             if (conn != null) {
@@ -54,7 +56,8 @@ public class SQLiteJDBCDriverConnection {
 
     public static void createNewTable() {
         // SQLite connection string
-        String url = "jdbc:sqlite:C:\\Users\\Prkr_Xps\\Documents\\InformationSystems\\Year_C\\SQLTester\\Vacation.db";
+        String url = "jdbc:sqlite:resources/Vacation.db";
+        //String url = "jdbc:sqlite:C:/Users/edoli/IdeaProjects/Vacation4U_Mx3E_AD2019/resources/Vacation.db";
 
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS Users (\n"
