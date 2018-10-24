@@ -1,12 +1,36 @@
 package Sqlite;
 
+import MVC.Main;
+
 import java.sql.*;
 
 public class UpdateApp extends SqlApp{
 
+    private String thisPass;
+    private String thisBirth;
+    private String thisPName;
+    private String thisLName;
+    private String thisCity;
 
     public void updateUser(String userName ,String password,String bDate,String pName,String lName,String city) {
-        String sql = "UPDATE Users SET " +
+
+        String sqlRetrieve = "SELECT user_name,password,birth_date,private_name,last_name,city_of_origin FROM Users WHERE user_name = " + "'" + Main.signedUserName  + "'";
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sqlRetrieve)){
+            thisPass = rs.getString("password");
+            thisBirth = rs.getString("birth_date");
+            thisPName = rs.getString("private_name");
+            thisLName = rs.getString("last_name");
+            thisCity = rs.getString("city_of_origin");
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        String sqlSet = "UPDATE Users SET " +
                 "password = ? ," +
                 "birth_date = ?," +
                 "private_name = ?," +
@@ -15,27 +39,34 @@ public class UpdateApp extends SqlApp{
                 + "WHERE user_name = ?";
 
         try (Connection conn = this.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+             PreparedStatement pstmt = conn.prepareStatement(sqlSet)) {
             // set the corresponding param
             if (!password.equals(""))
                 pstmt.setString(1, password);
+            else
+                pstmt.setString(1, thisPass);
             if (!bDate.equals(""))
                 pstmt.setString(2, bDate);
+            else
+                pstmt.setString(2, thisBirth);
             if (!pName.equals(""))
                 pstmt.setString(3, pName);
+            else
+                pstmt.setString(3, thisPName);
             if (!lName.equals(""))
                 pstmt.setString(4, lName);
+            else
+                pstmt.setString(4, thisLName);
             if (!city.equals(""))
                 pstmt.setString(5, city);
-            if (!userName.equals(""))
-                pstmt.setString(6, userName);
-            // update Parmeters
+            else
+                pstmt.setString(5, thisCity);
+            pstmt.setString(6, Main.signedUserName);
+            // update Parameters
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-
-
 
 }

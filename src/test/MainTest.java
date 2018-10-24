@@ -7,8 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.*;
 import javafx.stage.Stage;
 import org.junit.Test;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.TestInfo;
 import org.loadui.testfx.GuiTest;
 import org.testfx.framework.junit.ApplicationTest;
 import org.testfx.util.WaitForAsyncUtils;
