@@ -10,9 +10,6 @@ public class SqlApp {
      * @return the Connection object
      */
     public Connection connect() {
-        // SQLite connection string
-        //String url = "jdbc:sqlite://resources/Vacation.db";
-        //String url = "jdbc:sqlite:resources/Vacation.db";
         System.out.println(System.getProperty("user.dir")+"\\src\\resources\\Vacation.db");
         String url = "jdbc:sqlite:src\\resources\\Vacation.db";
         Connection conn = null;
