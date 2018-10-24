@@ -5,9 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.io.IOException;
 import java.util.Optional;
-import javafx.scene.control.PasswordField;
-
-import javax.swing.*;
 
 
 public class DeleteController extends Controller {
@@ -16,12 +13,12 @@ public class DeleteController extends Controller {
 
     @FXML
     private void deleteForever(ActionEvent event) {
-        TextInputDialog dialog = new TextInputDialog("");
-
+        /*TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("Confirmation");
         dialog.setHeaderText("Enter password to confirm:");
-        dialog.setContentText("Password:");
-        Optional<String> result = dialog.showAndWait();
+        dialog.setContentText("Password:");*/
+        PasswordInputDialog passDialog = new PasswordInputDialog();
+        Optional<String> result = passDialog.showAndWait();
         result.ifPresent(pass -> {
             this.password = pass;
         });

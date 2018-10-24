@@ -8,6 +8,7 @@ package MVC;
 
 public class Main extends Application {
     public static Stage pStage;
+    public static Scene mainScene;
 
     public static String screenSignUpID = "Registration Form";
     public static String screenSignUpFile = "SignUpXML.fxml";
@@ -26,6 +27,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         pStage = primaryStage;
+
         ScreensController mainContainer = new ScreensController();
         mainContainer.loadScreen(screenLoginID, screenLoginFile,675,450);
         mainContainer.loadScreen(screenMainMenuID, screenMainMenuFile,500,500);

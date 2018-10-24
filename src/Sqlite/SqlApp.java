@@ -43,4 +43,19 @@ public class SqlApp {
         }
         return ans;
     }
+
+    public String checkIfUserInDB(String userName) {
+        String sql = "SELECT user_name FROM Users WHERE user_name = " + "'" + userName + "'";
+        String passFromDB = null;
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            passFromDB = rs.getString("user_name");
+            return passFromDB;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 }
