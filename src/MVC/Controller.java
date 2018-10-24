@@ -77,5 +77,10 @@ public class Controller implements ControlledScreen{
         myController.setScreen(MVC.Main.screenMainMenuID);
     }
 
+    @FXML
+    private void read() throws IOException{
+        myController.setScreen(MVC.Main.screenMainMenuID);
+    }
+
 
 }

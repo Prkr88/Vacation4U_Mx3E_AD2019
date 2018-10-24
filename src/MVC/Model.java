@@ -1,6 +1,7 @@
 package MVC;
 
 import Sqlite.*;
+import java.sql.*;
 
 public class Model {
 
@@ -28,6 +29,8 @@ public class Model {
     public void deleteUser(String userName,String password){
         deleteApp.deleteUser(userName,password);
     }
+
+    public String[] readUser(String userName) {return selectApp.selectUser(userName);} // my addition
 
     public void updateUserData(String userName ,String password,String bDate,String pName,String lName,String city){
         updateApp.updateUser(userName,password,bDate,pName,lName,city);
