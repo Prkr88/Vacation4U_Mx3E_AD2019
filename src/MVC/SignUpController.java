@@ -51,7 +51,7 @@ public class SignUpController extends Controller {
 
     @FXML
     private void cancelAction(ActionEvent event) {
-
+        super.myController.setScreen(MVC.Main.screenLoginID);
     }
 
 
