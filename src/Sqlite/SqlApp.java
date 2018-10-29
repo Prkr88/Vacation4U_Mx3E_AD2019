@@ -2,6 +2,11 @@ package Sqlite;
 
 import java.sql.*;
 
+/**
+ * this generic class of sql apliction holds generic methods for all sqlApps to use.
+ * every sqlApp in the program extends it.
+ * @author  Mx3E
+ */
 public class SqlApp {
 
     /**
@@ -21,6 +26,11 @@ public class SqlApp {
         return conn;
     }
 
+    /**
+     * get users password
+     * @param userName we want to retrieve password for
+     * @return user's password or null if not found
+     */
     public String getUserPassword(String userName) {
         String sql = "SELECT password FROM Users WHERE user_name = " + "'" + userName + "'";
         String passFromDB = null;
@@ -36,6 +46,12 @@ public class SqlApp {
         return null;
     }
 
+    /**
+     * checks id certain user is loged in to the system
+     * @param userName
+     * @param password
+     * @return true if loged in.
+     */
     public boolean loogIn(String userName, String password) {
         boolean ans = false;
         if(password.equals(getUserPassword(userName))){
@@ -44,14 +60,19 @@ public class SqlApp {
         return ans;
     }
 
+    /**
+     * checks if user exists in the DB
+     * @param userName to check
+     * @return userName if found. else null.
+     */
     public String checkIfUserInDB(String userName) {
         String sql = "SELECT user_name FROM Users WHERE user_name = " + "'" + userName + "'";
-        String passFromDB = null;
+        String userFromDB = null;
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
-            passFromDB = rs.getString("user_name");
-            return passFromDB;
+            userFromDB = rs.getString("user_name");
+            return userFromDB;
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

@@ -3,15 +3,16 @@ package Sqlite;
 import java.sql.*;
 
 /**
- * @author sqlitetutorial.net
+ *
+ * @author Mx3E
  */
 public class DeleteApp extends SqlApp{
 
     /**
      * Delete a user specified by the userName and password
-     *
-     * @param userName
-     * @param password
+     *  will FAIL if incorrect password.
+     * @param userName to delete
+     * @param password of user name.
      */
     public void deleteUser(String userName, String password) {
         String sql = "DELETE FROM Users WHERE user_name = ?";

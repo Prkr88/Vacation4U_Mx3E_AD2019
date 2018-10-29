@@ -2,15 +2,20 @@
 
 import MVC.Main;
 import Sqlite.*;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 import javafx.scene.Scene;
 import javafx.scene.*;
 import javafx.stage.Stage;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.loadui.testfx.GuiTest;
 import org.testfx.framework.junit.ApplicationTest;
 import org.testfx.util.WaitForAsyncUtils;
 
+import java.awt.*;
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -70,6 +75,7 @@ public class MainTest extends ApplicationTest {
 //        release(new MouseButton[]{});
 //    }
 
+
     //Test Good LogIn
     @Test
     public void GoodLogIn() {
@@ -87,7 +93,7 @@ public class MainTest extends ApplicationTest {
         }
         WaitForAsyncUtils.clearExceptions();
         status = GuiTest.find("#pleaseEnter");
-        System.out.println(status.getText());
+       // System.out.println(status.getText());
         assertEquals(status.getText(), "Login Success");
 
     }
@@ -107,7 +113,7 @@ public class MainTest extends ApplicationTest {
         }
         WaitForAsyncUtils.clearExceptions();
         status = GuiTest.find("#pleaseEnter");
-        System.out.println(status.getText());
+       // System.out.println(status.getText());
         assertNotEquals(status.getText(), "Login Success");
     }
 
@@ -126,7 +132,7 @@ public class MainTest extends ApplicationTest {
         }
         WaitForAsyncUtils.clearExceptions();
         status = GuiTest.find("#pleaseEnter");
-        System.out.println(status.getText());
+        //System.out.println(status.getText());
         assertNotEquals(status.getText(), "Login Success");
     }
 
@@ -136,7 +142,7 @@ public class MainTest extends ApplicationTest {
     public void deleteAndSignUp() {
         String userName = sqlApp.checkIfUserInDB("Prkr");
         if(userName!=null) {
-            logIn();
+            logInPrkr();
             deleteUser();
             userName = sqlApp.checkIfUserInDB("Prkr");
             assertEquals(userName, null);
@@ -154,7 +160,7 @@ public class MainTest extends ApplicationTest {
     public void deleteAndSignUp2() {
         String userName = sqlApp.checkIfUserInDB("Prkr");
         if(userName!=null) {
-            logIn();
+            logInPrkr();
             deleteUser();
             userName = sqlApp.checkIfUserInDB("Prkr");
             assertEquals(userName, null);
@@ -166,6 +172,29 @@ public class MainTest extends ApplicationTest {
             userName = sqlApp.checkIfUserInDB("Prkr");
             assertEquals(userName, null);
         }
+    }
+
+    @Test
+    public void read() {
+        Text userName;
+        Text firstName;
+        Text lastName;
+        logInEdo();
+        sleep(4000);
+        clickOn("#read_button");
+        sleep(4000);
+        clickOn("#user_name");
+        write("edoLior");
+        clickOn("#btn_done");
+        userName = GuiTest.find("#username_read");
+        firstName = GuiTest.find("#first_name_read");
+        lastName = GuiTest.find("#last_name_read");
+        assertEquals(userName.getText(), "edoLior");
+        assertEquals(firstName.getText(), "edo");
+        assertEquals(lastName.getText(), "Lior");
+
+
+
     }
 
     public void signUp(){
@@ -203,12 +232,21 @@ public class MainTest extends ApplicationTest {
         sleep(3000);
     }
 
-    public void logIn(){
+    public void logInPrkr(){
         clickOn("#textField_UserName");
         write("Prkr");
         clickOn("#textField_Pass");
         write("123456");
         clickOn("#login_button");
     }
+
+    public void logInEdo(){
+        clickOn("#textField_UserName");
+        write("edoLior");
+        clickOn("#textField_Pass");
+        write("123456");
+        clickOn("#login_button");
+    }
+
 }
 

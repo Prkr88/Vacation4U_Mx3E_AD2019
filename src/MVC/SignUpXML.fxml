@@ -11,13 +11,14 @@
         fx:controller="View.CreateXML"
 -->
 
+<?import javafx.scene.control.PasswordField?>
 <AnchorPane prefHeight="455.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MVC.SignUpController">
    <children>
       <Pane prefHeight="455.0" prefWidth="159.0" style="-fx-background-color: #9867db;" />
       <TextField fx:id="signUP_first_name" layoutX="179.0" layoutY="93.0" prefHeight="25.0" prefWidth="205.0" promptText="First Name" />
       <TextField fx:id="signUP_user_name" layoutX="179.0" layoutY="166.0" prefHeight="25.0" prefWidth="205.0" promptText="User Name" />
       <TextField fx:id="signUP_last_name" layoutX="435.0" layoutY="93.0" prefHeight="25.0" prefWidth="205.0" promptText="Last Name" />
-      <TextField fx:id="signUP_password" layoutX="435.0" layoutY="166.0" prefHeight="25.0" prefWidth="205.0" promptText="Password" />
+      <PasswordField fx:id="signUP_password" layoutX="435.0" layoutY="166.0" prefHeight="25.0" prefWidth="205.0" promptText="Password" />
       <TextField fx:id="signUP_city" layoutX="435.0" layoutY="241.0" prefHeight="25.0" prefWidth="205.0" promptText="City" />
       <Button fx:id="btn_done" layoutX="274.0" layoutY="323.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="25.0" prefWidth="109.0" text="Done" />
       <Button fx:id="btn_cancel" layoutX="435.0" layoutY="323.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="25.0" prefWidth="109.0" text="Cancel" />
