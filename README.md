@@ -12,6 +12,7 @@ instructiuons:
 option 1: Run Main Class in MVC folder and operate the program manualy. 
 
 option 2: Run MainTest from test folder , this will simulate most of the functions automaticlly. 
+
          ***dont move the mouse durring simulation. 
          
          
