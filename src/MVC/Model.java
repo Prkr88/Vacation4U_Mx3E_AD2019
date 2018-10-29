@@ -3,6 +3,20 @@ package MVC;
 import Sqlite.*;
 import java.sql.*;
 
+/**
+ * The Model layer is responsible for:
+ * (1) Creating a new user
+ * (2) Searching for a user
+ * (3) Updating certain information fields of the user
+ * (4) Deleting the user
+ *
+ * @author Matan Bruker, Matan Parker, Meytal Meshulam, Edo Lior
+ * @version 3.0
+ * @since 26/10/18
+ */
+
+
+
 public class Model {
 
     private DeleteApp deleteApp;

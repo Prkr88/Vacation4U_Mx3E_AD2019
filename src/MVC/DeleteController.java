@@ -12,6 +12,7 @@ public class DeleteController extends Controller {
     private String password;
 
     @FXML
+    /* function deletes record from the database */
     private void deleteForever(ActionEvent event) {
         /*TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("Confirmation");

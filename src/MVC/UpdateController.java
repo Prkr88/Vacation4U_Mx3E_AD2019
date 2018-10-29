@@ -24,6 +24,7 @@ public class UpdateController extends Controller {
     private TextField update_YYYY;
 
     @FXML
+    /* function listens for retrieving username details to be updated */
     public void updateUserData(ActionEvent event) {
         String fName = update_fName.getText();
         String lName = update_lname.getText();
