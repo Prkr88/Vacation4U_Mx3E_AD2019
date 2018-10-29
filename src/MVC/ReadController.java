@@ -24,6 +24,7 @@ public class ReadController extends Controller {
     private Text city_read;
 
     @FXML
+    /* function receives username and displays his details if found */
     public void readUserData(ActionEvent event) {
         String user = user_name.getText();
         String[] res = model.readUser(user);

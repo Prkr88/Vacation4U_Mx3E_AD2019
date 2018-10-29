@@ -29,6 +29,7 @@ public class SignUpController extends Controller {
     private TextField signUP_YYYY;
 
     @FXML
+    /* function listens for retrieving username details */
     private void registerUser(ActionEvent event) {
         String fName = signUP_first_name.getText();
         String lName = signUP_last_name.getText();

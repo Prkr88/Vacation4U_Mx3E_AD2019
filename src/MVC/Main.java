@@ -5,6 +5,19 @@ package MVC;
         import javafx.scene.Scene;
         import javafx.stage.Stage;
 
+/**
+ * Welcome to Vacation4U database system.
+ * Main class sets the View, Model and Controller classes representing the MVC model.
+ * Initializes the first opening scene (Login).
+ * SQL Database filename: "Vacation.db" in resources.
+ * Maven projects included: SQL & JUnit integrations.
+ *
+ *
+ * @author Matan Bruker, Matan Parker, Meytal Meshulam, Edo Lior
+ * @version 3.0
+ * @since 26/10/18
+ */
+
 
 public class Main extends Application {
     public static Stage pStage;

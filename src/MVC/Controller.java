@@ -10,6 +10,14 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
+/**
+ * Controller class responsible for communicating between the View and Model classes
+ *
+ * @author Matan Bruker, Matan Parker, Meytal Meshulam, Edo Lior
+ * @version 3.0
+ * @since 26/10/18
+ */
+
 public class Controller implements ControlledScreen{
 
     public ScreensController myController;
@@ -31,7 +39,7 @@ public class Controller implements ControlledScreen{
     }
 
 
-    //checks if the user name and password match the DB
+    /* function checks if the username and password match the DB */
     @FXML
     private void logInAttempt(ActionEvent event) {
         System.out.println("Login Attempt!");
@@ -53,31 +61,34 @@ public class Controller implements ControlledScreen{
     }
 
     @FXML
+    /* function listens for opening the Create Form */
     private void signUp(ActionEvent event) {
         myController.setScreen(MVC.Main.screenSignUpID);
     }
 
+    /* function listens to open the Create Form */
+    public void showMainMenu() throws IOException { myController.setScreen(MVC.Main.screenMainMenuID); }
 
-    public void showMainMenu() throws IOException{
-        myController.setScreen(MVC.Main.screenMainMenuID);
-    }
-
+    /* function listens to open the Main Menu */
     public void showLoginScreen() throws IOException{
         Main.signedUserName="";
         myController.setScreen(Main.screenLoginID);
     }
 
     @FXML
+    /* function listens to close window and to open the Main Menu */
     private void done() throws IOException{
         myController.setScreen(MVC.Main.screenMainMenuID);
     }
 
     @FXML
+    /* function listens to close window to open the Main Menu */
     private void cancel() throws IOException{
         myController.setScreen(MVC.Main.screenMainMenuID);
     }
 
     @FXML
+    /* function listens to open the Main Menu */
     private void read() throws IOException{
         myController.setScreen(MVC.Main.screenMainMenuID);
     }
