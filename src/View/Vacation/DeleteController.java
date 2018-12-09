@@ -1,10 +1,14 @@
-package MVC;
+package View.Vacation;
 
+import Controller.Controller;
+import View.Main;
+import Model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.io.IOException;
 import java.util.Optional;
+import View.User.PasswordInputDialog;
 
 
 public class DeleteController extends Controller {
@@ -12,19 +16,15 @@ public class DeleteController extends Controller {
     private String password;
 
     @FXML
-    /* function deletes record from the database */
+
     private void deleteForever(ActionEvent event) {
-        /*TextInputDialog dialog = new TextInputDialog("");
-        dialog.setTitle("Confirmation");
-        dialog.setHeaderText("Enter password to confirm:");
-        dialog.setContentText("Password:");*/
         PasswordInputDialog passDialog = new PasswordInputDialog();
         Optional<String> result = passDialog.showAndWait();
         result.ifPresent(pass -> {
             this.password = pass;
         });
         if (password != null && model.isMember(Main.signedUserName, password)) {
-            model.deleteUser(Main.signedUserName, password);
+            //model.deleteVacation(Main.signedUserName, password);
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Delete User");
             alert.setHeaderText(null);

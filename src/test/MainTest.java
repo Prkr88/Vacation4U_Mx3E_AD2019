@@ -1,7 +1,7 @@
 
 
-import MVC.Main;
-import Sqlite.*;
+import View.Main;
+import Model.*;
 import javafx.scene.text.Text;
 import javafx.scene.Scene;
 import javafx.scene.*;
@@ -11,15 +11,11 @@ import org.loadui.testfx.GuiTest;
 import org.testfx.framework.junit.ApplicationTest;
 import org.testfx.util.WaitForAsyncUtils;
 
-import java.lang.annotation.Repeatable;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThat;
-import MVC.*;
+import View.*;
 
 public class MainTest extends ApplicationTest {
     private SqlApp sqlApp = new SqlApp();

@@ -1,4 +1,6 @@
-package MVC;
+package Controller;
+
+import View.ScreensController;
 
 /**
  * ControlledScreen Interface for setting and loaded all stages

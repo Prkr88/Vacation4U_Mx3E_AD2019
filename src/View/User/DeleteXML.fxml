@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="528.0" prefWidth="673.0" style="-fx-background-color: #dc80a9;" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MVC.DeleteController">
+<AnchorPane prefHeight="528.0" prefWidth="673.0" style="-fx-background-color: #dc80a9;" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.User.DeleteController">
     <children>
         <Label fx:id="label_Message" alignment="CENTER" layoutX="172.0" layoutY="61.0" prefHeight="45.0" prefWidth="359.0" text="Are you sure you want to be deleted?" textFill="WHITE">
             <font>
@@ -17,7 +17,7 @@
         <Button fx:id="no_BTN" layoutX="411.0" layoutY="385.0" mnemonicParsing="false" onAction="#cancel" prefHeight="33.0" prefWidth="119.0" text="No" />
         <ImageView fitHeight="239.0" fitWidth="309.0" layoutX="232.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../resources/img_user_remove.png" />
+                <Image url="@../../resources/img_user_remove.png" />
             </image>
         </ImageView>
     </children>

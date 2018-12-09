@@ -1,7 +1,6 @@
-package MVC;
+package Model;
 
-import Sqlite.*;
-import java.sql.*;
+import Model.*;
 
 /**
  * The Model layer is responsible for:
@@ -49,4 +48,17 @@ public class Model {
     public void updateUserData(String userName ,String password,String bDate,String pName,String lName,String city){
         updateApp.updateUser(userName,password,bDate,pName,lName,city);
     }
+/*
+    public void addVacation(Integer intTotalAmount, Integer intTotalPrice, String strDestination, String strAirline, String strDepDate, String strArrivalDate, Boolean boolLodge, Boolean boolReturnFlight, String strLuggageDetails) {
+        insertApp.insertVacation(intTotalAmount, intTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, boolLodge, boolReturnFlight, strLuggageDetails);
+    }
+
+    public void updateVacation(Integer intTotalAmount, Integer intTotalPrice, String strDestination, String strAirline, String strDepDate, String strArrivalDate, Boolean boolLodge, Boolean boolReturnFlight, String strLuggageDetails);
+        updateApp.updateVacation(intTotalAmount, intTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, boolLodge, boolReturnFlight, strLuggageDetails);
+    }
+
+    public void deleteVacation(String strVacationID){
+        deleteApp.deleteVacation(strVacationID);
+    }
+*/
 }
