@@ -4,14 +4,42 @@ import View.Main;
 
 import java.sql.*;
 
+/**
+ *
+ * @author Mx3e
+ */
 public class UpdateApp extends SqlApp{
 
+    /**
+     * current users password
+     */
     private String thisPass;
+    /**
+     * current users birth date
+     */
     private String thisBirth;
+    /**
+     * current users person name
+     */
     private String thisPName;
+    /**
+     * current users Last name
+     */
     private String thisLName;
+    /**
+     * current users city of origin
+     */
     private String thisCity;
 
+    /**
+     * this function updates user data
+     * @param userName user name
+     * @param password password
+     * @param bDate birth date
+     * @param pName person name
+     * @param lName last name
+     * @param city city of origin
+     */
     public void updateUser(String userName ,String password,String bDate,String pName,String lName,String city) {
 
         String sqlRetrieve = "SELECT user_name,password,birth_date,private_name,last_name,city_of_origin FROM Users WHERE user_name = " + "'" + Main.signedUserName  + "'";

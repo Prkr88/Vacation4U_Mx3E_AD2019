@@ -4,17 +4,17 @@ import java.sql.*;
 
 /**
  *
- * @author sqlitetutorial.net
+ * @author Mx3E
  */
 public class InsertApp extends SqlApp{
 
     /**inserts new user to Users Table
-     * @param userName
-     * @param password
-     * @param bDate
-     * @param pName
-     * @param lName
-     * @param city
+     * @param userName user name
+     * @param password password
+     * @param bDate birth date
+     * @param pName person name
+     * @param lName last name
+     * @param city city of origin
      */
     public void insert(String userName ,String password,String bDate,String pName,String lName,String city) {
         String sql = "INSERT INTO Users(user_name,password,birth_date,private_name,last_name,city_of_origin) VALUES(?,?,?,?,?,?)";
