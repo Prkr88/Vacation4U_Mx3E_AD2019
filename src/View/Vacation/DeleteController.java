@@ -21,7 +21,7 @@ public class DeleteController extends Controller {
         String sVacID = vacID.getText();
         int iVacID = Integer.parseInt(sVacID);
         if (sVacID!=null) {
-        model.deleteVacation(sVacID);
+        //model.deleteVacation(sVacID);
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Delete Vacation");
         alert.setHeaderText(null);

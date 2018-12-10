@@ -103,7 +103,7 @@ public class UpdateController extends Controller{
             sReturn = "no";
         String strLuggageDetails = TXTBX_luggage_details.getText();
         String strVacType = comboType.getValue();
-        model.updateVacation(iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, strVacType, sLodge, sReturn, strLuggageDetails);
+        //model.updateVacation(iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, strVacType, sLodge, sReturn, strLuggageDetails);
         try {
             super.showMainMenu();
         } catch (IOException e) {
