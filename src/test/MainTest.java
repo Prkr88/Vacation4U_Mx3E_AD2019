@@ -193,8 +193,6 @@ public class MainTest extends ApplicationTest {
         assertEquals(firstName.getText(), "edo");
         assertEquals(lastName.getText(), "Lior");
 
-
-
     }
 
     public void signUp(){

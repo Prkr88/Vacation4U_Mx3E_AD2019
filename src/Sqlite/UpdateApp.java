@@ -97,4 +97,117 @@ public class UpdateApp extends SqlApp{
         }
     }
 
+
+    public void upadateVacationDetalis(int vacationID,String startDate ,String endDate
+            ,int numAdultTickets,int numKidTickets,int numBabyTickets ,String destination
+            ,String flightCompnay,String vacationType,int accommodationIncluded,int flightBackIncluded,
+                                       int totalPrice ) {
+        String oldStartDate = "";
+        String oldEndDate = "";
+        int oldNumAdult = 0;
+        int oldNumKid = 0;
+        int oldNumBaby = 0;
+        String oldDestination = "";
+        String oldFlightCompany ="";
+        String oldVacType ="";
+        int oldAccomIncluded =0;
+        int oldFlightBackIncluded =0;
+        int oldPrice =0;
+
+        String sqlRetrieve = "SELECT * FROM OfferedVacations WHERE seller_id = " + "'" + Main.signedUserName  + "'" +"AND vacation_id=" + "'" + vacationID  + "'";
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sqlRetrieve)){
+                oldStartDate = rs.getString("start_date");
+                oldEndDate = rs.getString("end_date");
+                oldNumAdult = rs.getInt("num_adult_tickets");
+                oldNumKid = rs.getInt("num_kid_tickets");
+                oldNumBaby = rs.getInt("num_baby_tickets");
+                oldDestination = rs.getString("destination");
+                oldFlightCompany = rs.getString("flight_company");
+                oldVacType = rs.getString("vacation_type");
+                oldAccomIncluded = rs.getInt("accom_included");
+                oldFlightBackIncluded = rs.getInt("flight_back_included");
+                oldPrice = rs.getInt("price");
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        String sqlSet = "UPDATE OfferedVacations SET " +
+                "start_date = ? ," +
+                "end_date = ?," +
+                "num_adult_tickets = ?," +
+                "num_kid_tickets = ?," +
+                "num_baby_tickets = ? ," +
+                "destination = ? ," +
+                "flight_company = ? ,"+
+                "vacation_type = ? ," +
+                "accom_included = ? ," +
+                "flight_back_included = ? ," +
+                "price = ? "
+                + "WHERE seller_id = ? AND vacation_id = ?";
+
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sqlSet)) {
+            // set the corresponding param
+            if (!startDate.equals(""))
+                pstmt.setString(1, startDate);
+            else
+                pstmt.setString(1, oldStartDate);
+            if (!endDate.equals(""))
+                pstmt.setString(2, endDate);
+            else
+                pstmt.setString(2, oldEndDate);
+            if (numAdultTickets != -1)
+                pstmt.setInt(3, numAdultTickets);
+            else
+                pstmt.setInt(3, oldNumAdult);
+            if (numKidTickets != -1)
+                pstmt.setInt(4, numKidTickets);
+            else
+                pstmt.setInt(4, oldNumKid);
+            if (numBabyTickets != -1)
+                pstmt.setInt(5, numBabyTickets);
+            else
+                pstmt.setInt(5, oldNumBaby);
+            if (!destination.equals(""))
+                pstmt.setString(6, destination);
+            else
+                pstmt.setString(6, oldDestination);
+            if (!flightCompnay.equals(""))
+                pstmt.setString(7, flightCompnay);
+            else
+                pstmt.setString(7, oldFlightCompany);
+            if (!vacationType.equals(""))
+                pstmt.setString(8, vacationType);
+            else
+                pstmt.setString(8, oldVacType);
+            if (accommodationIncluded != -1)
+                pstmt.setInt(9, accommodationIncluded);
+            else
+                pstmt.setInt(9, oldAccomIncluded);
+            if (flightBackIncluded != -1)
+                pstmt.setInt(10, flightBackIncluded);
+            else
+                pstmt.setInt(10, oldFlightBackIncluded);
+            if (totalPrice != -1)
+                pstmt.setInt(11, totalPrice);
+            else
+                pstmt.setInt(11, oldPrice);
+            pstmt.setString(12, Main.signedUserName);
+            pstmt.setInt(13, vacationID);
+            // update Parameters
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        UpdateApp uA = new UpdateApp();
+        uA.upadateVacationDetalis(1,"3-3-3","3-4-3",2,1,0,"varna","El-Al","pleasure",1,1,2000);
+    }
+
 }

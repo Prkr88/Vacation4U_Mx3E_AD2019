@@ -1,7 +1,6 @@
 package MVC;
 
 import Sqlite.*;
-import java.sql.*;
 
 /**
  * The Model layer is responsible for:
@@ -37,7 +36,7 @@ public class Model {
     }
 
     public void registerUserToDB(String userName ,String password,String bDate,String pName,String lName,String city) {
-        insertApp.insert(userName ,password,bDate,pName,lName,city);
+        insertApp.insertUser(userName ,password,bDate,pName,lName,city);
     }
 
     public void deleteUser(String userName,String password){
