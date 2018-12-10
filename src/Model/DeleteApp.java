@@ -1,4 +1,4 @@
-package Sqlite;
+package Model;
 
 import java.sql.*;
 

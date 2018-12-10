@@ -1,6 +1,6 @@
-package Sqlite;
+package Model;
 
-import MVC.Main;
+import View.Main;
 
 import java.sql.*;
 
