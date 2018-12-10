@@ -38,7 +38,6 @@
                 <Image preserveRatio="false" smooth="false" url="@../../resources/urban.jpg" />
             </image>
         </ImageView>
-
         <!--fx:id="TXTBX_adult_amount"-->
         <TextField fx:id="TXTBX_adult_amount" layoutX="254.0" layoutY="100.0" prefHeight="25.0" prefWidth="40.0" />
         <Button fx:id="btn_done" layoutX="291.0" layoutY="446.0" mnemonicParsing="false" onAction="#createAction" prefHeight="25.0" prefWidth="109.0" text="Done" />
@@ -63,7 +62,7 @@
             <Font name="System Bold" size="10.0" />
          </font>
       </Text>
-        <!--fx:id="TXTBX_price"-->
+        <!--fx:id="TXTBX_adult_price"-->
       <TextField fx:id="TXTBX_price" layoutX="230.0" layoutY="163.0" prefHeight="25.0" prefWidth="121.0" />
       <Text layoutX="161.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price in Total:" wrappingWidth="66.66662424802774">
          <font>

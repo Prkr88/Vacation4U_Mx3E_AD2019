@@ -37,7 +37,7 @@ public class InsertApp extends SqlApp{
 
     public void insertVacation(int iAdultAmount, int iChildAmount, int iBabyAmount, int iTotalPrice, String strDestination, String strAirline, String strDepDate, String strArrivalDate, String strVacType, String sLodge, String sReturn, String strLuggageDetails) {
 
-        String sql = "INSERT INTO OfferedVacations(iAdultAmount,iChildAmount,iBabyAmount,iTotalPrice,strDestination,strAirline,strDepDate,strArrivalDate,boolLodge,boolReturnFlight,strLuggageDetails) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO OfferedVacations(vacation_id,seller_id,start_date,end_date,num_adult_tickets,num_kid_tickets,num_baby_tickets,flight_company,vacation_type,accom_include,destination,flight_back_included,price,luggage_details) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
