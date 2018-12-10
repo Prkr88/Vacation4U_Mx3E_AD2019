@@ -1,5 +1,7 @@
 package Model;
 
+import View.Main;
+
 import java.sql.*;
 
 
@@ -60,6 +62,34 @@ public class SelectApp extends SqlApp{
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             int i;
+        }
+        return null;
+    }
+
+    public String[] selectVacation(String destination){
+        String[] res = new String[5];
+        String user_name = Main.signedUserName;
+        String sql = "SELECT vacation_id,destination,price,start_date,end_date,num_adult_tickets,num_kid_tickets,num_baby_tickets,flight_back_included,flight_company,vacation_type,accom_included FROM OfferedVacations WHERE destination="
+                + "'" + destination + "'";
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            res[0] = rs.getString("vacation_id");
+            res[1] = rs.getString("destination");
+            res[2] = rs.getString("price");
+            res[3] = rs.getString("start_date");
+            res[4] = rs.getString("end_date");
+            res[5] = rs.getString("num_adult_tickets");
+            res[6] = rs.getString("num_kid_tickets");
+            res[7] = rs.getString("num_baby_tickets");
+            res[8] = rs.getString("flight_back_included");
+            res[9] = rs.getString("flight_company");
+            res[10] = rs.getString("vacation_type");
+            res[11] = rs.getString("accom_included");
+            return res;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
         return null;
     }

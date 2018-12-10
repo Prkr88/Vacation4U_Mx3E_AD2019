@@ -20,8 +20,8 @@ fx:controller="Controller.Controller"
          </font>
       </Text>
       <Button fx:id="createVacation_button" layoutX="51.0" layoutY="262.0" mnemonicParsing="false" onAction="#createVacation" prefHeight="39.0" prefWidth="121.0" text="Create Vacation" />
-      <Button fx:id="createVacation_button1" layoutX="206.0" layoutY="262.0" mnemonicParsing="false" onAction="#createVacation" prefHeight="39.0" prefWidth="128.0" text="Read Vacation" />
-      <Button fx:id="createVacation_button2" layoutX="360.0" layoutY="262.0" mnemonicParsing="false" onAction="#createVacation" prefHeight="39.0" prefWidth="128.0" text="Update Vacation" />
-      <Button fx:id="createVacation_button3" layoutX="515.0" layoutY="262.0" mnemonicParsing="false" onAction="#createVacation" prefHeight="39.0" prefWidth="128.0" text="Delete Vacation" />
+      <Button fx:id="readVacation_button" layoutX="206.0" layoutY="262.0" mnemonicParsing="false" onAction="#readVacation" prefHeight="39.0" prefWidth="128.0" text="Read Vacation" />
+      <Button fx:id="updateVacation_button" layoutX="360.0" layoutY="262.0" mnemonicParsing="false" onAction="#updateVacation" prefHeight="39.0" prefWidth="128.0" text="Update Vacation" />
+      <Button fx:id="deleteVacation_button" layoutX="515.0" layoutY="262.0" mnemonicParsing="false" onAction="#deleteVacation" prefHeight="39.0" prefWidth="128.0" text="Delete Vacation" />
    </children>
 </AnchorPane>

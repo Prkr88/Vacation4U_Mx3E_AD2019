@@ -97,23 +97,20 @@ public class UpdateApp extends SqlApp{
         }
     }
 
-
-    public void upadateVacationDetalis(int vacationID,String startDate ,String endDate
-            ,int numAdultTickets,int numKidTickets,int numBabyTickets ,String destination
-            ,String flightCompnay,String vacationType,int accommodationIncluded,int flightBackIncluded,
-                                       int totalPrice ) {
+    public void upadateVacation(int numAdultTickets,int numKidTickets,int numBabyTickets, int totalPrice, String destination, String flightCompany, String startDate ,String endDate ,String vacationType,String accommodationIncluded,String flightBackIncluded,String sLuggaeDetails) {
         String oldStartDate = "";
         String oldEndDate = "";
         int oldNumAdult = 0;
         int oldNumKid = 0;
         int oldNumBaby = 0;
         String oldDestination = "";
-        String oldFlightCompany ="";
-        String oldVacType ="";
-        int oldAccomIncluded =0;
-        int oldFlightBackIncluded =0;
-        int oldPrice =0;
-
+        String oldFlightCompany = "";
+        String oldVacType = "";
+        int oldAccomIncluded = 0;
+        int oldFlightBackIncluded = 0;
+        int oldPrice = 0;
+    }
+/*
         String sqlRetrieve = "SELECT * FROM OfferedVacations WHERE seller_id = " + "'" + Main.signedUserName  + "'" +"AND vacation_id=" + "'" + vacationID  + "'";
 
         try (Connection conn = this.connect();
@@ -176,8 +173,8 @@ public class UpdateApp extends SqlApp{
                 pstmt.setString(6, destination);
             else
                 pstmt.setString(6, oldDestination);
-            if (!flightCompnay.equals(""))
-                pstmt.setString(7, flightCompnay);
+            if (!flightCompany.equals(""))
+                pstmt.setString(7, flightCompany);
             else
                 pstmt.setString(7, oldFlightCompany);
             if (!vacationType.equals(""))
@@ -209,5 +206,5 @@ public class UpdateApp extends SqlApp{
         UpdateApp uA = new UpdateApp();
         uA.upadateVacationDetalis(1,"3-3-3","3-4-3",2,1,0,"varna","El-Al","pleasure",1,1,2000);
     }
-
+*/
 }
