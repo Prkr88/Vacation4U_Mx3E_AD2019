@@ -25,7 +25,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,11 +41,7 @@ public class CreateController extends Controller {
     @FXML
     private TextField TXTBX_baby_amount;
     @FXML
-    private TextField TXTBX_adult_price;
-    @FXML
-    private TextField TXTBX_child_price;
-    @FXML
-    private TextField TXTBX_baby_price;
+    private TextField TXTBX_price;
     @FXML
     private TextField TXTBX_destination;
     @FXML
@@ -86,17 +81,11 @@ public class CreateController extends Controller {
         String strAdultAmount = TXTBX_adult_amount.getText();
         String strChildAmount = TXTBX_child_amount.getText();
         String strBabyAmount = TXTBX_baby_amount.getText();
-        String strAdultPrice = TXTBX_adult_price.getText();
-        String strChildPrice = TXTBX_child_price.getText();
-        String strBabyPrice = TXTBX_baby_price.getText();
-        int intAdultAmount = Integer.parseInt(strAdultAmount);
-        int intChildAmount = Integer.parseInt(strChildAmount);
-        int intBabyAmount = Integer.parseInt(strBabyAmount);
-        int intAdultPrice = Integer.parseInt(strAdultPrice);
-        int intChildPrice = Integer.parseInt(strChildPrice);
-        int intBabyPrice = Integer.parseInt(strBabyPrice);
-        int intTotalAmount = intAdultAmount+intChildAmount+intBabyAmount;
-        int intTotalPrice = intAdultPrice+intChildPrice+intBabyPrice;
+        String strTotalPrice = TXTBX_price.getText();
+        int iAdultAmount = Integer.parseInt(strAdultAmount);
+        int iChildAmount = Integer.parseInt(strChildAmount);
+        int iBabyAmount = Integer.parseInt(strBabyAmount);
+        int iTotalPrice = Integer.parseInt(strTotalPrice);
         String strDepDD = TXTBX_departure_DD.getText();
         String strDepMM = TXTBX_departure_MM.getText();
         String strDepYYYY = TXTBX_departure_YYYY.getText();
@@ -109,21 +98,20 @@ public class CreateController extends Controller {
         String strAirline = TXTBX_airline_company.getText();
         Boolean boolLodge = CHKBX_lodging_included.isSelected();
         Boolean boolReturnFlight = CHKBX_return_flight_included.isSelected();
+        String sLodge;
+        String sReturn;
+        if (boolLodge)
+            sLodge = "yes";
+        else
+            sLodge = "no";
+        if (boolReturnFlight)
+            sReturn = "yes";
+        else
+            sReturn = "no";
         String strLuggageDetails = TXTBX_luggage_details.getText();
-        //List<String> newItems = new ArrayList<>();
-        //newItems.add("beach");
-        //newItems.add("hiking");
-        //newItems.add("urban");
-        //comboType.setItems(newItems);
-        //comboType.getItems().setAll(newItems);
-        //comboType.getItems().addAll("beach", "hiking", "urban");
-        //comboType.setItems("Beach", "Hiking", "Urban");
         comboType = new ComboBox<>();
-        comboType.getItems().addAll("beach", "hiking", "urban");
-        //comboType.getItems().setAll("beach", "hiking", "urban");
-
+        comboType.getItems().setAll("beach", "hiking", "urban");
         selectedType.textProperty().bind(comboType.getSelectionModel().selectedItemProperty());
-        /*
         comboType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override public void changed(ObservableValue<? extends String> selected, String oldType, String newType) {
                 if (oldType != null) {
@@ -142,8 +130,8 @@ public class CreateController extends Controller {
                 }
             }
         });
-        */
-        //model.registerVacationToDB(intTotalAmount, intTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, boolLodge, boolReturnFlight, strLuggageDetails);
+        String strVacType = comboType.getValue();
+        model.addVacation(iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, strVacType, sLodge, sReturn, strLuggageDetails);
         try {
             super.showMainMenu();
         } catch (IOException e) {

@@ -98,10 +98,7 @@ public class UpdateApp extends SqlApp{
     }
 
 
-    public void upadateVacationDetalis(int vacationID,String startDate ,String endDate
-            ,int numAdultTickets,int numKidTickets,int numBabyTickets ,String destination
-            ,String flightCompnay,String vacationType,int accommodationIncluded,int flightBackIncluded,
-                                       int totalPrice ) {
+    public void upadateVacation(int numAdultTickets,int numKidTickets,int numBabyTickets, int totalPrice, String destination, String flightCompany, String startDate ,String endDate ,String vacationType,String accommodationIncluded,String flightBackIncluded,String sLuggaeDetails) {
         String oldStartDate = "";
         String oldEndDate = "";
         int oldNumAdult = 0;

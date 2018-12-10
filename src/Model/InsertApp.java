@@ -1,5 +1,7 @@
 package Model;
 
+import View.Main;
+
 import java.sql.*;
 
 /**
@@ -27,6 +29,32 @@ public class InsertApp extends SqlApp{
             pstmt.setString(4, pName);
             pstmt.setString(5, lName);
             pstmt.setString(6, city);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertVacation(int iAdultAmount, int iChildAmount, int iBabyAmount, int iTotalPrice, String strDestination, String strAirline, String strDepDate, String strArrivalDate, String strVacType, String sLodge, String sReturn, String strLuggageDetails) {
+
+        String sql = "INSERT INTO OfferedVacations(iAdultAmount,iChildAmount,iBabyAmount,iTotalPrice,strDestination,strAirline,strDepDate,strArrivalDate,boolLodge,boolReturnFlight,strLuggageDetails) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            //NOTE: validate that VACATION ID is inserted automatically
+            pstmt.setString(2, Main.signedUserName);
+            pstmt.setString(3, strDepDate);
+            pstmt.setString(4, strArrivalDate);
+            pstmt.setString(5, iAdultAmount +"");
+            pstmt.setString(6, iChildAmount+ "");
+            pstmt.setString(7, iBabyAmount+ "");
+            pstmt.setString(8, strAirline);
+            pstmt.setString(9, strVacType);
+            pstmt.setString(10, sLodge);
+            pstmt.setString(11, strDestination);
+            pstmt.setString(12, sReturn);
+            pstmt.setString(13, iTotalPrice +"");
+            pstmt.setString(14, strLuggageDetails);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());

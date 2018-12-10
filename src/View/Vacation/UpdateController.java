@@ -69,16 +69,16 @@ public class UpdateController extends Controller{
         String strAdultPrice = TXTBX_adult_price.getText();
         String strChildPrice = TXTBX_child_price.getText();
         String strBabyPrice = TXTBX_baby_price.getText();
-        int intAdultAmount = 0, intChildAmount = 0, intBabyAmount = 0;
-        int intAdultPrice = 0, intChildPrice = 0, intBabyPrice = 0;
-        try { intAdultAmount = Integer.parseInt(strAdultAmount); } catch (Exception e) {}
-        try { intChildAmount = Integer.parseInt(strChildAmount); } catch (Exception e) {}
-        try { intBabyAmount = Integer.parseInt(strBabyAmount); } catch (Exception e) {}
-        try { intAdultPrice = Integer.parseInt(strAdultPrice); } catch (Exception e) {}
-        try { intChildPrice = Integer.parseInt(strChildPrice); } catch (Exception e) {}
-        try { intBabyPrice = Integer.parseInt(strBabyPrice); } catch (Exception e) {}
-        int intTotalAmount = intAdultAmount + intChildAmount + intBabyAmount;
-        int intTotalPrice = intAdultPrice + intChildPrice + intBabyPrice;
+        int iAdultAmount = 0, iChildAmount = 0, iBabyAmount = 0;
+        int iAdultPrice = 0, iChildPrice = 0, iBabyPrice = 0;
+        try { iAdultAmount = Integer.parseInt(strAdultAmount); } catch (Exception e) {}
+        try { iChildAmount = Integer.parseInt(strChildAmount); } catch (Exception e) {}
+        try { iBabyAmount = Integer.parseInt(strBabyAmount); } catch (Exception e) {}
+        try { iAdultPrice = Integer.parseInt(strAdultPrice); } catch (Exception e) {}
+        try { iChildPrice = Integer.parseInt(strChildPrice); } catch (Exception e) {}
+        try { iBabyPrice = Integer.parseInt(strBabyPrice); } catch (Exception e) {}
+        int iTotalAmount = iAdultAmount + iChildAmount + iBabyAmount;
+        int iTotalPrice = iAdultPrice + iChildPrice + iBabyPrice;
         String strDepDD = TXTBX_departure_DD.getText();
         String strDepMM = TXTBX_departure_MM.getText();
         String strDepYYYY = TXTBX_departure_YYYY.getText();
@@ -91,8 +91,19 @@ public class UpdateController extends Controller{
         String strAirline = TXTBX_airline_company.getText();
         Boolean boolLodge = CHKBX_lodging_included.isSelected();
         Boolean boolReturnFlight = CHKBX_return_flight_included.isSelected();
+        String sLodge;
+        String sReturn;
+        if (boolLodge)
+            sLodge = "yes";
+        else
+            sLodge = "no";
+        if (boolReturnFlight)
+            sReturn = "yes";
+        else
+            sReturn = "no";
         String strLuggageDetails = TXTBX_luggage_details.getText();
-        //model.updateVacation(intTotalAmount, intTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, boolLodge, boolReturnFlight, strLuggageDetails);
+        String strVacType = comboType.getValue();
+        model.updateVacation(iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, strVacType, sLodge, sReturn, strLuggageDetails);
         try {
             super.showMainMenu();
         } catch (IOException e) {
