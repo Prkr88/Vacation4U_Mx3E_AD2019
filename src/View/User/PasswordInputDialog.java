@@ -1,4 +1,4 @@
-package MVC;
+package View.User;
 
 import javafx.application.Platform;
 import javafx.geometry.Insets;

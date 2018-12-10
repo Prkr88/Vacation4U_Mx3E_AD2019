@@ -1,5 +1,8 @@
-package MVC;
+package Controller;
 
+import View.Main;
+import Model.Model;
+import View.ScreensController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -18,9 +21,9 @@ import java.io.IOException;
  * @since 26/10/18
  */
 
-public class Controller implements ControlledScreen{
+public class Controller implements ControlledScreen {
 
-    public ScreensController myController;
+    public View.ScreensController myController;
 
     @FXML
     private Text output;
@@ -63,11 +66,11 @@ public class Controller implements ControlledScreen{
     @FXML
     /* function listens for opening the Create Form */
     private void signUp(ActionEvent event) {
-        myController.setScreen(MVC.Main.screenSignUpID);
+        myController.setScreen(View.Main.screenSignUpID);
     }
 
     /* function listens to open the Create Form */
-    public void showMainMenu() throws IOException { myController.setScreen(MVC.Main.screenMainMenuID); }
+    public void showMainMenu() throws IOException { myController.setScreen(View.Main.screenMainMenuID); }
 
     /* function listens to open the Main Menu */
     public void showLoginScreen() throws IOException{
@@ -78,19 +81,19 @@ public class Controller implements ControlledScreen{
     @FXML
     /* function listens to close window and to open the Main Menu */
     private void done() throws IOException{
-        myController.setScreen(MVC.Main.screenMainMenuID);
+        myController.setScreen(View.Main.screenMainMenuID);
     }
 
     @FXML
     /* function listens to close window to open the Main Menu */
     private void cancel() throws IOException{
-        myController.setScreen(MVC.Main.screenMainMenuID);
+        myController.setScreen(View.Main.screenMainMenuID);
     }
 
     @FXML
     /* function listens to open the Main Menu */
     private void read() throws IOException{
-        myController.setScreen(MVC.Main.screenMainMenuID);
+        myController.setScreen(View.Main.screenMainMenuID);
     }
 
 

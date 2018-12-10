@@ -1,5 +1,8 @@
-package MVC;
+package View.User;
 
+import Controller.Controller;
+import View.Main;
+import Model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<!--
+fx:controller="Controller.Controller"
+-->
+
+<AnchorPane prefHeight="503.0" prefWidth="668.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainMenuController">
+   <children>
+      <Button fx:id="read_button" layoutX="128.0" layoutY="148.0" mnemonicParsing="false" onAction="#readUserData" prefHeight="39.0" prefWidth="89.0" text="Read" />
+      <Button fx:id="updateUser_button" layoutX="289.0" layoutY="148.0" mnemonicParsing="false" onAction="#updateUserData" prefHeight="39.0" prefWidth="89.0" text="Update" />
+      <Button fx:id="deleteUser_button" layoutX="443.0" layoutY="148.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="39.0" prefWidth="89.0" text="Delete" />
+      <Text fill="WHITE" layoutX="241.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main Menu" wrappingWidth="202.13671875">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <Button fx:id="createVacation_button" layoutX="51.0" layoutY="262.0" mnemonicParsing="false" onAction="#createVacation" prefHeight="39.0" prefWidth="121.0" text="Create Vacation" />
+      <Button fx:id="createVacation_button1" layoutX="206.0" layoutY="262.0" mnemonicParsing="false" onAction="#createVacation" prefHeight="39.0" prefWidth="128.0" text="Read Vacation" />
+      <Button fx:id="createVacation_button2" layoutX="360.0" layoutY="262.0" mnemonicParsing="false" onAction="#createVacation" prefHeight="39.0" prefWidth="128.0" text="Update Vacation" />
+      <Button fx:id="createVacation_button3" layoutX="515.0" layoutY="262.0" mnemonicParsing="false" onAction="#createVacation" prefHeight="39.0" prefWidth="128.0" text="Delete Vacation" />
+   </children>
+</AnchorPane>

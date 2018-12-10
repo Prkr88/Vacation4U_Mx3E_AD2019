@@ -1,6 +1,8 @@
-package MVC;
+package View;
 
 import java.util.HashMap;
+
+import Controller.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
