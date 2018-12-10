@@ -55,7 +55,7 @@ public class Model {
     }
 
     public String[] readVacation(String destination) {return selectApp.selectVacation(destination);}
-
+/*
     public void updateVacation(int iAdultAmount, int iChildAmount, int iBabyAmount, int iTotalPrice, String strDestination, String strAirline, String strDepDate, String strArrivalDate, String strVacType, String sLodge, String sReturn, String strLuggageDetails) {
         updateApp.updateVacation(iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, strVacType, sLodge, sReturn, strLuggageDetails);
     }
@@ -63,5 +63,5 @@ public class Model {
     public void deleteVacation(String strVacationID){
         deleteApp.deleteVacation(strVacationID);
     }
-
+*/
 }
