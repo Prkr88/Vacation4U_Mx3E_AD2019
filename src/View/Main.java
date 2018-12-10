@@ -37,7 +37,6 @@ public class Main extends Application {
     public static String screenDeleteUserID = "Deletion Form";
     public static String screenDeleteUserFile = userPath + "DeleteXML.fxml";
     public static String signedUserName;
-
     public static String screenCreateVacationID = "Create Vacation Window";
     public static String screenCreateVacationFile = vacationPath + "CreateXML.fxml";
     public static String screenReadVacationID = "Read Vacation Window";

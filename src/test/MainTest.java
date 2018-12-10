@@ -1,7 +1,7 @@
 
-
-import MVC.Main;
-import Sqlite.*;
+import View.Main;
+import Model.*;
+import View.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
@@ -24,7 +24,7 @@ import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThat;
-import MVC.*;
+
 
 public class MainTest extends ApplicationTest {
     private SqlApp sqlApp = new SqlApp();
