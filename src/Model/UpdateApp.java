@@ -191,7 +191,7 @@ public class UpdateApp extends SqlApp {
                 pstmt.setInt(11, totalPrice);
             else
                 pstmt.setInt(11, oldPrice);
-            pstmt.setString(12, Main.signedUserName);
+            pstmt.setString(12, View.Main.signedUserName);
             pstmt.setInt(13, vacationID);
             // update Parameters
             pstmt.executeUpdate();

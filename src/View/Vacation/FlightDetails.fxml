@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="644.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Vacation.FlightDetController">
+    <children>
+        <ScrollPane layoutX="-2.0" prefHeight="400.0" prefWidth="800.0">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <TableView fx:id="flightTable" layoutX="4.0" layoutY="3.0" prefHeight="394.0" prefWidth="800.0">
+                            <columns>
+                                <TableColumn fx:id="tb_choose" prefWidth="55.0" text="Choose">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="FDATA_check"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="tb_f_departure" prefWidth="64.0" text="departure">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="FDATA_check"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="tb_f_return" prefWidth="60.20001220703125" text="return">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="FDATA_f_return"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="tb_destination" prefWidth="75.0" text="destination">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="FDATA_destination"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="tb_cost" prefWidth="52.20001220703125" text="cost">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="FDATA_cost"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                                <TableColumn fx:id="tb_id" prefWidth="52.20001220703125" text="F_id">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="FDATA_id"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn prefWidth="74.79998779296875" text="flight back"/>
+                                <TableColumn prefWidth="73.79998779296875" text="flight com"/>
+                                <TableColumn prefWidth="57.4000244140625" text="type"/>
+                                <TableColumn prefWidth="23.0" text="A"/>
+                                <TableColumn prefWidth="23.0" text="K"/>
+                                <TableColumn prefWidth="23.0" text="B"/>
+                                <TableColumn prefWidth="52.0" text="Seller"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>

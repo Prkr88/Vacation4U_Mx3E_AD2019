@@ -9,8 +9,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-
-
 import java.io.IOException;
 
 /**
@@ -96,5 +94,6 @@ public class Controller implements ControlledScreen {
         myController.setScreen(View.Main.screenMainMenuID);
     }
 
-
+    @FXML
+    private void SearchVacation (ActionEvent event) {myController.setScreen(View.Main.screenFindVacationID);}
 }
