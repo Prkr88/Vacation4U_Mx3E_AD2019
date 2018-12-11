@@ -2,6 +2,7 @@ package View;
 
         import View.Vacation.Flight;
         import View.Vacation.FlightDetController;
+        import View.Vacation.Request;
         import javafx.application.Application;
         import javafx.scene.Group;
         import javafx.scene.Scene;
@@ -60,6 +61,7 @@ public class Main extends Application {
     public ScreensController mainContainer = new ScreensController();
     public static ScreensController staticController;
     public static Flight toBuy;
+    public static Request toAprove;
 
     @Override
     public void start(Stage primaryStage) throws Exception {

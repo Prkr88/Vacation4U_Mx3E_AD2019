@@ -1,9 +1,15 @@
 package View;
 
 import Controller.Controller;
+import Model.SelectApp;
 import View.Main;
+import View.Vacation.FlightDetController;
+import View.Vacation.FlightReqController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainMenuController extends Controller {
 
@@ -53,4 +59,13 @@ public class MainMenuController extends Controller {
     @FXML
     private void SearchVacation (ActionEvent event) {super.myController.setScreen(Main.screenFindVacationID);}
 
+    @FXML
+    public void getRequests(ActionEvent event) throws IOException {
+        ArrayList<ArrayList<String>> resultSetList = null;
+        SelectApp selectApp = new SelectApp();
+        resultSetList = selectApp.selectVacationRequest(Main.signedUserName);
+        FlightReqController fdc = new FlightReqController();
+        fdc.setRequestList(resultSetList);
+        fdc.showTable();
+    }
 }

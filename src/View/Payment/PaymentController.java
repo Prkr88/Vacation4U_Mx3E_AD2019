@@ -1,6 +1,8 @@
 package View.Payment;
 
 import Controller.Controller;
+import Model.DeleteApp;
+import Model.InsertApp;
 import Model.Model;
 import View.Main;
 import View.ScreensController;
@@ -52,6 +54,7 @@ public class PaymentController extends Controller {
     public int payPal(ActionEvent event) {
         if(email.getText().equals("") || password.getText().equals(""))
             return 0;
+        commitPayment();
         return 1;
     }
 
@@ -60,9 +63,18 @@ public class PaymentController extends Controller {
                 expireDate.getText().equals("") || cvc.getText().equals("")) {
             return 0;
         }
+        commitPayment();
         return 1;
     }
 
+    private void commitPayment() {
+        DeleteApp deleteApp = new DeleteApp();
+        deleteApp.deleteOfferedVacations(Main.toBuy.getFDATA_id());
+        deleteApp.deleteVacationRequest(Main.toBuy.getFDATA_id(), Main.signedUserName);
+        InsertApp insertApp = new InsertApp();
+        insertApp.addSoldVacation(Main.toBuy.getFDATA_id(),Main.signedUserName, Main.toBuy.getFDATA_seller(),
+                Main.toBuy.getFDATA_cost());
+    }
     @FXML
     private void payWithPayPal(ActionEvent event) {
         super.myController.setScreen(Main.screenPaypalID);

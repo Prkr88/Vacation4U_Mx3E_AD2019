@@ -25,5 +25,6 @@ fx:controller="Controller.Controller"
       <Button fx:id="deleteVacation_button" layoutX="515.0" layoutY="262.0" mnemonicParsing="false" onAction="#deleteVacation" prefHeight="39.0" prefWidth="128.0" text="Delete Vacation" />
       <Button fx:id="pay_button" layoutX="300.0" layoutY="400.0" mnemonicParsing="false" onAction="#pay" prefHeight="39.0" prefWidth="128.0" text="Pay" />
       <Button fx:id="SearchVacation" onAction="#SearchVacation" layoutX="51.0" layoutY="342.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="156.0" text="Search vacation" />
+      <Button fx:id="getRequeats" onAction="#getRequests" layoutX="500.0" layoutY="342.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="156.0" text="Aprove request" />
    </children>
 </AnchorPane>
