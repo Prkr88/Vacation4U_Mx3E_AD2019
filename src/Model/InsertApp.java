@@ -36,12 +36,26 @@ public class InsertApp extends SqlApp{
     }
 
     public void insertVacation(int iAdultAmount, int iChildAmount, int iBabyAmount, int iTotalPrice, String strDestination, String strAirline, String strDepDate, String strArrivalDate, String strVacType, String sLodge, String sReturn, String strLuggageDetails) {
-
-        String sql = "INSERT INTO OfferedVacations(vacation_id,seller_id,start_date,end_date,num_adult_tickets,num_kid_tickets,num_baby_tickets,flight_company,vacation_type,accom_include,destination,flight_back_included,price,luggage_details) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
+        String sqlRead = "SELECT * FROM OfferedVacations ORDER BY vacation_id DESC LIMIT 1";
+        String thisID = null;
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sqlRead)){
+            thisID = rs.getString("vacation_id");
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        int last_id;
+        if (thisID != null)
+            last_id = Integer.parseInt(thisID)+1;
+        else
+            last_id = 1;
+        String sql = "INSERT INTO OfferedVacations(vacation_id,seller_id,start_date,end_date,num_adult_tickets,num_kid_tickets,num_baby_tickets,flight_company,vacation_type,accom_included,destination,flight_back_included,price,luggage_details) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             //NOTE: validate that VACATION ID is inserted automatically
+            pstmt.setString(1, last_id + "");
             pstmt.setString(2, Main.signedUserName);
             pstmt.setString(3, strDepDate);
             pstmt.setString(4, strArrivalDate);

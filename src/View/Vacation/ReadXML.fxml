@@ -10,30 +10,36 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Vacation.ReadController">
     <children>
         <Pane prefHeight="450.0" prefWidth="109.0" style="-fx-background-color: #f2b610;" />
-        <TextField fx:FDATA_id="FDATA_destination" layoutX="152.0" layoutY="85.0" prefHeight="25.0" prefWidth="491.0" promptText="Destination" />
-        <Button fx:FDATA_id="btn_done" layoutX="251.0" layoutY="410.0" mnemonicParsing="false" onAction="#readVacationData" prefHeight="25.0" prefWidth="109.0" text="Done" />
-        <Button fx:FDATA_id="btn_cancel" layoutX="396.0" layoutY="410.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="25.0" prefWidth="109.0" text="Cancel" />
+        <TextField fx:id="destination" layoutX="152.0" layoutY="85.0" prefHeight="25.0" prefWidth="204.0" promptText="Vacation ID goes here" />
+        <Button fx:id="btn_done" layoutX="370.0" layoutY="85.0" mnemonicParsing="false" onAction="#readVacationData" prefHeight="25.0" prefWidth="82.0" text="Search" />
+        <Button fx:id="btn_cancel" layoutX="389.0" layoutY="405.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="25.0" prefWidth="109.0" text="Cancel" />
         <Text fill="#f2b610" layoutX="118.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Your Vacation Form" wrappingWidth="271.3333920761943">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Text>
-        <Text layoutX="150.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please type your FDATA_destination" wrappingWidth="205.33333104103804">
+        <Text layoutX="152.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please type in your Vacation ID" wrappingWidth="144.6666440293193">
             <font>
                 <Font name="System Italic" size="10.0" />
             </font>
         </Text>
-        <Text fx:FDATA_id="vacid_read" layoutX="177.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:FDATA_id="dest_read" layoutX="179.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:FDATA_id="price_read" layoutX="179.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:FDATA_id="sDate_read" layoutX="179.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:FDATA_id="eDate_read" layoutX="179.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:FDATA_id="num_adult_read" layoutX="177.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:FDATA_id="num_child_read" layoutX="179.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:FDATA_id="num_baby_read" layoutX="179.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:FDATA_id="back_read" layoutX="179.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:FDATA_id="company_read" layoutX="179.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:FDATA_id="vac_type_read" layoutX="179.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:FDATA_id="accom_read" layoutX="179.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="vacid_read" layoutX="177.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="dest_read" layoutX="179.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="price_read" layoutX="179.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="sDate_read" layoutX="179.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="eDate_read" layoutX="179.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="num_adult_read" layoutX="177.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="num_child_read" layoutX="179.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="num_baby_read" layoutX="179.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="back_read" layoutX="179.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="company_read" layoutX="179.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="vac_type_read" layoutX="179.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="accom_read" layoutX="179.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+      <Button layoutX="242.0" layoutY="405.0" mnemonicParsing="false" onAction="#displayVacations" prefHeight="25.0" prefWidth="109.0" text="View All" />
+      <Text layoutX="152.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Details:" wrappingWidth="144.6666440293193">
+         <font>
+            <Font name="System Italic" size="10.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

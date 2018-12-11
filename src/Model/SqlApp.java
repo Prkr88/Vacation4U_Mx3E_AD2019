@@ -1,6 +1,9 @@
 package Model;
 
+import View.Main;
+
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * this generic class of sql apliction holds generic methods for all sqlApps to use.
@@ -75,6 +78,29 @@ public class SqlApp {
             return userFromDB;
 
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public ArrayList<ArrayList<String>> displayVacations() {
+        String sql = "SELECT * FROM OfferedVacations WHERE seller_id=" +"'" + Main.signedUserName + "'";
+
+        try(Connection conn = this.connect();
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql)) {
+            ResultSetMetaData md = resultSet.getMetaData();
+            int columns = md.getColumnCount();
+            ArrayList<ArrayList<String>> rowsList = new ArrayList<ArrayList<String>>();
+            while (resultSet.next()) {
+                ArrayList<String> row = new ArrayList<String>();
+                for (int i = 1; i <= columns; ++i) {
+                    row.add(resultSet.getString(i));
+                }
+                rowsList.add(row);
+            }
+            return rowsList;
+        } catch (SQLException e){
             System.out.println(e.getMessage());
         }
         return null;

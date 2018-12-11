@@ -51,6 +51,8 @@ public class UpdateController extends Controller{
     @FXML
     private CheckBox CHKBX_return_flight_included;
     @FXML
+    private TextField TXTBX_vacID;
+    @FXML
     private ImageView beachImage;
     @FXML
     private ImageView hikingImage;
@@ -61,8 +63,15 @@ public class UpdateController extends Controller{
     @FXML
     private ComboBox<String> comboType;
 
+
+    @FXML
+    public void displayVacations(ActionEvent event) {
+    }
+
     @FXML
     public void updateAction(ActionEvent event) {
+        String sVacID = TXTBX_vacID.getText();
+        int iVacID = Integer.parseInt(sVacID);
         String strAdultAmount = TXTBX_adult_amount.getText();
         String strChildAmount = TXTBX_child_amount.getText();
         String strBabyAmount = TXTBX_baby_amount.getText();
@@ -102,8 +111,9 @@ public class UpdateController extends Controller{
         else
             sReturn = "no";
         String strLuggageDetails = TXTBX_luggage_details.getText();
-        String strVacType = comboType.getValue();
-        //model.updateVacation(iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, strVacType, sLodge, sReturn, strLuggageDetails);
+        //String strVacType = comboType.getValue();
+        String strVacType = "beach";
+        model.updateVacation(iVacID, iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, strVacType, sLodge, sReturn, strLuggageDetails);
         try {
             super.showMainMenu();
         } catch (IOException e) {

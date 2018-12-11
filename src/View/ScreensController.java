@@ -62,6 +62,8 @@ public class ScreensController  extends StackPane {
             Parent loadScreen = (Parent) myLoader.load();
             Scene currScene = new Scene(loadScreen,width,height);
             Main.pStage.setScene(currScene);
+            Main.pStage.setResizable(false);
+            Main.pStage.sizeToScene();
             ControlledScreen myScreenControler = ((ControlledScreen) myLoader.getController());
             myScreenControler.setScreenParent(this);
             addScreen(name, loadScreen);
@@ -101,9 +103,9 @@ public class ScreensController  extends StackPane {
                         }, new KeyValue(opacity, 0.0)));
                 fade.play();
                 Main.pStage.setTitle(name);
+                Main.pStage.setResizable(true);
+                Main.pStage.sizeToScene();
                 Main.pStage.show();
-
-
             } else {
                 setOpacity(0.0);
                 getChildren().add(screens.get(name));       //no one else been displayed, then just show
