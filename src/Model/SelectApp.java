@@ -67,6 +67,26 @@ public class SelectApp extends SqlApp{
         return null;
     }
 
+    public String[][] displayVacation() {
+        String[][] res = new String[2][3];
+        String thisUser = Main.signedUserName;
+        String sqlRead = "SELECT vacation_id FROM OfferedVacations WHERE seller_id=" +"'" + thisUser + "'";
+        int i = 0;
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sqlRead)) {
+            while (i < 3) {
+                res[0][i] = rs.getString("vacation_id");
+                res[1][i] = rs.getString("destination");
+                i++;
+            }
+            return res;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return res;
+    }
+
     public String[] selectVacation(String destination){
         String[] res = new String[5];
         String user_name = Main.signedUserName;

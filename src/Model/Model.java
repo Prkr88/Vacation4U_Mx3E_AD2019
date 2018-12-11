@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 /**
  * The Model layer is responsible for:
  * (1) Creating a new user
@@ -54,14 +56,16 @@ public class Model {
         insertApp.insertVacation(iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate,strVacType, sLodge, sReturn, strLuggageDetails);
     }
 
+    //public ArrayList<ArrayList<String>> displayVacation() { return SqlApp.displayVacations(); }
+
     public String[] readVacation(String destination) {return selectApp.selectVacation(destination);}
-/*
-    public void updateVacation(int iAdultAmount, int iChildAmount, int iBabyAmount, int iTotalPrice, String strDestination, String strAirline, String strDepDate, String strArrivalDate, String strVacType, String sLodge, String sReturn, String strLuggageDetails) {
-        updateApp.updateVacation(iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, strVacType, sLodge, sReturn, strLuggageDetails);
+
+    public void updateVacation(int iVacID, int iAdultAmount, int iChildAmount, int iBabyAmount, int iTotalPrice, String strDestination, String strAirline, String strDepDate, String strArrivalDate, String strVacType, String sLodge, String sReturn, String strLuggageDetails) {
+        updateApp.updateVacation(iVacID, iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, strVacType, sLodge, sReturn, strLuggageDetails);
     }
 
-    public void deleteVacation(String strVacationID){
-        deleteApp.deleteVacation(strVacationID);
+    public void deleteOfferedVacations(int iVacationID){
+        deleteApp.deleteOfferedVacations(iVacationID);
     }
-*/
+
 }

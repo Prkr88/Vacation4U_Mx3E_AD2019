@@ -61,11 +61,11 @@ public class Main extends Application {
         pStage = primaryStage;
 
         ScreensController mainContainer = new ScreensController();
-        mainContainer.loadScreen(screenLoginID, screenLoginFile,900,600);
-        mainContainer.loadScreen(screenMainMenuID, screenMainMenuFile,900,600);
-        mainContainer.loadScreen(screenReadDataID, screenReadDatFile,900,600);
-        mainContainer.loadScreen(screenUpdateDataID, screenUpdateDataFile,675,450);
-        mainContainer.loadScreen(screenDeleteUserID, screenDeleteUserFile,150,100);
+        mainContainer.loadScreen(screenLoginID, screenLoginFile,900,700);
+        mainContainer.loadScreen(screenMainMenuID, screenMainMenuFile,900,700);
+        mainContainer.loadScreen(screenReadDataID, screenReadDatFile,900,700);
+        mainContainer.loadScreen(screenUpdateDataID, screenUpdateDataFile,900,700);
+        mainContainer.loadScreen(screenDeleteUserID, screenDeleteUserFile,900,700);
         mainContainer.loadScreen(screenSignUpID, screenSignUpFile,675,450);
         mainContainer.loadScreen(screenCreateVacationID, screenCreateVacationFile,675,450);
         mainContainer.loadScreen(screenReadVacationID, screenReadVacationFile,675,450);

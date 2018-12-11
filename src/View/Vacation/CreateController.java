@@ -8,28 +8,20 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class CreateController extends Controller {
+
+public class CreateController extends Controller implements Initializable {
 
     public ScreensController myController;
     private Model model = new Model();
@@ -73,11 +65,51 @@ public class CreateController extends Controller {
     @FXML
     private Label selectedType;
     @FXML
-    private ComboBox<String> comboType;
+    private ComboBox<String> comboType = new ComboBox<>();
 
+    @Override
+    public void initialize (URL fxmlFileLocation, ResourceBundle resources) {
+        assert beachImage != null : "fx:id=\"beachImage\" was not injected: check your FXML file";
+        assert comboType != null : "fx:id=\"comboType\" was not injected: check your FXML file";
+        assert hikingImage != null : "fx:id=\"hikingImage\" was not injected: check your FXML file";
+        assert urbanImage != null : "fx:id=\"urbanImage\" was not injected: check your FXML file";
+        assert selectedType != null : "fx:id=\"selectedType\" was not injected: check your FXML file";
+        comboType.getItems().setAll("beach", "hiking", "urban");
+        selectedType.textProperty().bind(comboType.getSelectionModel().selectedItemProperty());
+        comboType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override public void changed(ObservableValue<? extends String> selected, String oldType, String newType) {
+                if (oldType != null) {
+                    switch (oldType) {
+                        case "beach":
+                            beachImage.setVisible(false);
+                            break;
+                        case "hiking":
+                            hikingImage.setVisible(false);
+                            break;
+                        case "urban":
+                            urbanImage.setVisible(false);
+                            break;
+                    }
+                }
+                if (newType != null) {
+                    switch (newType) {
+                        case "beach":
+                            beachImage.setVisible(true);
+                            break;
+                        case "hiking":
+                            hikingImage.setVisible(true);
+                            break;
+                        case "urban":
+                            urbanImage.setVisible(true);
+                            break;
+                    }
+                }
+            }
+        });
+    }
 
     @FXML
-    private void createAction(ActionEvent event) {
+    private void createAction (ActionEvent event) {
         String strAdultAmount = TXTBX_adult_amount.getText();
         String strChildAmount = TXTBX_child_amount.getText();
         String strBabyAmount = TXTBX_baby_amount.getText();
@@ -89,11 +121,11 @@ public class CreateController extends Controller {
         String strDepDD = TXTBX_departure_DD.getText();
         String strDepMM = TXTBX_departure_MM.getText();
         String strDepYYYY = TXTBX_departure_YYYY.getText();
-        String strDepDate = strDepYYYY + "-" + strDepMM  + "-" + strDepDD;
+        String strDepDate = strDepYYYY + "-" + strDepMM + "-" + strDepDD;
         String strArriveDD = TXTBX_arrival_DD.getText();
         String strArriveMM = TXTBX_arrival_MM.getText();
         String strArriveYYYY = TXTBX_arrival_YYYY.getText();
-        String strArrivalDate = strArriveYYYY + "-" + strArriveMM  + "-" + strArriveDD;
+        String strArrivalDate = strArriveYYYY + "-" + strArriveMM + "-" + strArriveDD;
         String strDestination = TXTBX_destination.getText();
         String strAirline = TXTBX_airline_company.getText();
         Boolean boolLodge = CHKBX_lodging_included.isSelected();
@@ -108,29 +140,9 @@ public class CreateController extends Controller {
             sReturn = "yes";
         else
             sReturn = "no";
-        String strLuggageDetails = TXTBX_luggage_details.getText();
-        comboType = new ComboBox<>();
-        comboType.getItems().setAll("beach", "hiking", "urban");
-        selectedType.textProperty().bind(comboType.getSelectionModel().selectedItemProperty());
-        comboType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override public void changed(ObservableValue<? extends String> selected, String oldType, String newType) {
-                if (oldType != null) {
-                    switch(oldType) {
-                        case "beach": beachImage.setVisible(false); break;
-                        case "hiking": hikingImage.setVisible(false); break;
-                        case "urban": urbanImage.setVisible(false); break;
-                    }
-                }
-                if (newType != null) {
-                    switch(newType) {
-                        case "beach": beachImage.setVisible(true); break;
-                        case "hiking": hikingImage.setVisible(true); break;
-                        case "urban": urbanImage.setVisible(true); break;
-                    }
-                }
-            }
-        });
+        //String strVacType = "beach";
         String strVacType = comboType.getValue();
+        String strLuggageDetails = TXTBX_luggage_details.getText();
         model.addVacation(iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, strVacType, sLodge, sReturn, strLuggageDetails);
         try {
             super.showMainMenu();
@@ -139,10 +151,20 @@ public class CreateController extends Controller {
         }
     }
 
+
+
     @FXML
-    private void cancelAction(ActionEvent event) {
+    private void cancelAction (ActionEvent event){
         super.myController.setScreen(Main.screenMainMenuID);
     }
 
 
 }
+/*
+    @Override
+    public void initialize(URL Location, ResourceBundle resources) {
+        comboType.setItems(FXCollections.observableArrayList("beach", "hiking", "urban"));
+    }
+*/
+
+
