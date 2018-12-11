@@ -3,6 +3,7 @@ package Model;
 import View.Main;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 
 /**
@@ -94,7 +95,57 @@ public class SelectApp extends SqlApp{
         return null;
     }
 
+    public ArrayList<ArrayList<String>> selectOfferedVacation(String date1, String date2, String price, String destination) {
+        String sql = "SELECT * FROM OfferedVacations WHERE start_date BETWEEN " +
+                "'" + date1 + "'" +" AND " + "'" + date2 + "'" +
+                " AND end_date BETWEEN " + "'" + date1 + "'" + " AND " +"'" + date2 + "'" ;
+        if (!price.equals(""))
+            sql = sql + "AND price=" + "'" + price + "'";
+        if(!destination.equals(""))
+            sql = sql + " AND destination= " + "'" + destination + "'";
+        if (date1.equals("--") && date2.equals("--"))
+            sql = "SELECT * FROM OfferedVacations";
 
+        try(Connection conn = this.connect();
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql)) {
+            ResultSetMetaData md = resultSet.getMetaData();
+            int columns = md.getColumnCount();
+            ArrayList<ArrayList<String>> rowsList = new ArrayList<ArrayList<String>>();
+            while (resultSet.next()) {
+                ArrayList<String> row = new ArrayList<String>();
+                for (int i = 1; i <= columns; ++i) {
+                    row.add(resultSet.getString(i));
+                }
+                rowsList.add(row);
+            }
+            return rowsList;
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 
+    public ArrayList<ArrayList<String>> selectVacationRequest(String vacationID) {
+        String sql = "SELECT user_id FROM VacationsRequests WHERE vacation_id=" + "'" + vacationID + "'";
 
+        try(Connection conn = this.connect();
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql)) {
+            ResultSetMetaData md = resultSet.getMetaData();
+            int columns = md.getColumnCount();
+            ArrayList<ArrayList<String>> rowsList = new ArrayList<ArrayList<String>>();
+            while (resultSet.next()) {
+                ArrayList<String> row = new ArrayList<String>();
+                for (int i = 1; i <= columns; ++i) {
+                    row.add(resultSet.getString(i));
+                }
+                rowsList.add(row);
+            }
+            return rowsList;
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 }
