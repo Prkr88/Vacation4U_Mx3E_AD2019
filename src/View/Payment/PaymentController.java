@@ -74,6 +74,7 @@ public class PaymentController extends Controller {
         InsertApp insertApp = new InsertApp();
         insertApp.addSoldVacation(Main.toBuy.getFDATA_id(),Main.signedUserName, Main.toBuy.getFDATA_seller(),
                 Main.toBuy.getFDATA_cost());
+        insertApp.addSoldVacation(Main.toAprove.getRDATA_id(), Main.toAprove.getRDATA_buyer_Request(), Main.signedUserName, 2000);
     }
     @FXML
     private void payWithPayPal(ActionEvent event) {
