@@ -51,7 +51,7 @@ public class FlightDetController extends Controller implements Initializable{
 
     private ObservableList<Flight> fList = FXCollections.observableArrayList();
 
-    private void getFlightList() {
+    private void setFlightList() {
 
         Flight f1 = new Flight(1, "03-01", "06-01","AZA", "100");
         Flight f2 = new Flight(2, "03-01", "06-01","Lebanon", "100");

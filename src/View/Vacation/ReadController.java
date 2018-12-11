@@ -45,9 +45,15 @@ public class ReadController extends Controller {
     private Text accom_read;
 
     @FXML
+    public void displayVacations(ActionEvent event) {
+        ArrayList<ArrayList<String>> result = model.displayVacation();
+        FlightDetController fdc = new FlightDetController();
+        fdc.setFlightList(result);
+    }
+
+
     public void readVacationData(ActionEvent event) {
         String this_dest = destination.getText();
-        //ArrayList<ArrayList<String>> arrDisplay = model.displayVacation();
         String[] res = model.readVacation(this_dest);
         if (res != null) {
             vacid_read.setText(res[0]);
@@ -69,11 +75,6 @@ public class ReadController extends Controller {
             alert.setContentText("there is no vacation named " + destination);
             alert.showAndWait();
         }
-    }
-
-    @FXML
-    private void displayVacations(ActionEvent event) {
-        super.myController.setScreen(Main.screenMainMenuID);
     }
 
     @FXML

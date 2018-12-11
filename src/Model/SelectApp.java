@@ -67,25 +67,29 @@ public class SelectApp extends SqlApp{
         return null;
     }
 
-    public String[][] displayVacation() {
-        String[][] res = new String[2][3];
+    public ArrayList<ArrayList<String>> displayVacation() {
         String thisUser = Main.signedUserName;
-        String sqlRead = "SELECT vacation_id FROM OfferedVacations WHERE seller_id=" +"'" + thisUser + "'";
-        int i = 0;
-        try (Connection conn = this.connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sqlRead)) {
-            while (i < 3) {
-                res[0][i] = rs.getString("vacation_id");
-                res[1][i] = rs.getString("destination");
-                i++;
+        String sqlRead = "SELECT vacation_id FROM OfferedVacations WHERE seller_id=" + "'" + thisUser + "'";
+        try(Connection conn = this.connect();
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlRead)) {
+            ResultSetMetaData md = resultSet.getMetaData();
+            int columns = md.getColumnCount();
+            ArrayList<ArrayList<String>> rowsList = new ArrayList<ArrayList<String>>();
+            while (resultSet.next()) {
+                ArrayList<String> row = new ArrayList<String>();
+                for (int i = 1; i <= columns; ++i) {
+                    row.add(resultSet.getString(i));
+                }
+                rowsList.add(row);
             }
-            return res;
-        } catch (SQLException e) {
+            return rowsList;
+        } catch (SQLException e){
             System.out.println(e.getMessage());
         }
-        return res;
+        return null;
     }
+
 
     public String[] selectVacation(String destination){
         String[] res = new String[5];

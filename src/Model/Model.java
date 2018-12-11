@@ -56,7 +56,7 @@ public class Model {
         insertApp.insertVacation(iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate,strVacType, sLodge, sReturn, strLuggageDetails);
     }
 
-    //public ArrayList<ArrayList<String>> displayVacation() { return SqlApp.displayVacations(); }
+    public ArrayList<ArrayList<String>> displayVacation() { return selectApp.displayVacations(); }
 
     public String[] readVacation(String destination) {return selectApp.selectVacation(destination);}
 
