@@ -38,22 +38,50 @@
                                     </cellValueFactory>
                                 </TableColumn>
                                 <TableColumn fx:id="tb_cost" prefWidth="52.20001220703125" text="cost">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="FDATA_cost"/>
-                                </cellValueFactory>
-                            </TableColumn>
-                                <TableColumn fx:id="tb_id" prefWidth="52.20001220703125" text="F_id">
                                     <cellValueFactory>
-                                        <PropertyValueFactory property="FDATA_id"/>
+                                        <PropertyValueFactory property="FDATA_cost"/>
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="74.79998779296875" text="flight back"/>
-                                <TableColumn prefWidth="73.79998779296875" text="flight com"/>
-                                <TableColumn prefWidth="57.4000244140625" text="type"/>
-                                <TableColumn prefWidth="23.0" text="A"/>
-                                <TableColumn prefWidth="23.0" text="K"/>
-                                <TableColumn prefWidth="23.0" text="B"/>
-                                <TableColumn prefWidth="52.0" text="Seller"/>
+                                <!--<TableColumn fx:id="tb_id" prefWidth="52.20001220703125" text="F_id">-->
+                                <!--<cellValueFactory>-->
+                                <!--<PropertyValueFactory property="FDATA_id"/>-->
+                                <!--</cellValueFactory>-->
+                                <!--</TableColumn>-->
+                                <TableColumn fx:id="tb_back" prefWidth="74.79998779296875" text="flight back">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="FDATA_back"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="tb_f_company" prefWidth="73.79998779296875" text="flight com">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="FDATA_company"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="tb_type" prefWidth="57.4000244140625" text="type">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="FDATA_vacType"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="tb_A" prefWidth="23.0" text="A">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="FDATA_A"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="tb_K" prefWidth="23.0" text="K">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="FDATA_K"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="tb_B" prefWidth="23.0" text="B">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="FDATA_B"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="tb_seller" prefWidth="52.0" text="Seller">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="FDATA_seller"/>
+                                    </cellValueFactory>
+                                </TableColumn>
                             </columns>
                         </TableView>
                     </children>

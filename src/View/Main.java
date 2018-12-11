@@ -74,8 +74,8 @@ public class Main extends Application {
         mainContainer.loadScreen(screenVisaID, screenVisaFile,675,450);
 
         mainContainer.setScreen(screenLoginID);
-        //FlightDetController fdc = new FlightDetController();
-        //fdc.showTable(primaryStage);
+        FlightDetController fdc = new FlightDetController();
+        fdc.showTable(primaryStage);
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);
