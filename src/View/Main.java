@@ -1,5 +1,6 @@
 package View;
 
+        import View.Vacation.FlightDetController;
         import javafx.application.Application;
         import javafx.scene.Group;
         import javafx.scene.Scene;
@@ -24,6 +25,7 @@ public class Main extends Application {
     public static Scene mainScene;
     public static String userPath = "User/";
     public static String vacationPath = "Vacation/";
+    public static String paymentPath = "Payment/";
     public static String screenSignUpID = "Registration Form";
     public static String screenSignUpFile = userPath + "SignUpXML.fxml";
     public static String screenLoginID = "Login Window";
@@ -45,6 +47,12 @@ public class Main extends Application {
     public static String screenUpdateVacationFile = vacationPath + "UpdateXML.fxml";
     public static String screenDeleteVacationID = "Delete Vacation Window";
     public static String screenDeleteVacationFile = vacationPath + "DeleteXML.fxml";
+    public static String screenPaymentMethodID = "Payment Method Window";
+    public static String screenPaymentMethodFile = paymentPath + "PaymentMethod.fxml";
+    public static String screenPaypalID = "Paypal pay Window";
+    public static String screenPaypalFile = paymentPath + "PayPal.fxml";
+    public static String screenVisaID = "Visa pay Window";
+    public static String screenVisaFile = paymentPath + "Visa.fxml";
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -57,14 +65,17 @@ public class Main extends Application {
         mainContainer.loadScreen(screenUpdateDataID, screenUpdateDataFile,675,450);
         mainContainer.loadScreen(screenDeleteUserID, screenDeleteUserFile,150,100);
         mainContainer.loadScreen(screenSignUpID, screenSignUpFile,675,450);
-
         mainContainer.loadScreen(screenCreateVacationID, screenCreateVacationFile,675,450);
         mainContainer.loadScreen(screenReadVacationID, screenReadVacationFile,675,450);
         mainContainer.loadScreen(screenUpdateVacationID, screenUpdateVacationFile,675,450);
         mainContainer.loadScreen(screenDeleteVacationID, screenDeleteVacationFile,675,450);
+        mainContainer.loadScreen(screenPaymentMethodID, screenPaymentMethodFile,675,450);
+        mainContainer.loadScreen(screenPaypalID, screenPaypalFile,675,450);
+        mainContainer.loadScreen(screenVisaID, screenVisaFile,675,450);
 
         mainContainer.setScreen(screenLoginID);
-
+        //FlightDetController fdc = new FlightDetController();
+        //fdc.showTable(primaryStage);
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);

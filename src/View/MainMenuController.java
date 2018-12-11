@@ -45,4 +45,9 @@ public class MainMenuController extends Controller {
         super.myController.setScreen(Main.screenDeleteVacationID);
     }
 
+    @FXML
+    private void pay(ActionEvent event){
+        super.myController.setScreen(Main.screenPaymentMethodID);
+    }
+
 }
