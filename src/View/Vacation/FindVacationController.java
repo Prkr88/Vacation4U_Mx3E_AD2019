@@ -58,7 +58,7 @@ public class FindVacationController extends Controller {
         String m2 = month2.getText();
         String y2 = year2.getText();
         ArrayList<ArrayList<String>> resultSetList = null;
-        int resultSize = 0;
+
         if (!d1.equals("") || !d2.equals("") || !m1.equals("") || !m2.equals("") || !y1.equals("") || !y2.equals("")) {
             if(d1.equals("") || d2.equals("") || m1.equals("") || m2.equals("") || y1.equals("") || y2.equals("")){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -68,13 +68,7 @@ public class FindVacationController extends Controller {
                 return;
             }
         }
-//        if (d1.equals("") || d2.equals("") || m1.equals("") || m2.equals("") || y1.equals("") || y2.equals("")) {
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Worning!");
-//            alert.setContentText("Invalid date");
-//            alert.show();
-//            return;
-//        }
+
         String date1 = d1 + "-" + m1 + "-" + y1;
         String date2 = d2 + "-" + m2 + "-" + y2;
         String price = maxPrice.getText();
@@ -85,6 +79,7 @@ public class FindVacationController extends Controller {
         listView = new ListView<>();
         listView.setPrefSize(700, 700);
         listView.setEditable(true);
+
         try {
             int i = 0;
             for (i = 0;i<resultSetList.size();i++) {
@@ -103,14 +98,6 @@ public class FindVacationController extends Controller {
             }
             listView.setItems(vacations);
             listView.setCellFactory(ComboBoxListCell.forListView(vacations));
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("FindVacation.fmxl"));
-            Stage stage = new Stage();
-            stage.setTitle("Vacations");
-            StackPane root = new StackPane();
-            root.getChildren().add(listView);
-            stage.setScene(new Scene(root, 800, 800));
-            stage.show();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

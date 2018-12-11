@@ -200,11 +200,24 @@ public class UpdateApp extends SqlApp {
         }
     }
 
-/*
-    public static void main(String[] args) {
-        UpdateApp uA = new UpdateApp();
-        uA.upadateVacationDetalis(1,"3-3-3","3-4-3",2,1,0,"varna","El-Al","pleasure",1,1,2000);
+    public void updateAcceptedBySeller(int vacationID, String sellerID) {
+        String sql = "UPDATE VacationsRequests SET accepted_by_seller = ? WHERE vacation_id = " +
+                "'" + vacationID + "' AND seller_id = " + "'" + sellerID + "'";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, 1);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
-*/
+
+
+//    public static void main(String[] args) {
+//        UpdateApp uA = new UpdateApp();
+//        uA.updateAcceptedBySeller(1, "Matan");
+//    }
+
 
 }

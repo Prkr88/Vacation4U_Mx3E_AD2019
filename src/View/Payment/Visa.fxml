@@ -7,19 +7,19 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/payment_btn.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Payment.PaymentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/payment_btn.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Payment.PaymentController">
     <children>
         <Pane prefHeight="450.0" prefWidth="109.0" style="-fx-background-color: #ea9e3f;" />
         <Button fx:id="btn_cancel" layoutX="467.0" layoutY="352.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="109.0" text="Cancel" />
       <Label layoutX="166.0" layoutY="14.0" prefHeight="107.0" prefWidth="353.0" styleClass="visalogo" />
-      <TextField layoutX="187.0" layoutY="146.0" prefHeight="25.0" prefWidth="310.0" />
-      <TextField layoutX="188.0" layoutY="194.0" prefHeight="25.0" prefWidth="310.0" />
-      <Button layoutX="258.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" styleClass="visa_pay" text="Pay" textFill="WHITE">
+      <TextField fx:id="nameOnCard" layoutX="187.0" layoutY="146.0" prefHeight="25.0" prefWidth="310.0" />
+      <TextField fx:id="cardNum" layoutX="188.0" layoutY="194.0" prefHeight="25.0" prefWidth="310.0" />
+      <Button fx:id="payVisa" layoutX="258.0" layoutY="308.0" mnemonicParsing="false" onAction="#visa" prefHeight="25.0" prefWidth="168.0" styleClass="visa_pay" text="Pay" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TextField layoutX="250.0" layoutY="256.0" prefHeight="25.0" prefWidth="92.0" promptText="MM/YY" />
+      <TextField fx:id="expireDate" layoutX="250.0" layoutY="256.0" prefHeight="25.0" prefWidth="92.0" promptText="MM/YY" />
       <Label layoutX="187.0" layoutY="129.0" text="Name On Card">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -30,8 +30,8 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField layoutX="342.0" layoutY="256.0" prefHeight="25.0" prefWidth="92.0" promptText="MM/YY" />
-      <Label layoutX="250.0" layoutY="237.0" text="Expiry Date">
+      <TextField fx:id="cvc" layoutX="342.0" layoutY="256.0" prefHeight="25.0" prefWidth="92.0" promptText="MM/YY" />
+      <Label layoutX="250.0" layoutY="237.0" text="Expire Date">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

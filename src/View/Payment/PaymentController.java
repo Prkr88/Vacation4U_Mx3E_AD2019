@@ -11,10 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,6 +30,38 @@ public class PaymentController extends Controller {
 
     public ScreensController myController;
     private Model model = new Model();
+
+    @FXML
+    private Button logInPayPal;
+    @FXML
+    private TextField email;
+    @FXML
+    private TextField password;
+    @FXML
+    private TextField nameOnCard;
+    @FXML
+    private TextField cardNum;
+    @FXML
+    private TextField expireDate;
+    @FXML
+    private TextField cvc;
+    @FXML
+    private Button payVisa;
+
+
+    public int payPal(ActionEvent event) {
+        if(email.getText().equals("") || password.getText().equals(""))
+            return 0;
+        return 1;
+    }
+
+    public int visa(ActionEvent event) {
+        if(nameOnCard.getText().equals("") || cardNum.getText().equals("") ||
+                expireDate.getText().equals("") || cvc.getText().equals("")) {
+            return 0;
+        }
+        return 1;
+    }
 
     @FXML
     private void payWithPayPal(ActionEvent event) {

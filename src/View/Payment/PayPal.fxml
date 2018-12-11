@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/payment_btn.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Payment.PaymentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/payment_btn.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Payment.PaymentController">
     <children>
         <Pane prefHeight="450.0" prefWidth="109.0" style="-fx-background-color: #296192;" />
         <Button fx:id="btn_cancel" layoutX="467.0" layoutY="352.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="109.0" text="Cancel" />
       <Label layoutX="158.0" prefHeight="160.0" prefWidth="363.0" styleClass="paypal_lbl" />
-      <TextField layoutX="187.0" layoutY="160.0" prefHeight="25.0" prefWidth="310.0" promptText="Email" />
-      <TextField layoutX="187.0" layoutY="200.0" prefHeight="25.0" prefWidth="310.0" promptText="Password" />
-      <Button layoutX="187.0" layoutY="241.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="310.0" styleClass="paypal_login" text="Log In" textFill="WHITE">
+      <TextField fx:id="email" layoutX="187.0" layoutY="160.0" prefHeight="25.0" prefWidth="310.0" promptText="Email" />
+      <TextField fx:id="password" layoutX="187.0" layoutY="200.0" prefHeight="25.0" prefWidth="310.0" promptText="Password" />
+      <Button fx:id="logInPayPal" layoutX="187.0" layoutY="241.0" mnemonicParsing="false" onAction="#payPal" prefHeight="25.0" prefWidth="310.0" styleClass="paypal_login" text="Log In" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
