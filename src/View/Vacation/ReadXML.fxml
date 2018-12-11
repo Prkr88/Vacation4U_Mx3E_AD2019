@@ -7,12 +7,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Vacation.ReadController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="649.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Vacation.ReadController">
     <children>
-        <Pane prefHeight="450.0" prefWidth="109.0" style="-fx-background-color: #f2b610;" />
-        <TextField fx:id="destination" layoutX="152.0" layoutY="85.0" prefHeight="25.0" prefWidth="204.0" promptText="Vacation ID goes here" />
-        <Button fx:id="btn_done" layoutX="370.0" layoutY="85.0" mnemonicParsing="false" onAction="#readVacationData" prefHeight="25.0" prefWidth="82.0" text="Search" />
-        <Button fx:id="btn_cancel" layoutX="389.0" layoutY="405.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="25.0" prefWidth="109.0" text="Cancel" />
+        <Pane prefHeight="472.0" prefWidth="109.0" style="-fx-background-color: #f2b610;" />
+        <TextField fx:id="vac_id" layoutX="152.0" layoutY="85.0" prefHeight="25.0" prefWidth="219.0" promptText="Vacation ID goes here" />
+        <Button fx:id="btn_done" layoutX="396.0" layoutY="85.0" mnemonicParsing="false" onAction="#readVacationData" prefHeight="25.0" prefWidth="95.0" text="Search" />
+        <Button fx:id="btn_cancel" layoutX="282.0" layoutY="374.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="25.0" prefWidth="155.0" text="Cancel" />
         <Text fill="#f2b610" layoutX="118.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Your Vacation Form" wrappingWidth="271.3333920761943">
             <font>
                 <Font name="System Bold" size="18.0" />
@@ -23,22 +23,77 @@
                 <Font name="System Italic" size="10.0" />
             </font>
         </Text>
-        <Text fx:id="vacid_read" layoutX="177.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:id="dest_read" layoutX="179.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:id="price_read" layoutX="179.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:id="sDate_read" layoutX="179.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:id="eDate_read" layoutX="179.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:id="num_adult_read" layoutX="177.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:id="num_child_read" layoutX="179.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:id="num_baby_read" layoutX="179.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:id="back_read" layoutX="179.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:id="company_read" layoutX="179.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:id="vac_type_read" layoutX="179.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-        <Text fx:id="accom_read" layoutX="179.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-      <Button layoutX="242.0" layoutY="405.0" mnemonicParsing="false" onAction="#displayVacations" prefHeight="25.0" prefWidth="109.0" text="View All" />
-      <Text layoutX="152.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Details:" wrappingWidth="144.6666440293193">
+        <Text fx:id="vacid_read" layoutX="230.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="dest_read" layoutX="230.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="price_read" layoutX="230.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="sDate_read" layoutX="230.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="eDate_read" layoutX="230.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="num_adult_read" layoutX="230.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="num_child_read" layoutX="230.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="num_baby_read" layoutX="230.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="back_read" layoutX="230.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="company_read" layoutX="230.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="vac_type_read" layoutX="230.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+        <Text fx:id="accom_read" layoutX="230.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+      <Button layoutX="525.0" layoutY="85.0" mnemonicParsing="false" onAction="#displayVacations" prefHeight="25.0" prefWidth="95.0" text="View All" />
+      <Text layoutX="117.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacation ID:">
          <font>
-            <Font name="System Italic" size="10.0" />
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="117.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Destination:">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="117.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="116.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departure Date:">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="116.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return Date:">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="127.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adult Tickets:">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="133.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Child Tickets:">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="133.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infant Tickets:">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="133.0" layoutY="391.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return Flight Included">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="127.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Airline:">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="127.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kind of Vacation:">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="127.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lodging Included:">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
          </font>
       </Text>
     </children>

@@ -56,23 +56,34 @@ public class FlightDetController extends Controller implements Initializable{
     @FXML private TableColumn<Flight,String> tb_f_company;
     @FXML private TableColumn<Flight,String> tb_seller;
 
-    private ObservableList<Flight> fList = FXCollections.observableArrayList();
+    private static ObservableList<Flight> fList = FXCollections.observableArrayList();
 
-    private void setFlightList(ArrayList<ArrayList<String>> flightsList) {
 
+
+    public void setFlightList(ArrayList<ArrayList<String>> flightsList) {
+        fList.clear();
+        for (int i=0; i<flightsList.size();i++){
+            int iVacID = Integer.parseInt((flightsList.get(i)).get(0));
+            Flight f = new Flight(iVacID, (flightsList.get(i)).get(2), (flightsList.get(i)).get(3),
+                    (flightsList.get(i)).get(10),Integer.parseInt((flightsList.get(i)).get(12)),(flightsList.get(i)).get(11),(flightsList.get(i)).get(7),(flightsList.get(i)).get(8),Integer.parseInt((flightsList.get(i)).get(4)),Integer.parseInt((flightsList.get(i)).get(5)),Integer.parseInt((flightsList.get(i)).get(6)),(flightsList.get(i)).get(1));
+            fList.add(f);
+        }
+
+        /*
         Flight f1 = new Flight(1, "03-01",
                 "06-01","AZA",
                 100,"yes","AIR_Z",
                 "pleasure",1,0,0,"Greg");
 
         this.fList.add(f1);
+        */
         //this.fList.add(f2);
     }
 
     @Override
     public void initialize(URL url , ResourceBundle rs){
         //setFlightList();
-        this.flightTable.setItems(this.fList);
+        this.flightTable.setItems(fList);
         tb_choose.setCellValueFactory(new PropertyValueFactory<Flight,CheckBox>("FDATA_check"));
         //tb_id.setCellValueFactory(new PropertyValueFactory<Flight,Integer>("FDATA_id"));
         tb_f_departure.setCellValueFactory(new PropertyValueFactory<Flight,String>("FDATA_f_departure"));
@@ -95,8 +106,8 @@ public class FlightDetController extends Controller implements Initializable{
     }
 
 
-    public void showTable(Stage secondaryStage) throws IOException {
-        FileInputStream fileInputStream = new FileInputStream(new File("src/View/Vacation/FlightDetails_1.1.fxml"));
+    public void showTable() throws IOException {
+        FileInputStream fileInputStream = new FileInputStream(new File("src/View/Vacation/FlightDetails.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(fileInputStream);
         Scene scene = new Scene(root, 800, 400);
@@ -104,7 +115,6 @@ public class FlightDetController extends Controller implements Initializable{
         stage.setTitle("New Window");
         stage.setScene(scene);
         stage.show();
-
     }
 
 
