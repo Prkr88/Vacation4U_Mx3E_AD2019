@@ -1,0 +1,36 @@
+.paypal{
+    -fx-background-image: url("paypal.png");   
+    -fx-background-size: 100 100;
+	-fx-background-repeat: stretch; 
+    -fx-background-position: center center; 
+}
+
+.visalogo{
+    -fx-background-image: url("visalogo.png");   
+    -fx-background-size: 300 100;
+	-fx-background-repeat: stretch; 
+    -fx-background-position: center center; 
+}
+
+.visa{
+    -fx-background-image: url("visa.png");   
+    -fx-background-size: 120 50;
+	-fx-background-repeat: stretch; 
+    -fx-background-position: center center; 
+}
+
+.paypal_lbl{
+	-fx-background-color: transparent;
+    -fx-background-image: url("paypallogo.png");   
+    -fx-background-size: 200 100;
+	-fx-background-repeat: stretch; 
+    -fx-background-position: center center; 
+}
+
+.paypal_login{
+	-fx-background-color: #006bff;
+}
+
+.visa_pay{
+	-fx-background-color: #132d78;
+}
