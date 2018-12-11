@@ -15,7 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-
+import Controller.ControlledScreen;
 import javafx.scene.control.CheckBox;
 import java.io.File;
 import java.io.FileInputStream;
@@ -37,7 +37,7 @@ import java.util.List;
 
 public class FlightDetController extends Controller implements Initializable{
 
-    public ScreensController myController;
+    public static Controller myController;
     private Model model = new Model();
 
     @FXML private TableView<Flight> flightTable;
@@ -55,9 +55,13 @@ public class FlightDetController extends Controller implements Initializable{
     @FXML private TableColumn<Flight,String> tb_type;
     @FXML private TableColumn<Flight,String> tb_f_company;
     @FXML private TableColumn<Flight,String> tb_seller;
+    @FXML
+    public Button buynow;
+    @FXML
+    public Button cancel;
 
     private static ObservableList<Flight> fList = FXCollections.observableArrayList();
-
+    public  Stage stage = new Stage();
 
 
     public void setFlightList(ArrayList<ArrayList<String>> flightsList) {
@@ -97,6 +101,9 @@ public class FlightDetController extends Controller implements Initializable{
         tb_type.setCellValueFactory(new PropertyValueFactory<Flight,String>("FDATA_vacType"));
         tb_f_company.setCellValueFactory(new PropertyValueFactory<Flight,String>("FDATA_company"));
         tb_seller.setCellValueFactory(new PropertyValueFactory<Flight,String>("FDATA_seller"));
+        if(Main.signedUserName == null){
+            buynow.setDisable(true);
+        }
 
     }
 
@@ -110,11 +117,36 @@ public class FlightDetController extends Controller implements Initializable{
         FileInputStream fileInputStream = new FileInputStream(new File("src/View/Vacation/FlightDetails.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(fileInputStream);
-        Scene scene = new Scene(root, 800, 400);
-        Stage stage = new Stage();
-        stage.setTitle("New Window");
-        stage.setScene(scene);
-        stage.show();
+        Scene scene = new Scene(root, 800, 450);
+        this.stage.setTitle("New Window");
+        this.stage.setScene(scene);
+        this.stage.show();
+    }
+
+    @FXML
+    private void checkOut(ActionEvent event){
+        int vId = -1;
+        for (int i = 0; i <fList.size() && vId == -1 ; i++) {
+            if(fList.get(i).isChecked()){
+                vId = fList.get(i).getFDATA_id();
+                Main.toBuy = fList.get(i);
+            }
+        }
+        if(vId==-1){
+            System.out.println("flight not selected");
+        }
+        else{
+            Stage stage = (Stage) buynow.getScene().getWindow();
+            stage.close();
+            Main.staticController.setScreen(Main.screenPaymentMethodID);
+        }
+    }
+
+    @FXML
+    private void closeTable(ActionEvent event){
+        Stage stage = (Stage) buynow.getScene().getWindow();
+        stage.close();
+
     }
 
 

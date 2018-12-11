@@ -17,6 +17,7 @@ import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class FindVacationController extends Controller {
     private Button search;
 
     @FXML
-    public void find(ActionEvent event) {
+    public void find(ActionEvent event) throws IOException {
         String d1 = day1.getText();
         String m1 = month1.getText();
         String y1 = year1.getText();
@@ -81,40 +82,43 @@ public class FindVacationController extends Controller {
         String dest = destination.getText();
         SelectApp selectApp = new SelectApp();
         resultSetList = selectApp.selectOfferedVacation(date1, date2, price, dest);
-        ObservableList<String> vacations = FXCollections.observableArrayList();
-        listView = new ListView<>();
-        listView.setPrefSize(700, 700);
-        listView.setEditable(true);
-        try {
-            int i = 0;
-            for (i = 0;i<resultSetList.size();i++) {
-                String res = "departure: " + resultSetList.get(i).get(2) +
-                        " return: " + resultSetList.get(i).get(3) +
-                        " destination: " + resultSetList.get(i).get(4) +
-                        " cost: " + resultSetList.get(i).get(5) +
-                        " flight back included: " + resultSetList.get(i).get(6) +
-                        " flight company: " + resultSetList.get(i).get(7) +
-                        " type: " + resultSetList.get(i).get(8) +
-                        " adult tickets: " + resultSetList.get(i).get(9) +
-                        " kid tickets: " + resultSetList.get(i).get(10) +
-                        " baby tickets: " + resultSetList.get(i).get(11) +
-                        " seller ID: " + resultSetList.get(i).get(1);
-                vacations.add(res);
-            }
-            listView.setItems(vacations);
-            listView.setCellFactory(ComboBoxListCell.forListView(vacations));
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("FindVacation.fmxl"));
-            Stage stage = new Stage();
-            stage.setTitle("Vacations");
-            StackPane root = new StackPane();
-            root.getChildren().add(listView);
-            stage.setScene(new Scene(root, 800, 800));
-            stage.show();
+        FlightDetController fdc = new FlightDetController();
+        fdc.setFlightList(resultSetList);
+        fdc.showTable();
+//        ObservableList<String> vacations = FXCollections.observableArrayList();
+//        listView = new ListView<>();
+//        listView.setPrefSize(700, 700);
+//        listView.setEditable(true);
+//        try {
+//            int i = 0;
+//            for (i = 0;i<resultSetList.size();i++) {
+//                String res = "departure: " + resultSetList.get(i).get(2) +
+//                        " return: " + resultSetList.get(i).get(3) +
+//                        " destination: " + resultSetList.get(i).get(4) +
+//                        " cost: " + resultSetList.get(i).get(5) +
+//                        " flight back included: " + resultSetList.get(i).get(6) +
+//                        " flight company: " + resultSetList.get(i).get(7) +
+//                        " type: " + resultSetList.get(i).get(8) +
+//                        " adult tickets: " + resultSetList.get(i).get(9) +
+//                        " kid tickets: " + resultSetList.get(i).get(10) +
+//                        " baby tickets: " + resultSetList.get(i).get(11) +
+//                        " seller ID: " + resultSetList.get(i).get(1);
+//                vacations.add(res);
+//            }
+//            listView.setItems(vacations);
+//            listView.setCellFactory(ComboBoxListCell.forListView(vacations));
+//            FXMLLoader fxmlLoader = new FXMLLoader();
+//            fxmlLoader.setLocation(getClass().getResource("FindVacation.fmxl"));
+//            Stage stage = new Stage();
+//            stage.setTitle("Vacations");
+//            StackPane root = new StackPane();
+//            root.getChildren().add(listView);
+//            stage.setScene(new Scene(root, 800, 800));
+//            stage.show();
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());
+//        }
     }
 
     private void cancelAction(ActionEvent event) {

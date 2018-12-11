@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class ReadController extends Controller {
 
-    public ScreensController myController;
+    //public ScreensController myController;
     private Model model = new Model();
 
     @FXML
