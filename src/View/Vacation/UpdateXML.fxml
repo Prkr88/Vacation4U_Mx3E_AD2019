@@ -39,7 +39,7 @@
             </image>
         </ImageView>
 
-        <!--fx:id="TXTBX_adult_amount"-->
+        <!--fx:FDATA_id="TXTBX_adult_amount"-->
         <TextField fx:id="TXTBX_adult_amount" layoutX="283.0" layoutY="82.0" prefHeight="25.0" prefWidth="40.0" />
         <Button fx:id="btn_done" layoutX="291.0" layoutY="446.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="25.0" prefWidth="109.0" text="Done" />
         <Button fx:id="btn_cancel" layoutX="413.0" layoutY="446.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="25.0" prefWidth="109.0" text="Cancel" />
@@ -48,7 +48,7 @@
                 <Font name="System Bold Italic" size="24.0" />
             </font>
         </Text>
-        <!--fx:id="TXTBX_departure_DD"-->
+        <!--fx:FDATA_id="TXTBX_departure_DD"-->
         <TextField fx:id="TXTBX_departure_DD" layoutX="179.0" layoutY="276.0" prefHeight="25.0" prefWidth="40.0" promptText="DD" />
         <TextField fx:id="TXTBX_departure_MM" layoutX="229.0" layoutY="276.0" prefHeight="25.0" prefWidth="40.0" promptText="MM" />
         <TextField fx:id="TXTBX_departure_YYYY" layoutX="277.0" layoutY="276.0" prefHeight="25.0" prefWidth="50.0" promptText="YYYY" />
@@ -63,39 +63,39 @@
                 <Font name="System Bold" size="10.0" />
             </font>
         </Text>
-        <!--fx:id="TXTBX_adult_price"-->
+        <!--fx:FDATA_id="TXTBX_adult_price"-->
         <TextField fx:id="TXTBX_adult_price" layoutX="283.0" layoutY="120.0" prefHeight="25.0" prefWidth="40.0" />
         <Text layoutX="175.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price in Total:" wrappingWidth="103.33333418518305">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font>
         </Text>
-        <!--fx:id="TXTBX_airline_company"-->
+        <!--fx:FDATA_id="TXTBX_airline_company"-->
         <TextField fx:id="TXTBX_airline_company" layoutX="514.0" layoutY="173.0" prefHeight="25.0" prefWidth="168.0" />
         <Text layoutX="424.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Airline Company:" wrappingWidth="86.66661665588617">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font>
         </Text>
-        <!--fx:id="TXTBX_arrival_DD"-->
+        <!--fx:FDATA_id="TXTBX_arrival_DD"-->
         <TextField fx:id="TXTBX_arrival_DD" layoutX="179.0" layoutY="334.0" prefHeight="25.0" prefWidth="40.0" promptText="DD" />
         <TextField fx:id="TXTBX_arrival_MM" layoutX="229.0" layoutY="334.0" prefHeight="25.0" prefWidth="40.0" promptText="MM" />
         <TextField fx:id="TXTBX_arrival_YYYY" layoutX="276.0" layoutY="333.0" prefHeight="25.0" prefWidth="50.0" promptText="YYYY" />
         <Text layoutX="222.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" wrappingWidth="7.470030151307583" />
         <Text layoutX="270.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" wrappingWidth="7.47003173828125" />
-        <!--fx:id="TXTBX_luggage_details"-->
+        <!--fx:FDATA_id="TXTBX_luggage_details"-->
         <TextField fx:id="TXTBX_luggage_details" layoutX="383.0" layoutY="272.0" prefHeight="157.0" prefWidth="279.0" />
         <Text layoutX="381.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luggage Details:" wrappingWidth="103.33333418518305">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font>
         </Text>
-        <!--fx:id="CHKBX_lodging_included"-->
+        <!--fx:FDATA_id="CHKBX_lodging_included"-->
         <CheckBox fx:id="CHKBX_lodging_included" layoutX="179.0" layoutY="375.0" mnemonicParsing="false" text="Lodging Included">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font></CheckBox>
-        <!--fx:id="CHKBX_return_flight_included"-->
+        <!--fx:FDATA_id="CHKBX_return_flight_included"-->
         <CheckBox fx:id="CHKBX_return_flight_included" layoutX="179.0" layoutY="412.0" mnemonicParsing="false" text="Return Flight Included">
             <font>
                 <Font name="System Bold" size="12.0" />
@@ -110,16 +110,16 @@
                 <Font name="System Bold" size="12.0" />
             </font>
         </Text>
-        <!--fx:id="comboType"-->
+        <!--fx:FDATA_id="comboType"-->
         <ComboBox fx:id="comboType" layoutX="265.0" layoutY="210.0" prefHeight="25.0" prefWidth="149.0" promptText="-choose-"/>
-        <!--fx:id="TXTBX_child_amount"-->
+        <!--fx:FDATA_id="TXTBX_child_amount"-->
         <TextField fx:id="TXTBX_child_amount" layoutX="463.0" layoutY="79.0" prefHeight="25.0" prefWidth="40.0" />
         <Text layoutX="355.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Tickets:" wrappingWidth="103.33333418518305">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font>
         </Text>
-        <!--fx:id="TXTBX_child_price"-->
+        <!--fx:FDATA_id="TXTBX_child_price"-->
         <TextField fx:id="TXTBX_child_price" layoutX="463.0" layoutY="117.0" prefHeight="25.0" prefWidth="40.0" />
         <Text layoutX="355.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price in Total:" wrappingWidth="103.33333418518305">
             <font>
@@ -131,14 +131,14 @@
                 <Font name="System Bold" size="12.0" />
             </font>
         </Text>
-        <!--fx:id="TXTBX_baby_amount"-->
+        <!--fx:FDATA_id="TXTBX_baby_amount"-->
         <TextField fx:id="TXTBX_baby_amount" layoutX="641.0" layoutY="80.0" prefHeight="25.0" prefWidth="40.0" />
         <Text layoutX="533.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Tickets:" wrappingWidth="103.33333418518305">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font>
         </Text>
-        <!--fx:id="TXTBX_baby_price-->
+        <!--fx:FDATA_id="TXTBX_baby_price-->
         <TextField fx:id="TXTBX_baby_price" layoutX="641.0" layoutY="118.0" prefHeight="25.0" prefWidth="40.0" />
         <Text layoutX="533.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price in Total:" wrappingWidth="103.33333418518305">
             <font>

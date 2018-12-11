@@ -1,7 +1,8 @@
 package Model;
 
+import View.Main;
+
 import java.sql.*;
-import java.util.*;
 
 
 /**
@@ -64,57 +65,36 @@ public class SelectApp extends SqlApp{
         }
         return null;
     }
-    public ArrayList<ArrayList<String>> selectOfferedVacation(String date1, String date2, String price, String destination) {
-        String sql = "SELECT * FROM OfferedVacations WHERE start_date BETWEEN " +
-                "'" + date1 + "'" +" AND " + "'" + date2 + "'" +
-                " AND end_date BETWEEN " + "'" + date1 + "'" + " AND " +"'" + date2 + "'" ;
-        if (!price.equals(""))
-            sql = sql + "AND price=" + "'" + price + "'";
-        if(!destination.equals(""))
-            sql = sql + " AND destination= " + "'" + destination + "'";
-        if (date1.equals("--") && date2.equals("--"))
-            sql = "SELECT * FROM OfferedVacations";
 
-        try(Connection conn = this.connect();
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql)) {
-                ResultSetMetaData md = resultSet.getMetaData();
-                int columns = md.getColumnCount();
-                ArrayList<ArrayList<String>> rowsList = new ArrayList<ArrayList<String>>();
-                while (resultSet.next()) {
-                    ArrayList<String> row = new ArrayList<String>();
-                    for (int i = 1; i <= columns; ++i) {
-                        row.add(resultSet.getString(i));
-                    }
-                    rowsList.add(row);
-                }
-                return rowsList;
-        } catch (SQLException e){
+    public String[] selectVacation(String destination){
+        String[] res = new String[5];
+        String user_name = Main.signedUserName;
+        String sql = "SELECT vacation_id,destination,price,start_date,end_date,num_adult_tickets,num_kid_tickets,num_baby_tickets,flight_back_included,flight_company,vacation_type,accom_included FROM OfferedVacations WHERE destination="
+                + "'" + destination + "'";
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            res[0] = rs.getString("vacation_id");
+            res[1] = rs.getString("destination");
+            res[2] = rs.getString("price");
+            res[3] = rs.getString("start_date");
+            res[4] = rs.getString("end_date");
+            res[5] = rs.getString("num_adult_tickets");
+            res[6] = rs.getString("num_kid_tickets");
+            res[7] = rs.getString("num_baby_tickets");
+            res[8] = rs.getString("flight_back_included");
+            res[9] = rs.getString("flight_company");
+            res[10] = rs.getString("vacation_type");
+            res[11] = rs.getString("accom_included");
+            return res;
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return null;
     }
 
-    public ArrayList<ArrayList<String>> selectVacationRequest(String vacationID) {
-        String sql = "SELECT user_id FROM VacationsRequests WHERE vacation_id=" + "'" + vacationID + "'";
 
-        try(Connection conn = this.connect();
-        Statement statement = conn.createStatement();
-        ResultSet resultSet = statement.executeQuery(sql)) {
-            ResultSetMetaData md = resultSet.getMetaData();
-            int columns = md.getColumnCount();
-            ArrayList<ArrayList<String>> rowsList = new ArrayList<ArrayList<String>>();
-            while (resultSet.next()) {
-                ArrayList<String> row = new ArrayList<String>();
-                for (int i = 1; i <= columns; ++i) {
-                    row.add(resultSet.getString(i));
-                }
-                rowsList.add(row);
-            }
-            return rowsList;
-        } catch (SQLException e){
-            System.out.println(e.getMessage());
-        }
-        return null;
-    }
+
+
 }

@@ -13,41 +13,43 @@ import View.User.PasswordInputDialog;
 
 public class DeleteController extends Controller {
     private Model model = new Model();
-    private String password;
 
     @FXML
+    TextField vacID;
 
     private void deleteForever(ActionEvent event) {
-        PasswordInputDialog passDialog = new PasswordInputDialog();
-        Optional<String> result = passDialog.showAndWait();
-        result.ifPresent(pass -> {
-            this.password = pass;
-        });
-        if (password != null && model.isMember(Main.signedUserName, password)) {
-            //model.deleteVacation(Main.signedUserName, password);
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Delete User");
-            alert.setHeaderText(null);
-            alert.setContentText("User Deleted Successfully");
-            alert.showAndWait();
-            try {
-                super.showLoginScreen();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Cancel");
-            alert.setHeaderText(null);
-            alert.setContentText("User Deleted Canceled");
-            alert.showAndWait();
-            try {
-                super.showMainMenu();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        String sVacID = vacID.getText();
+        int iVacID = Integer.parseInt(sVacID);
+        if (sVacID!=null) {
+        //model.deleteVacation(sVacID);
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Delete Vacation");
+        alert.setHeaderText(null);
+        alert.setContentText("Vacation Deleted Successfully");
+        alert.showAndWait();
+        try {
+            super.showLoginScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    } else {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Cancel");
+        alert.setHeaderText(null);
+        alert.setContentText("Vacation Deleted Canceled");
+        alert.showAndWait();
+        try {
+            super.showMainMenu();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+}
+
+    @FXML
+    private void cancelAction(ActionEvent event) {
+        super.myController.setScreen(Main.screenMainMenuID);
     }
 
     @FXML
