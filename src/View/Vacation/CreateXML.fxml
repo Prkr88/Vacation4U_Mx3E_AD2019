@@ -21,19 +21,19 @@
     <children>
         <Pane prefHeight="486.0" prefWidth="133.0" style="-fx-background-color: #9867db;">
          <children>
-            <Label fx:id="selectedType" layoutX="6.0" layoutY="25.0" prefHeight="141.0" prefWidth="121.0" />
+            <Label fx:id="selectedType" layoutX="6.0" layoutY="142.0" prefHeight="141.0" prefWidth="121.0" />
          </children></Pane>
-        <ImageView fx:id="beachImage" fitHeight="91" fitWidth="122." pickOnBounds="true" preserveRatio="true" visible="false">
+        <ImageView fx:id="beachImage" layoutX="6.0" layoutY="152.0" fitHeight="91" fitWidth="122." pickOnBounds="true" preserveRatio="true" visible="false">
             <image>
                 <Image preserveRatio="false" smooth="false" url="@../../resources/beach.jpg" />
             </image>
         </ImageView>
-        <ImageView fx:id="hikingImage" fitHeight="91." fitWidth="122." pickOnBounds="true" preserveRatio="true" visible="false">
+        <ImageView fx:id="hikingImage" layoutX="6.0" layoutY="152.0" fitHeight="141.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true" visible="false">
             <image>
                 <Image preserveRatio="false" smooth="false" url="@../../resources/hiking.jpg" />
             </image>
         </ImageView>
-        <ImageView fx:id="urbanImage" fitHeight="91" fitWidth="122" pickOnBounds="true" preserveRatio="true" visible="false">
+        <ImageView fx:id="urbanImage" layoutX="6.0" layoutY="152.0" fitHeight="141.0" fitWidth="121" pickOnBounds="true" preserveRatio="true" visible="false">
             <image>
                 <Image preserveRatio="false" smooth="false" url="@../../resources/urban.jpg" />
             </image>

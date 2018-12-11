@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
@@ -15,9 +17,7 @@
         fx:controller="View.CreateXML"
 -->
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<AnchorPane prefHeight="486.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Vacation.UpdateController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Vacation.UpdateController">
     <children>
         <Pane prefHeight="486.0" prefWidth="133.0" style="-fx-background-color: #27de5e;">
             <children>
@@ -25,25 +25,24 @@
             </children></Pane>
         <ImageView fx:id="beachImage" fitHeight="91" fitWidth="122." pickOnBounds="true" preserveRatio="true" visible="false">
             <image>
-                <Image url="@../../resources/beach.jpg" preserveRatio="false" smooth="false" />
+                <Image preserveRatio="false" smooth="false" url="@../../resources/beach.jpg" />
             </image>
         </ImageView>
         <ImageView fx:id="hikingImage" fitHeight="91." fitWidth="122." pickOnBounds="true" preserveRatio="true" visible="false">
             <image>
-                <Image url="@../../resources/hiking.jpg" preserveRatio="false" smooth="false" />
+                <Image preserveRatio="false" smooth="false" url="@../../resources/hiking.jpg" />
             </image>
         </ImageView>
         <ImageView fx:id="urbanImage" fitHeight="91" fitWidth="122" pickOnBounds="true" preserveRatio="true" visible="false">
             <image>
-                <Image url="@../../resources/urban.jpg" preserveRatio="false" smooth="false" />
+                <Image preserveRatio="false" smooth="false" url="@../../resources/urban.jpg" />
             </image>
         </ImageView>
-
         <!--fx:id="TXTBX_adult_amount"-->
-        <TextField fx:id="TXTBX_adult_amount" layoutX="283.0" layoutY="82.0" prefHeight="25.0" prefWidth="40.0" />
+        <TextField fx:id="TXTBX_adult_amount" layoutX="254.0" layoutY="119.0" prefHeight="25.0" prefWidth="40.0" />
         <Button fx:id="btn_done" layoutX="291.0" layoutY="446.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="25.0" prefWidth="109.0" text="Done" />
         <Button fx:id="btn_cancel" layoutX="413.0" layoutY="446.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="25.0" prefWidth="109.0" text="Cancel" />
-        <Text fill="#27de5e" layoutX="133.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Vacation Form" wrappingWidth="264.00007908791304">
+        <Text fill="#27de5e" layoutX="137.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Vacation Form" wrappingWidth="262.6667660996318">
             <font>
                 <Font name="System Bold Italic" size="24.0" />
             </font>
@@ -52,27 +51,27 @@
         <TextField fx:id="TXTBX_departure_DD" layoutX="179.0" layoutY="276.0" prefHeight="25.0" prefWidth="40.0" promptText="DD" />
         <TextField fx:id="TXTBX_departure_MM" layoutX="229.0" layoutY="276.0" prefHeight="25.0" prefWidth="40.0" promptText="MM" />
         <TextField fx:id="TXTBX_departure_YYYY" layoutX="277.0" layoutY="276.0" prefHeight="25.0" prefWidth="50.0" promptText="YYYY" />
-        <Text layoutX="177.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departure Date:" wrappingWidth="103.3333290368318">
+        <Text layoutX="170.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departure Date:" wrappingWidth="103.3333290368318">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font></Text>
         <Text layoutX="222.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" wrappingWidth="7.470032153651118" />
         <Text layoutX="270.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" wrappingWidth="7.47003173828125" />
-        <Text layoutX="175.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Tickets:" wrappingWidth="103.33333418518305">
+        <Text layoutX="159.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Tickets:" wrappingWidth="103.33333418518305">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font>
         </Text>
         <!--fx:id="TXTBX_adult_price"-->
-        <TextField fx:id="TXTBX_adult_price" layoutX="283.0" layoutY="120.0" prefHeight="25.0" prefWidth="40.0" />
-        <Text layoutX="175.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price in Total:" wrappingWidth="103.33333418518305">
+        <TextField fx:id="TXTBX_price" layoutX="228.0" layoutY="177.0" prefHeight="25.0" prefWidth="121.0" />
+        <Text layoutX="159.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price in Total:" wrappingWidth="66.66662424802774">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font>
         </Text>
         <!--fx:id="TXTBX_airline_company"-->
-        <TextField fx:id="TXTBX_airline_company" layoutX="514.0" layoutY="173.0" prefHeight="25.0" prefWidth="168.0" />
-        <Text layoutX="424.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Airline Company:" wrappingWidth="86.66661665588617">
+        <TextField fx:id="TXTBX_airline_company" layoutX="228.0" layoutY="217.0" prefHeight="25.0" prefWidth="176.0" />
+        <Text layoutX="425.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Airline Company:" wrappingWidth="81.33330211043358">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font>
@@ -84,14 +83,14 @@
         <Text layoutX="222.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" wrappingWidth="7.470030151307583" />
         <Text layoutX="270.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" wrappingWidth="7.47003173828125" />
         <!--fx:id="TXTBX_luggage_details"-->
-        <TextField fx:id="TXTBX_luggage_details" layoutX="383.0" layoutY="272.0" prefHeight="157.0" prefWidth="279.0" />
+        <TextField fx:id="TXTBX_luggage_details" layoutX="383.0" layoutY="272.0" prefHeight="157.0" prefWidth="300.0" />
         <Text layoutX="381.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luggage Details:" wrappingWidth="103.33333418518305">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font>
         </Text>
         <!--fx:id="CHKBX_lodging_included"-->
-        <CheckBox fx:id="CHKBX_lodging_included" layoutX="179.0" layoutY="375.0" mnemonicParsing="false" text="Lodging Included">
+        <CheckBox fx:id="CHKBX_lodging_included" layoutX="179.0" layoutY="382.0" mnemonicParsing="false" text="Lodging Included">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font></CheckBox>
@@ -100,73 +99,61 @@
             <font>
                 <Font name="System Bold" size="12.0" />
             </font></CheckBox>
-        <Text layoutX="177.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Date:" wrappingWidth="103.3333290368318">
+        <Text layoutX="170.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Date:" wrappingWidth="103.3333290368318">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font>
         </Text>
-        <Text layoutX="174.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adult (over 18)" wrappingWidth="103.33333418518305">
+        <Text layoutX="158.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adult (over 18)" wrappingWidth="103.33333418518305">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Text>
         <!--fx:id="comboType"-->
-        <ComboBox fx:id="comboType" layoutX="265.0" layoutY="210.0" prefHeight="25.0" prefWidth="149.0" promptText="-choose-"/>
+        <ComboBox fx:id="comboBox" layoutX="509.0" layoutY="177.0" prefHeight="25.0" prefWidth="121.0" promptText="-choose-" />
         <!--fx:id="TXTBX_child_amount"-->
-        <TextField fx:id="TXTBX_child_amount" layoutX="463.0" layoutY="79.0" prefHeight="25.0" prefWidth="40.0" />
-        <Text layoutX="355.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Tickets:" wrappingWidth="103.33333418518305">
+        <TextField fx:id="TXTBX_child_amount" layoutX="434.0" layoutY="119.0" prefHeight="25.0" prefWidth="40.0" />
+        <Text layoutX="339.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Tickets:" wrappingWidth="103.33333418518305">
             <font>
                 <Font name="System Bold" size="10.0" />
-            </font>
-        </Text>
-        <!--fx:id="TXTBX_child_price"-->
-        <TextField fx:id="TXTBX_child_price" layoutX="463.0" layoutY="117.0" prefHeight="25.0" prefWidth="40.0" />
-        <Text layoutX="355.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price in Total:" wrappingWidth="103.33333418518305">
-            <font>
-                <Font name="System Bold" size="10.0" />
-            </font>
-        </Text>
-        <Text layoutX="354.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="103.33333418518305">
-            <font>
-                <Font name="System Bold" size="12.0" />
             </font>
         </Text>
         <!--fx:id="TXTBX_baby_amount"-->
-        <TextField fx:id="TXTBX_baby_amount" layoutX="641.0" layoutY="80.0" prefHeight="25.0" prefWidth="40.0" />
-        <Text layoutX="533.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Tickets:" wrappingWidth="103.33333418518305">
+        <TextField fx:id="TXTBX_baby_amount" layoutX="603.0" layoutY="119.0" prefHeight="25.0" prefWidth="40.0" />
+        <Text layoutX="510.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Tickets:" wrappingWidth="103.33333418518305">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font>
         </Text>
-        <!--fx:id="TXTBX_baby_price-->
-        <TextField fx:id="TXTBX_baby_price" layoutX="641.0" layoutY="118.0" prefHeight="25.0" prefWidth="40.0" />
-        <Text layoutX="533.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price in Total:" wrappingWidth="103.33333418518305">
-            <font>
-                <Font name="System Bold" size="10.0" />
-            </font>
-        </Text>
-        <Text layoutX="355.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Child (3-18)" wrappingWidth="103.33333418518305">
+        <Text layoutX="339.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Child (3-18)" wrappingWidth="103.33333418518305">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Text>
-        <Text layoutX="526.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Baby (under 3)" wrappingWidth="103.33333418518305">
+        <Text layoutX="510.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Baby (under 3)" wrappingWidth="103.33333418518305">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Text>
-        <Line endX="99.99996948242188" endY="-74.99998474121094" layoutX="238.0" layoutY="235.0" startX="99.99996948242188" startY="-187.66665649414062" />
-        <Line endX="99.99996948242188" endY="-74.99998474121094" layoutX="415.0" layoutY="240.0" startX="100.0" startY="-191.66665649414062" />
-        <Text layoutX="167.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacation Type:" wrappingWidth="103.33333418518305">
+        <Text layoutX="425.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacation Type:" wrappingWidth="81.33330366387963">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font>
         </Text>
-        <TextField fx:id="TXTBX_destination" layoutX="265.0" layoutY="173.0" prefHeight="25.0" prefWidth="149.0" />
-        <Text layoutX="167.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Destination:" wrappingWidth="103.33333418518305">
+        <TextField fx:id="TXTBX_destination" layoutX="509.0" layoutY="217.0" prefHeight="25.0" prefWidth="176.0" />
+        <Text layoutX="159.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Destination:" wrappingWidth="66.6666219662875">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font>
         </Text>
+        <Line endX="99.99996948242188" endY="-117.00000762939453" layoutX="398.0" layoutY="269.0" startX="99.99996948242188" startY="-187.66665649414062" />
+        <Line endX="99.99996948242188" endY="-117.00000762939453" layoutX="223.0" layoutY="270.0" startX="99.99996948242188" startY="-187.66665649414062" />
+      <Button layoutX="561.0" layoutY="42.0" mnemonicParsing="false" onAction="#displayVacations" prefHeight="17.0" prefWidth="103.0" text="View All" />
+      <Text layoutX="154.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type your vacation ID that you wish to update:" wrappingWidth="245.9999644914642">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Text>
+      <TextField fx:id="TXTBX_vacID" layoutX="405.0" layoutY="42.0" prefHeight="25.0" prefWidth="91.0" promptText="ID" />
     </children>
 </AnchorPane>

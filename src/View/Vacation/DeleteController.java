@@ -17,11 +17,12 @@ public class DeleteController extends Controller {
     @FXML
     TextField vacID;
 
-    private void deleteForever(ActionEvent event) {
+    @FXML
+    private void deleteAction(ActionEvent event) {
         String sVacID = vacID.getText();
         int iVacID = Integer.parseInt(sVacID);
         if (sVacID!=null) {
-        //model.deleteVacation(sVacID);
+        model.deleteOfferedVacations(iVacID);
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Delete Vacation");
         alert.setHeaderText(null);

@@ -10,6 +10,8 @@ import View.ScreensController;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+
 public class ReadController extends Controller {
 
     public ScreensController myController;
@@ -42,10 +44,10 @@ public class ReadController extends Controller {
     @FXML
     private Text accom_read;
 
-
     @FXML
     public void readVacationData(ActionEvent event) {
         String this_dest = destination.getText();
+        //ArrayList<ArrayList<String>> arrDisplay = model.displayVacation();
         String[] res = model.readVacation(this_dest);
         if (res != null) {
             vacid_read.setText(res[0]);
@@ -67,6 +69,11 @@ public class ReadController extends Controller {
             alert.setContentText("there is no vacation named " + destination);
             alert.showAndWait();
         }
+    }
+
+    @FXML
+    private void displayVacations(ActionEvent event) {
+        super.myController.setScreen(Main.screenMainMenuID);
     }
 
     @FXML

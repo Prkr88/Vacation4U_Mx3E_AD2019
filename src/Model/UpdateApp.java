@@ -8,7 +8,7 @@ import java.sql.*;
  *
  * @author Mx3e
  */
-public class UpdateApp extends SqlApp{
+public class UpdateApp extends SqlApp {
 
     /**
      * current users password
@@ -33,30 +33,29 @@ public class UpdateApp extends SqlApp{
 
     /**
      * this function updates user data
+     *
      * @param userName user name
      * @param password password
-     * @param bDate birth date
-     * @param pName person name
-     * @param lName last name
-     * @param city city of origin
+     * @param bDate    birth date
+     * @param pName    person name
+     * @param lName    last name
+     * @param city     city of origin
      */
-    public void updateUser(String userName ,String password,String bDate,String pName,String lName,String city) {
+    public void updateUser(String userName, String password, String bDate, String pName, String lName, String city) {
 
-        String sqlRetrieve = "SELECT user_name,password,birth_date,private_name,last_name,city_of_origin FROM Users WHERE user_name = " + "'" + Main.signedUserName  + "'";
+        String sqlRetrieve = "SELECT user_name,password,birth_date,private_name,last_name,city_of_origin FROM Users WHERE user_name = " + "'" + Main.signedUserName + "'";
 
         try (Connection conn = this.connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sqlRetrieve)){
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sqlRetrieve)) {
             thisPass = rs.getString("password");
             thisBirth = rs.getString("birth_date");
             thisPName = rs.getString("private_name");
             thisLName = rs.getString("last_name");
             thisCity = rs.getString("city_of_origin");
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
 
         String sqlSet = "UPDATE Users SET " +
                 "password = ? ," +
@@ -97,7 +96,8 @@ public class UpdateApp extends SqlApp{
         }
     }
 
-    public void upadateVacation(int numAdultTickets,int numKidTickets,int numBabyTickets, int totalPrice, String destination, String flightCompany, String startDate ,String endDate ,String vacationType,String accommodationIncluded,String flightBackIncluded,String sLuggaeDetails) {
+
+    public void updateVacation(int vacationID, int numAdultTickets, int numKidTickets, int numBabyTickets, int totalPrice, String destination, String flightCompany, String startDate, String endDate, String vacationType, String accommodationIncluded, String flightBackIncluded, String sLuggageDetails) {
         String oldStartDate = "";
         String oldEndDate = "";
         int oldNumAdult = 0;
@@ -109,26 +109,24 @@ public class UpdateApp extends SqlApp{
         int oldAccomIncluded = 0;
         int oldFlightBackIncluded = 0;
         int oldPrice = 0;
-    }
-/*
-        String sqlRetrieve = "SELECT * FROM OfferedVacations WHERE seller_id = " + "'" + Main.signedUserName  + "'" +"AND vacation_id=" + "'" + vacationID  + "'";
+        String oldLuggage = "";
+        String sqlRetrieve = "SELECT * FROM OfferedVacations WHERE seller_id = " + "'" + Main.signedUserName + "'" + "AND vacation_id=" + "'" + vacationID + "'";
 
         try (Connection conn = this.connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sqlRetrieve)){
-                oldStartDate = rs.getString("start_date");
-                oldEndDate = rs.getString("end_date");
-                oldNumAdult = rs.getInt("num_adult_tickets");
-                oldNumKid = rs.getInt("num_kid_tickets");
-                oldNumBaby = rs.getInt("num_baby_tickets");
-                oldDestination = rs.getString("destination");
-                oldFlightCompany = rs.getString("flight_company");
-                oldVacType = rs.getString("vacation_type");
-                oldAccomIncluded = rs.getInt("accom_included");
-                oldFlightBackIncluded = rs.getInt("flight_back_included");
-                oldPrice = rs.getInt("price");
-        }
-        catch (SQLException e) {
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sqlRetrieve)) {
+            oldStartDate = rs.getString("start_date");
+            oldEndDate = rs.getString("end_date");
+            oldNumAdult = rs.getInt("num_adult_tickets");
+            oldNumKid = rs.getInt("num_kid_tickets");
+            oldNumBaby = rs.getInt("num_baby_tickets");
+            oldDestination = rs.getString("destination");
+            oldFlightCompany = rs.getString("flight_company");
+            oldVacType = rs.getString("vacation_type");
+            oldAccomIncluded = rs.getInt("accom_included");
+            oldFlightBackIncluded = rs.getInt("flight_back_included");
+            oldPrice = rs.getInt("price");
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
 
@@ -139,7 +137,7 @@ public class UpdateApp extends SqlApp{
                 "num_kid_tickets = ?," +
                 "num_baby_tickets = ? ," +
                 "destination = ? ," +
-                "flight_company = ? ,"+
+                "flight_company = ? ," +
                 "vacation_type = ? ," +
                 "accom_included = ? ," +
                 "flight_back_included = ? ," +
@@ -181,12 +179,12 @@ public class UpdateApp extends SqlApp{
                 pstmt.setString(8, vacationType);
             else
                 pstmt.setString(8, oldVacType);
-            if (accommodationIncluded != -1)
-                pstmt.setInt(9, accommodationIncluded);
+            if (accommodationIncluded != null)
+                pstmt.setString(9, accommodationIncluded);
             else
                 pstmt.setInt(9, oldAccomIncluded);
-            if (flightBackIncluded != -1)
-                pstmt.setInt(10, flightBackIncluded);
+            if (flightBackIncluded != null)
+                pstmt.setString(10, flightBackIncluded);
             else
                 pstmt.setInt(10, oldFlightBackIncluded);
             if (totalPrice != -1)
@@ -202,9 +200,11 @@ public class UpdateApp extends SqlApp{
         }
     }
 
+/*
     public static void main(String[] args) {
         UpdateApp uA = new UpdateApp();
         uA.upadateVacationDetalis(1,"3-3-3","3-4-3",2,1,0,"varna","El-Al","pleasure",1,1,2000);
     }
 */
+
 }
