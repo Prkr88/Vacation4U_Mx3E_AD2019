@@ -150,8 +150,9 @@ public class SelectApp extends SqlApp{
         return null;
     }
 
-    public ArrayList<ArrayList<String>> selectVacationRequest(String vacationID) {
-        String sql = "SELECT user_id FROM VacationsRequests WHERE vacation_id=" + "'" + vacationID + "'";
+    public ArrayList<ArrayList<String>> selectVacationRequest(String signdUser) {
+        String sql = "SELECT VacationsRequests.vacation_id,VacationsRequests.user_id FROM VacationsRequests JOIN OfferedVacations " +
+                "On VacationsRequests.vacation_id= OfferedVacations.vacation_id where OfferedVacations.seller_id = " + "'" + signdUser + "'";;
 
         try(Connection conn = this.connect();
             Statement statement = conn.createStatement();

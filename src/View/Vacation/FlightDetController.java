@@ -138,6 +138,11 @@ public class FlightDetController extends Controller implements Initializable{
         else{
             Stage stage = (Stage) buynow.getScene().getWindow();
             stage.close();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Request Sent");
+            alert.setHeaderText(null);
+            alert.setContentText("Order Request Sent Successfuly!");
+            alert.showAndWait();
             Main.staticController.setScreen(Main.screenPaymentMethodID);
         }
     }

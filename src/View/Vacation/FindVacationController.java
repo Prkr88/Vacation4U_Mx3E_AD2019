@@ -121,6 +121,8 @@ public class FindVacationController extends Controller {
 //        }
     }
 
+
+
     private void cancelAction(ActionEvent event) {
         super.myController.setScreen(Main.screenFindVacationID);
     }
