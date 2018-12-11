@@ -96,7 +96,7 @@ public class FlightDetController extends Controller implements Initializable{
 
 
     public void showTable(Stage secondaryStage) throws IOException {
-        FileInputStream fileInputStream = new FileInputStream(new File("src/View/Vacation/FlightDetails.fxml"));
+        FileInputStream fileInputStream = new FileInputStream(new File("src/View/Vacation/FlightDetails_1.1.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(fileInputStream);
         Scene scene = new Scene(root, 800, 400);
