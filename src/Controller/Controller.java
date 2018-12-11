@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import java.io.IOException;
@@ -31,6 +32,8 @@ public class Controller implements ControlledScreen {
     private PasswordField textField_Pass;
     @FXML
     private Text pleaseEnter;
+    @FXML
+    private ImageView logoImage;
 
     private Model model = new Model();
 

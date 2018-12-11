@@ -51,7 +51,6 @@ public class ReadController extends Controller {
         FlightDetController fdc = new FlightDetController();
         fdc.setFlightList(result);
         fdc.showTable();
-        //vac_id.setText();
     }
 
     public void readVacationData(ActionEvent event) {

@@ -116,8 +116,11 @@ public class FindVacationController extends Controller {
     }
 
 
-
+    @FXML
     private void cancelAction(ActionEvent event) {
-        super.myController.setScreen(Main.screenFindVacationID);
+        if(Main.signedUserName==null)
+            super.myController.setScreen(Main.screenLoginID);
+        else
+            super.myController.setScreen(Main.screenMainMenuID);
     }
 }
