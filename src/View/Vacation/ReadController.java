@@ -3,14 +3,17 @@ package View.Vacation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-/*
-public class ReadController {
+import Controller.*;
+import View.*;
 
+public class ReadController extends Controller {
 
     @FXML
-    public void readUserData(ActionEvent event) {
-        String user = user_name.getText();
-        String[] res = model.readUser(user);
+    public void readVacationData(ActionEvent event) {}
+
+        /*
+        String[] res = model.readVacation();
+
 
         if(res != null) {
             username_read.setText(res[0]);
@@ -27,5 +30,11 @@ public class ReadController {
             alert.showAndWait();
         }
     }
+    */
+
+    @FXML
+    private void cancelAction(ActionEvent event) {
+        super.myController.setScreen(Main.screenMainMenuID);
+    }
 }
-*/
+

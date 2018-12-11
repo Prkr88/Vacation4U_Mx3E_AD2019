@@ -46,24 +46,28 @@ public class Main extends Application {
     public static String screenUpdateVacationFile = vacationPath + "UpdateXML.fxml";
     public static String screenDeleteVacationID = "Delete Vacation Window";
     public static String screenDeleteVacationFile = vacationPath + "DeleteXML.fxml";
+    public static String screenFindVacationID = "Search Vacation Window";
+    public static String screenFindVacationFile= vacationPath + "FindVacation.fxml";
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         pStage = primaryStage;
 
         ScreensController mainContainer = new ScreensController();
-        mainContainer.loadScreen(screenLoginID, screenLoginFile,675,450);
-        mainContainer.loadScreen(screenMainMenuID, screenMainMenuFile,500,500);
-        mainContainer.loadScreen(screenReadDataID, screenReadDatFile,675,450);
+        mainContainer.loadScreen(screenLoginID, screenLoginFile,900,600);
+        mainContainer.loadScreen(screenMainMenuID, screenMainMenuFile,900,600);
+        mainContainer.loadScreen(screenReadDataID, screenReadDatFile,900,600);
         mainContainer.loadScreen(screenUpdateDataID, screenUpdateDataFile,675,450);
         mainContainer.loadScreen(screenDeleteUserID, screenDeleteUserFile,150,100);
         mainContainer.loadScreen(screenSignUpID, screenSignUpFile,675,450);
-        mainContainer.setScreen(screenLoginID);
 
         mainContainer.loadScreen(screenCreateVacationID, screenCreateVacationFile,675,450);
         mainContainer.loadScreen(screenReadVacationID, screenReadVacationFile,675,450);
         mainContainer.loadScreen(screenUpdateVacationID, screenUpdateVacationFile,675,450);
         mainContainer.loadScreen(screenDeleteVacationID, screenDeleteVacationFile,675,450);
+        mainContainer.loadScreen(screenFindVacationID, screenFindVacationFile, 900, 600);
+
+        mainContainer.setScreen(screenLoginID);
 
         Group root = new Group();
         root.getChildren().addAll(mainContainer);

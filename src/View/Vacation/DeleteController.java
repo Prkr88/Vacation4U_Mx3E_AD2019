@@ -50,5 +50,10 @@ public class DeleteController extends Controller {
 
     }
 
+    @FXML
+    private void cancelAction(ActionEvent event) {
+        super.myController.setScreen(Main.screenMainMenuID);
+    }
+
 
 }

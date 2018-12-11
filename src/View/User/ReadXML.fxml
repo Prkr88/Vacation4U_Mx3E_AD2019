@@ -11,7 +11,7 @@
     <children>
         <Pane prefHeight="450.0" prefWidth="109.0" style="-fx-background-color: #f2b610;" />
         <TextField fx:id="user_name" layoutX="179.0" layoutY="120.0" prefHeight="25.0" prefWidth="205.0" promptText="User Name" />
-        <Button fx:id="btn_done" layoutX="274.0" layoutY="323.0" mnemonicParsing="false" onAction="#readUserData" prefHeight="25.0" prefWidth="109.0" text="Done" />
+        <Button fx:id="btn_done" layoutX="274.0" layoutY="323.0" mnemonicParsing="false" onAction="#readUserData" prefHeight="25.0" prefWidth="109.0" text="Search" />
         <Button fx:id="btn_cancel" layoutX="435.0" layoutY="323.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="109.0" text="Cancel" />
         <Text fill="#f2b610" layoutX="179.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Form" wrappingWidth="178.66670506447554">
             <font>

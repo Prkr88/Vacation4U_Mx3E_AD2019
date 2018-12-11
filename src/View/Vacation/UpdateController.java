@@ -2,6 +2,7 @@ package View.Vacation;
 
 import Controller.Controller;
 import Model.Model;
+import View.Main;
 import View.ScreensController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -61,8 +62,7 @@ public class UpdateController extends Controller{
     private ComboBox<String> comboType;
 
     @FXML
-    /* function listens for retrieving username details to be updated */
-    public void updateVacationData(ActionEvent event) {
+    public void updateAction(ActionEvent event) {
         String strAdultAmount = TXTBX_adult_amount.getText();
         String strChildAmount = TXTBX_child_amount.getText();
         String strBabyAmount = TXTBX_baby_amount.getText();
@@ -98,5 +98,10 @@ public class UpdateController extends Controller{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void cancelAction(ActionEvent event) {
+        super.myController.setScreen(Main.screenMainMenuID);
     }
 }

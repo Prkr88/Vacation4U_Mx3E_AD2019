@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="593.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Vacation.FindVacationController">
+    <children>
+        <TextField fx:id="day1" layoutX="181.0" layoutY="90.0" prefHeight="39.0" prefWidth="53.0" promptText="DD" />
+        <TextField fx:id="month1" layoutX="247.0" layoutY="90.0" prefHeight="39.0" prefWidth="53.0" promptText="MM" />
+        <Label layoutX="101.0" layoutY="91.0" prefHeight="27.0" prefWidth="82.0" text="Departure" />
+        <Line endX="-89.00001525878906" endY="-18.333332061767578" layoutX="335.0" layoutY="154.0" startX="-100.0" />
+        <Line endX="-89.00001525878906" endY="-18.333332061767578" layoutX="334.0" layoutY="120.0" startX="-100.0" />
+        <TextField fx:id="year1" layoutX="317.0" layoutY="91.0" prefHeight="39.0" prefWidth="67.0" promptText="YYYY" />
+        <Label layoutX="104.0" layoutY="132.0" prefHeight="27.0" prefWidth="67.0" text="Return" />
+        <TextField fx:id="day2" layoutX="181.0" layoutY="129.0" prefHeight="39.0" prefWidth="53.0" promptText="DD" />
+        <Line endX="-89.00001525878906" endY="-18.333332061767578" layoutX="402.0" layoutY="114.0" startX="-100.0" />
+        <TextField fx:id="month2" layoutX="247.0" layoutY="129.0" prefHeight="39.0" prefWidth="53.0" promptText="MM" />
+        <Line endX="-89.00001525878906" endY="-18.333332061767578" layoutX="404.0" layoutY="156.0" startX="-100.0" />
+        <TextField fx:id="year2" layoutX="317.0" layoutY="129.0" prefHeight="39.0" prefWidth="67.0" promptText="YYYY" />
+        <Label layoutX="393.0" layoutY="116.0" text="Muximum price" />
+        <TextField fx:id="maxPrice" layoutX="520.0" layoutY="113.0" prefHeight="39.0" prefWidth="67.0" />
+        <Line endX="-63.99998474121094" endY="-81.66667938232422" layoutX="455.0" layoutY="254.0" startX="-63.99998474121094" startY="-173.66665649414062" />
+        <Label layoutX="125.0" layoutY="208.0" text="Destination" />
+        <TextField fx:id="destination" layoutX="219.0" layoutY="207.0" />
+        <Button fx:id="search" onAction="#find" layoutX="269.0" layoutY="289.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="82.0" text="Search" />
+        <Label contentDisplay="CENTER" layoutX="116.0" layoutY="2.0" prefHeight="51.0" prefWidth="200.0" text="  Find Vcation" textAlignment="CENTER" textFill="#3eb4d1">
+            <font>
+                <Font name="System Bold Italic" size="21.0" />
+            </font>
+        </Label>
+        <Pane layoutY="-6.0" prefHeight="408.0" prefWidth="98.0" style="-fx-background-color: #40E0D0;" />
+    </children>
+</Pane>

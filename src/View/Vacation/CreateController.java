@@ -118,16 +118,19 @@ public class CreateController extends Controller {
         //comboType.getItems().setAll(newItems);
         //comboType.getItems().addAll("beach", "hiking", "urban");
         //comboType.setItems("Beach", "Hiking", "Urban");
-        //comboType.getItems().setAll("beach", "hiking", "urban");
+        comboType = new ComboBox<>();
         comboType.getItems().addAll("beach", "hiking", "urban");
+        //comboType.getItems().setAll("beach", "hiking", "urban");
+
         selectedType.textProperty().bind(comboType.getSelectionModel().selectedItemProperty());
+        /*
         comboType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override public void changed(ObservableValue<? extends String> selected, String oldType, String newType) {
                 if (oldType != null) {
                     switch(oldType) {
-                        case "beach": beachImage.setVisible(true); break;
-                        case "hiking": hikingImage.setVisible(true); break;
-                        case "urban": urbanImage.setVisible(true); break;
+                        case "beach": beachImage.setVisible(false); break;
+                        case "hiking": hikingImage.setVisible(false); break;
+                        case "urban": urbanImage.setVisible(false); break;
                     }
                 }
                 if (newType != null) {
@@ -139,6 +142,7 @@ public class CreateController extends Controller {
                 }
             }
         });
+        */
         //model.registerVacationToDB(intTotalAmount, intTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, boolLodge, boolReturnFlight, strLuggageDetails);
         try {
             super.showMainMenu();
@@ -149,7 +153,7 @@ public class CreateController extends Controller {
 
     @FXML
     private void cancelAction(ActionEvent event) {
-        super.myController.setScreen(View.Main.screenLoginID);
+        super.myController.setScreen(Main.screenMainMenuID);
     }
 
 
