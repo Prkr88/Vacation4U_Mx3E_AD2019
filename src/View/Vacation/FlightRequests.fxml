@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<?import javafx.scene.control.Button?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0"
+            prefWidth="644.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.101"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Vacation.FlightReqController">
+    <children>
+        <ScrollPane layoutX="-2.0" prefHeight="400.0" prefWidth="800.0">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <TableView fx:id="requestTable" layoutX="4.0" layoutY="3.0" prefHeight="394.0" prefWidth="800.0">
+                            <columns>
+                                <TableColumn fx:id="tb_choose" prefWidth="55.0" text="Choose">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="RDATA_check"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="tb_id" prefWidth="52.20001220703125" text="vactionID">
+                                <cellValueFactory>
+                                <PropertyValueFactory property="RDATA_id"/>
+                                </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="tb_buyer" prefWidth="74.79998779296875" text="Req Buyer">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="RDATA_buyer_Request"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+        <Button fx:id="Aprove" layoutX="300.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" onAction="#checkOut" text="Aprove Selected" />
+        <Button fx:id="cancel" layoutX="650.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" onAction="#closeTable" text="cancel" />
+    </children>
+</AnchorPane>
