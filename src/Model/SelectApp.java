@@ -91,11 +91,11 @@ public class SelectApp extends SqlApp{
     }
 
 
-    public String[] selectVacation(String destination){
-        String[] res = new String[5];
+    public String[] selectVacation(String sVacID){
+        String[] res = new String[12];
         String user_name = Main.signedUserName;
-        String sql = "SELECT vacation_id,destination,price,start_date,end_date,num_adult_tickets,num_kid_tickets,num_baby_tickets,flight_back_included,flight_company,vacation_type,accom_included FROM OfferedVacations WHERE destination="
-                + "'" + destination + "'";
+        String sql = "SELECT vacation_id,destination,price,start_date,end_date,num_adult_tickets,num_kid_tickets,num_baby_tickets,flight_back_included,flight_company,vacation_type,accom_included FROM OfferedVacations WHERE vacation_id="
+                + "'" + sVacID + "'";
 
         try (Connection conn = this.connect();
              Statement stmt  = conn.createStatement();

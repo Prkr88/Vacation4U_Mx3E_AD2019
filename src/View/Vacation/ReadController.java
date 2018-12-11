@@ -10,6 +10,7 @@ import View.ScreensController;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ReadController extends Controller {
@@ -18,7 +19,7 @@ public class ReadController extends Controller {
     private Model model = new Model();
 
     @FXML
-    private TextField destination;
+    private TextField vac_id;
     @FXML
     private Text vacid_read;
     @FXML
@@ -45,16 +46,17 @@ public class ReadController extends Controller {
     private Text accom_read;
 
     @FXML
-    public void displayVacations(ActionEvent event) {
+    public void displayVacations(ActionEvent event) throws IOException {
         ArrayList<ArrayList<String>> result = model.displayVacation();
         FlightDetController fdc = new FlightDetController();
         fdc.setFlightList(result);
+        fdc.showTable();
+        //vac_id.setText();
     }
 
-
     public void readVacationData(ActionEvent event) {
-        String this_dest = destination.getText();
-        String[] res = model.readVacation(this_dest);
+        String thisID = vac_id.getText();
+        String[] res = model.readVacation(thisID);
         if (res != null) {
             vacid_read.setText(res[0]);
             dest_read.setText(res[1]);
@@ -72,7 +74,7 @@ public class ReadController extends Controller {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("user not found");
             alert.setHeaderText(null);
-            alert.setContentText("there is no vacation named " + destination);
+            alert.setContentText("there is no vacation named " + thisID);
             alert.showAndWait();
         }
     }
