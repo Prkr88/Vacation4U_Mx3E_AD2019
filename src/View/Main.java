@@ -1,5 +1,6 @@
 package View;
 
+        import View.Vacation.Flight;
         import View.Vacation.FlightDetController;
         import javafx.application.Application;
         import javafx.scene.Group;
@@ -39,6 +40,7 @@ public class Main extends Application {
     public static String screenDeleteUserID = "Deletion Form";
     public static String screenDeleteUserFile = userPath + "DeleteXML.fxml";
     public static String signedUserName;
+    public static int vacationBoght = -1;
     public static String screenCreateVacationID = "Create Vacation Window";
     public static String screenCreateVacationFile = vacationPath + "CreateXML.fxml";
     public static String screenReadVacationID = "Read Vacation Window";
@@ -55,12 +57,14 @@ public class Main extends Application {
     public static String screenVisaFile = paymentPath + "Visa.fxml";
     public static String screenFindVacationID = "Search Vacation Window";
     public static String screenFindVacationFile= vacationPath + "FindVacation.fxml";
+    public ScreensController mainContainer = new ScreensController();
+    public static ScreensController staticController;
+    public static Flight toBuy;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         pStage = primaryStage;
 
-        ScreensController mainContainer = new ScreensController();
         mainContainer.loadScreen(screenLoginID, screenLoginFile,900,700);
         mainContainer.loadScreen(screenMainMenuID, screenMainMenuFile,900,700);
         mainContainer.loadScreen(screenReadDataID, screenReadDatFile,900,700);

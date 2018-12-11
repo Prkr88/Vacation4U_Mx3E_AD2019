@@ -37,6 +37,7 @@ public class Controller implements ControlledScreen {
     @Override
     public void setScreenParent(ScreensController screenParent) {
         myController = screenParent;
+        Main.staticController =screenParent;
     }
 
 

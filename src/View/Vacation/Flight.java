@@ -191,4 +191,8 @@ public class Flight {
     public void setFDATA_check(CheckBox FDATA_check) {
         this.FDATA_check = FDATA_check;
     }
+
+    public boolean isChecked(){
+        return FDATA_check.isSelected();
+    }
 }
