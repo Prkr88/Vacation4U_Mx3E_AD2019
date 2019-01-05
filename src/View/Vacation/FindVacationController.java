@@ -59,7 +59,7 @@ public class FindVacationController extends Controller {
         String m2 = month2.getText();
         String y2 = year2.getText();
         ArrayList<ArrayList<String>> resultSetList = null;
-        int resultSize = 0;
+
         if (!d1.equals("") || !d2.equals("") || !m1.equals("") || !m2.equals("") || !y1.equals("") || !y2.equals("")) {
             if(d1.equals("") || d2.equals("") || m1.equals("") || m2.equals("") || y1.equals("") || y2.equals("")){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -69,13 +69,7 @@ public class FindVacationController extends Controller {
                 return;
             }
         }
-//        if (d1.equals("") || d2.equals("") || m1.equals("") || m2.equals("") || y1.equals("") || y2.equals("")) {
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Worning!");
-//            alert.setContentText("Invalid date");
-//            alert.show();
-//            return;
-//        }
+
         String date1 = d1 + "-" + m1 + "-" + y1;
         String date2 = d2 + "-" + m2 + "-" + y2;
         String price = maxPrice.getText();
@@ -122,8 +116,11 @@ public class FindVacationController extends Controller {
     }
 
 
-
+    @FXML
     private void cancelAction(ActionEvent event) {
-        super.myController.setScreen(Main.screenFindVacationID);
+        if(Main.signedUserName==null)
+            super.myController.setScreen(Main.screenLoginID);
+        else
+            super.myController.setScreen(Main.screenMainMenuID);
     }
 }

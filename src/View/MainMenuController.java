@@ -52,6 +52,11 @@ public class MainMenuController extends Controller {
     }
 
     @FXML
+    private void logOut(ActionEvent event){
+        super.myController.setScreen(Main.screenLoginID);
+    }
+
+    @FXML
     private void pay(ActionEvent event){
         super.myController.setScreen(Main.screenPaymentMethodID);
     }

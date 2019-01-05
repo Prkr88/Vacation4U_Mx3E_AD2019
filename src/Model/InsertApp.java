@@ -3,6 +3,8 @@ package Model;
 import View.Main;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -131,5 +133,26 @@ public class InsertApp extends SqlApp{
         return -1;
     }
 
+    public void addSoldVacation(int vacationID, String buyerID, String sellerID, int price) {
+        String pattern = "dd-MM-yyyy";
+        String dateInString =new SimpleDateFormat(pattern).format(new Date());
+        String sql = "INSERT INTO SoldVacations(vacation_id,buyer_id,seller_id,date,price) VALUES(?,?,?,?,?)";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, vacationID);
+            pstmt.setString(2, buyerID);
+            pstmt.setString(3, sellerID);
+            pstmt.setString(4, dateInString);
+            pstmt.setInt(5, price);
+            pstmt.executeUpdate();
 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+//    public static void main(String args[]) {
+//        InsertApp insertApp = new InsertApp();
+//        insertApp.addSoldVacation(1, "Matan", "Maytal", 20);
+//    }
 }

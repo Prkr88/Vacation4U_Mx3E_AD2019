@@ -4,16 +4,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="loginScreen" prefHeight="448.0" prefWidth="660.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
+<AnchorPane fx:id="loginScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="695.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
    <children>
       <TextField fx:id="textField_UserName" layoutX="180.0" layoutY="165.0" prefHeight="25.0" prefWidth="299.0" promptText="Username" />
       <PasswordField fx:id="textField_Pass" layoutX="180.0" layoutY="224.0" prefHeight="25.0" prefWidth="299.0" promptText="Password" />
-      <Button fx:id="button_signup" layoutX="336.0" layoutY="345.0" mnemonicParsing="false" onAction="#signUp" prefHeight="25.0" prefWidth="65.0" text="Sign UP" />
-      <Text fill="#f3f0f0" layoutX="242.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not a member?" wrappingWidth="95.33334720134735">
+      <Button fx:id="button_signup" layoutX="179.0" layoutY="385.0" mnemonicParsing="false" onAction="#signUp" prefHeight="25.0" prefWidth="99.0" text="Sign UP" />
+      <Text fill="#f3f0f0" layoutX="179.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not a member?" wrappingWidth="95.33334720134735">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
@@ -30,6 +32,16 @@
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Text>
-      <Button fx:id="searchvacation" layoutX="454.0" layoutY="346.0" mnemonicParsing="false" onAction="#SearchVacation" text="Search vacation" />
+      <Button fx:id="searchvacation" layoutX="369.0" layoutY="386.0" mnemonicParsing="false" onAction="#SearchVacation" text="Search vacation" />
+      <ImageView fitHeight="133.0" fitWidth="179.0" layoutX="479.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../resources/logo.png" />
+         </image>
+      </ImageView>
+      <Text fill="#f3f0f0" layoutX="341.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Still want to take a look?" wrappingWidth="145.99997317790985">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
