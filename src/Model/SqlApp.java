@@ -106,5 +106,28 @@ public class SqlApp {
         return null;
     }
 
+    public ArrayList<ArrayList<String>> displaySwapVacations() {
+        String sql = "SELECT * FROM SwapOfferedVacations";
+
+        try(Connection conn = this.connect();
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql)) {
+            ResultSetMetaData md = resultSet.getMetaData();
+            int columns = md.getColumnCount();
+            ArrayList<ArrayList<String>> rowsList = new ArrayList<ArrayList<String>>();
+            while (resultSet.next()) {
+                ArrayList<String> row = new ArrayList<String>();
+                for (int i = 1; i <= columns; ++i) {
+                    row.add(resultSet.getString(i));
+                }
+                rowsList.add(row);
+            }
+            return rowsList;
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
 
 }

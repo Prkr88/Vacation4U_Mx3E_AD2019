@@ -1,7 +1,7 @@
 package Controller;
 
 import View.Main;
-import Model.Model;
+import Model.*;
 import View.ScreensController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,6 +54,8 @@ public class Controller implements ControlledScreen {
                 pleaseEnter.setText("Login Success");
                 pleaseEnter.setFill(Color.GREEN);
                 Main.signedUserName = textField_UserName.getText();
+                //checkSwapRequests();
+                //checkSwapConfirmation();
                 showMainMenu();
             }catch(IOException e){
                 e.printStackTrace();
@@ -62,6 +64,33 @@ public class Controller implements ControlledScreen {
             System.out.println("Login Failed");
             pleaseEnter.setText("Login Failed - wrong UesrName or Password");
             pleaseEnter.setFill(Color.RED);
+        }
+    }
+
+    private void checkSwapRequests() {
+        try {
+            SelectApp sa = new SelectApp();
+            String[] res = sa.selectSwapRequestVacation();
+            if (res[0] != null && res[1] != null) {
+                String otherUserID = res[0];
+                String otherUserVac = res[1];
+            }
+        }
+        catch (Exception e) {
+            int i;
+        }
+    }
+
+    public void checkSwapConfirmation() {
+        try {
+            SelectApp sa = new SelectApp();
+            String res = sa.selectSwapConfirmation();
+            if (res != null) {
+                String confirm_A = res;
+            }
+        }
+        catch (Exception e) {
+            int i;
         }
     }
 

@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class UpdateController extends Controller{
 
@@ -65,7 +66,11 @@ public class UpdateController extends Controller{
 
 
     @FXML
-    public void displayVacations(ActionEvent event) {
+    public void displayVacations(ActionEvent event) throws IOException {
+        ArrayList<ArrayList<String>> result = model.displayVacation();
+        FlightDetController fdc = new FlightDetController();
+        fdc.setFlightList(result);
+        fdc.showTable();
     }
 
     @FXML

@@ -58,9 +58,12 @@ public class Main extends Application {
     public static String screenVisaFile = paymentPath + "Visa.fxml";
     public static String screenFindVacationID = "Search Vacation Window";
     public static String screenFindVacationFile= vacationPath + "FindVacation.fxml";
+    public static String screenSwapVacationID = "Swap Vacation Window";
+    public static String screenSwapVacationFile= vacationPath + "SwapVacationXML.fxml";
     public ScreensController mainContainer = new ScreensController();
     public static ScreensController staticController;
     public static Flight toBuy;
+    public static Flight toSwap;
     public static Request toAprove;
 
     @Override
@@ -81,6 +84,7 @@ public class Main extends Application {
         mainContainer.loadScreen(screenPaypalID, screenPaypalFile,675,450);
         mainContainer.loadScreen(screenVisaID, screenVisaFile,675,450);
         mainContainer.loadScreen(screenFindVacationID, screenFindVacationFile, 900, 600);
+        mainContainer.loadScreen(screenSwapVacationID, screenSwapVacationFile, 900, 600);
 
         mainContainer.setScreen(screenLoginID);
         //FlightDetController fdc = new FlightDetController();

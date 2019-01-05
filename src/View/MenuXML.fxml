@@ -23,8 +23,8 @@ fx:controller="Controller.Controller"
       <Button fx:id="readVacation_button" layoutX="201.0" layoutY="292.0" mnemonicParsing="false" onAction="#readVacation" prefHeight="39.0" prefWidth="128.0" text="Read My Vacations" />
       <Button fx:id="updateVacation_button" layoutX="355.0" layoutY="292.0" mnemonicParsing="false" onAction="#updateVacation" prefHeight="39.0" prefWidth="128.0" text="Update Vacation" />
       <Button fx:id="deleteVacation_button" layoutX="510.0" layoutY="292.0" mnemonicParsing="false" onAction="#deleteVacation" prefHeight="39.0" prefWidth="128.0" text="Delete Vacation" />
-      <Button fx:id="SearchVacation" layoutX="138.0" layoutY="364.0" mnemonicParsing="false" onAction="#SearchVacation" prefHeight="39.0" prefWidth="156.0" text="Search Vacations" />
-       <Button fx:id="getRequeats" layoutX="419.0" layoutY="364.0" mnemonicParsing="false" onAction="#getRequests" prefHeight="39.0" prefWidth="156.0" text="Approve request" />
+      <Button fx:id="SearchVacation" layoutX="49.0" layoutY="364.0" mnemonicParsing="false" onAction="#SearchVacation" prefHeight="39.0" prefWidth="156.0" text="Search Vacations" />
+       <Button fx:id="getRequeats" layoutX="432.0" layoutY="364.0" mnemonicParsing="false" onAction="#getRequests" prefHeight="39.0" prefWidth="156.0" text="Approve request" />
       <Text fill="WHITE" layoutX="31.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Information Menu:" wrappingWidth="253.33328519389033">
          <font>
             <Font name="System Bold Italic" size="18.0" />
@@ -35,6 +35,7 @@ fx:controller="Controller.Controller"
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Text>
-      <Button fx:id="btn_logout" layoutX="531.0" layoutY="60.0" mnemonicParsing="false" onAction="#logOut" prefHeight="25.0" prefWidth="89.0" text="Log Out" />
+      <Button layoutX="531.0" layoutY="60.0" mnemonicParsing="false" onAction="#logOut" prefHeight="25.0" prefWidth="89.0" text="Log Out" />
+      <Button layoutX="241.0" layoutY="364.0" mnemonicParsing="false" prefHeight="39.0" onAction="#SwapVacation" prefWidth="156.0" text="Swap Vacation" />
    </children>
 </AnchorPane>

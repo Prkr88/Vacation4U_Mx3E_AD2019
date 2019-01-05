@@ -1,8 +1,10 @@
 package View;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import Controller.*;
+import View.Vacation.SwapVacationsController;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -106,6 +108,15 @@ public class ScreensController  extends StackPane {
                 Main.pStage.setResizable(true);
                 Main.pStage.sizeToScene();
                 Main.pStage.show();
+                if (name.equals(Main.screenSwapVacationID)) {
+                    SwapVacationsController svc = new SwapVacationsController();
+                    try {
+                        svc.initSwapScreen();
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             } else {
                 setOpacity(0.0);
                 getChildren().add(screens.get(name));       //no one else been displayed, then just show

@@ -1,7 +1,7 @@
 package View.Vacation;
 
 import Controller.Controller;
-import Model.Model;
+import Model.*;
 import View.Main;
 import View.ScreensController;
 import javafx.beans.value.ChangeListener;
@@ -19,6 +19,7 @@ import Controller.ControlledScreen;
 import javafx.scene.control.CheckBox;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -35,7 +36,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlightDetController extends Controller implements Initializable{
+public class SwapVacationsController extends Controller implements Initializable{
 
     public static Controller myController;
     private Model model = new Model();
@@ -56,31 +57,35 @@ public class FlightDetController extends Controller implements Initializable{
     @FXML private TableColumn<Flight,String> tb_f_company;
     @FXML private TableColumn<Flight,String> tb_seller;
     @FXML
-    public Button buynow;
+    private TextField vac_id;
     @FXML
     public Button cancel;
+    @FXML
+    public Button swap_mine;
 
     private static ObservableList<Flight> fList = FXCollections.observableArrayList();
-    public  Stage stage = new Stage();
+    public Stage stage = new Stage();
+    //private ObservableList<Flight> fList = FXCollections.observableArrayList();
+
+    public SwapVacationsController() {
+        //SelectApp selectApp = new SelectApp();
+        //ArrayList<ArrayList<String>> resultSetList = selectApp.selectSwapVacation();
+        //FlightDetController fdc = new FlightDetController();
+        //fdc.setFlightList(resultSetList);
+        //fdc.showTable();
+        //setFlightList(resultSetList);
+        //showTable();
+    }
+
 
     public void setFlightList(ArrayList<ArrayList<String>> flightsList) {
-        fList.clear();
+        this.fList.clear();
         for (int i=0; i<flightsList.size();i++){
             int iVacID = Integer.parseInt((flightsList.get(i)).get(0));
             Flight f = new Flight(iVacID, (flightsList.get(i)).get(2), (flightsList.get(i)).get(3),
                     (flightsList.get(i)).get(10),Integer.parseInt((flightsList.get(i)).get(12)),(flightsList.get(i)).get(11),(flightsList.get(i)).get(7),(flightsList.get(i)).get(8),Integer.parseInt((flightsList.get(i)).get(4)),Integer.parseInt((flightsList.get(i)).get(5)),Integer.parseInt((flightsList.get(i)).get(6)),(flightsList.get(i)).get(1));
-            fList.add(f);
+            this.fList.add(f);
         }
-
-        /*
-        Flight f1 = new Flight(1, "03-01",
-                "06-01","AZA",
-                100,"yes","AIR_Z",
-                "pleasure",1,0,0,"Greg");
-
-        this.fList.add(f1);
-        */
-        //this.fList.add(f2);
     }
 
     @Override
@@ -100,20 +105,23 @@ public class FlightDetController extends Controller implements Initializable{
         tb_type.setCellValueFactory(new PropertyValueFactory<Flight,String>("FDATA_vacType"));
         tb_f_company.setCellValueFactory(new PropertyValueFactory<Flight,String>("FDATA_company"));
         tb_seller.setCellValueFactory(new PropertyValueFactory<Flight,String>("FDATA_seller"));
-        if(Main.signedUserName == null){
-            buynow.setDisable(true);
-        }
+
+        //if(Main.signedUserName == null) swap_mine.setDisable(true);
 
     }
 
-    @FXML
-    private void cancelAction(ActionEvent event) {
-        super.myController.setScreen(Main.screenMainMenuID);
+    public void initSwapScreen() throws IOException {
+        SelectApp selectApp = new SelectApp();
+        ArrayList<ArrayList<String>> resultSetList = selectApp.selectSwapVacation();
+        //FlightDetController fdc = new FlightDetController();
+        //fdc.setFlightList(resultSetList);
+        //fdc.showTable();
+        setFlightList(resultSetList);
+        //showTable();
     }
-
 
     public void showTable() throws IOException {
-        FileInputStream fileInputStream = new FileInputStream(new File("src/View/Vacation/FlightDetails.fxml"));
+        FileInputStream fileInputStream = new FileInputStream(new File("src/View/Vacation/SwapVacationXML.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(fileInputStream);
         Scene scene = new Scene(root, 800, 450);
@@ -123,32 +131,74 @@ public class FlightDetController extends Controller implements Initializable{
     }
 
     @FXML
-    private void checkOut(ActionEvent event){
-        int vId = -1;
-        for (int i = 0; i <fList.size() && vId == -1 ; i++) {
+    private void requestSwap(ActionEvent event){
+        int iVacID_A = -1;
+        String sUser_A = "";
+        String sUser_B = Main.signedUserName;
+        int iVacID_B = -1;
+        try {
+            String sVacID_B = vac_id.getText();
+            iVacID_B = Integer.parseInt(sVacID_B);
+        }
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Vacation ID Alert");
+            alert.setHeaderText(null);
+            alert.setContentText("Your Vacation ID is missing.");
+            alert.showAndWait();
+        }
+        for (int i = 0; i <fList.size() && iVacID_A == -1 ; i++) {
             if(fList.get(i).isChecked()){
-                vId = fList.get(i).getFDATA_id();
-                Main.toBuy = fList.get(i);
+                iVacID_A = fList.get(i).getFDATA_id();
+                sUser_A = fList.get(i).getFDATA_seller();
             }
         }
-        if(vId==-1){
+        if(iVacID_A==-1){
             System.out.println("flight not selected");
         }
         else{
-            Stage stage = (Stage) buynow.getScene().getWindow();
-            stage.close();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Request Sent");
-            alert.setHeaderText(null);
-            alert.setContentText("Order Request Sent Successfuly!");
-            alert.showAndWait();
-            Main.staticController.setScreen(Main.screenPaymentMethodID);
+            model.swapInsertRequest(iVacID_A, sUser_A, iVacID_B, sUser_B);
         }
     }
 
     @FXML
+    public void displayVacations(ActionEvent event) throws IOException {
+        ArrayList<ArrayList<String>> result = model.displayVacation();
+        FlightDetController fdc = new FlightDetController();
+        fdc.setFlightList(result);
+        fdc.showTable();
+    }
+
+    @FXML
+    public void addMine(ActionEvent event) throws IOException {
+        try {
+            String sVacID = vac_id.getText();
+            int iVacID = Integer.parseInt(sVacID);
+            model.swapInsertVacation(iVacID);
+            try {
+                super.showMainMenu();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Vacation ID Alert");
+            alert.setHeaderText(null);
+            alert.setContentText("Your Vacation ID is missing.");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void cancelAction(ActionEvent event) {
+        super.myController.setScreen(Main.screenMainMenuID);
+    }
+
+    @FXML
     private void closeTable(ActionEvent event){
-        Stage stage = (Stage) buynow.getScene().getWindow();
+        Stage stage = (Stage) swap_mine.getScene().getWindow();
         stage.close();
     }
 

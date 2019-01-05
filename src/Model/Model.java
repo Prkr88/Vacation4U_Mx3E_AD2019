@@ -58,6 +58,8 @@ public class Model {
 
     public ArrayList<ArrayList<String>> displayVacation() { return selectApp.displayVacations(); }
 
+    public ArrayList<ArrayList<String>> displaySwapVacation() { return selectApp.displaySwapVacations(); }
+
     public String[] readVacation(String destination) {return selectApp.selectVacation(destination);}
 
     public void updateVacation(int iVacID, int iAdultAmount, int iChildAmount, int iBabyAmount, int iTotalPrice, String strDestination, String strAirline, String strDepDate, String strArrivalDate, String strVacType, String sLodge, String sReturn, String strLuggageDetails) {
@@ -66,6 +68,17 @@ public class Model {
 
     public void deleteOfferedVacations(int iVacationID){
         deleteApp.deleteOfferedVacations(iVacationID);
+    }
+
+    public void swapInsertVacation(int iVacationID){
+        insertApp.insertSwapVacation(iVacationID);
+    }
+
+    public void swapInsertRequest(int vac_A, String user_A, int vac_B, String user_B){
+        insertApp.insertSwapRequestVacation(vac_A, user_A, vac_B, user_B);
+    }
+
+    public void swapRequestUpdate(){updateApp.swapRequestUpdate();
     }
 
 }

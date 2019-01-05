@@ -77,6 +77,50 @@ public class InsertApp extends SqlApp{
         }
     }
 
+    public void insertSwapRequestVacation(int iVac_A, String sUser_A, int iVac_B, String sUser_B) {
+        String sql = "INSERT INTO SwapRequestsVacations() VALUES(?,?,?,?,?)";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            //NOTE: validate that VACATION ID is inserted automatically
+            pstmt.setString(1, sUser_A);
+            pstmt.setString(2, iVac_A + "");
+            pstmt.setString(3, iVac_B + "");
+            pstmt.setString(4, sUser_B);
+            pstmt.setString(4, "W");
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertSwapVacation(int iVacID) {
+        String vacID = String.valueOf(iVacID);
+        SelectApp sa = new SelectApp();
+        String[] res = sa.selectVacation(vacID);
+        String sql = "INSERT INTO SwapOfferedVacations(vacation_id,seller_id,start_date,end_date,num_adult_tickets,num_kid_tickets,num_baby_tickets,flight_company,vacation_type,acomm_included,destination,flight_back_included,price,luggage_details) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            //NOTE: validate that VACATION ID is inserted automatically
+            pstmt.setString(1, iVacID + "");
+            pstmt.setString(2, Main.signedUserName);
+            pstmt.setString(3, res[3]);
+            pstmt.setString(4, res[4]);
+            pstmt.setString(5, res[5] +"");
+            pstmt.setString(6, res[6]+ "");
+            pstmt.setString(7, res[7]+ "");
+            pstmt.setString(8, res[1]);
+            pstmt.setString(9, res[10]);
+            pstmt.setString(10, res[8]);
+            pstmt.setString(11, res[9]);
+            pstmt.setString(12, res[11]);
+            pstmt.setString(13, res[2]);
+            pstmt.setString(14, res[11]);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     /**inserts new user to Users Table
      * @param vacationID vacationID Requested
      * @param userID userID of the user requested
