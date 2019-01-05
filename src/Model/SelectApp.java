@@ -69,25 +69,10 @@ public class SelectApp extends SqlApp{
 
     public ArrayList<ArrayList<String>> displayVacation() {
         String thisUser = Main.signedUserName;
-        String sqlRead = "SELECT vacation_id FROM OfferedVacations WHERE seller_id=" + "'" + thisUser + "'";
-        try(Connection conn = this.connect();
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(sqlRead)) {
-            ResultSetMetaData md = resultSet.getMetaData();
-            int columns = md.getColumnCount();
-            ArrayList<ArrayList<String>> rowsList = new ArrayList<ArrayList<String>>();
-            while (resultSet.next()) {
-                ArrayList<String> row = new ArrayList<String>();
-                for (int i = 1; i <= columns; ++i) {
-                    row.add(resultSet.getString(i));
-                }
-                rowsList.add(row);
-            }
-            return rowsList;
-        } catch (SQLException e){
-            System.out.println(e.getMessage());
-        }
-        return null;
+        String sql = "SELECT vacation_id FROM OfferedVacations WHERE seller_id=" + "'" + thisUser + "'";
+        ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+        data = getArrayFromTable(sql);
+        return data;
     }
 
 
@@ -129,48 +114,63 @@ public class SelectApp extends SqlApp{
             sql = sql + " AND destination= " + "'" + destination + "'";
         if (date1.equals("--") && date2.equals("--"))
             sql = "SELECT * FROM OfferedVacations";
+        ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+        data = getArrayFromTable(sql);
+        return data;
 
-        try(Connection conn = this.connect();
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql)) {
-            ResultSetMetaData md = resultSet.getMetaData();
-            int columns = md.getColumnCount();
-            ArrayList<ArrayList<String>> rowsList = new ArrayList<ArrayList<String>>();
-            while (resultSet.next()) {
-                ArrayList<String> row = new ArrayList<String>();
-                for (int i = 1; i <= columns; ++i) {
-                    row.add(resultSet.getString(i));
-                }
-                rowsList.add(row);
-            }
-            return rowsList;
-        } catch (SQLException e){
-            System.out.println(e.getMessage());
-        }
-        return null;
+    }
+
+    public ArrayList<ArrayList<String>> selectOfferedVacationById(int vId) {
+        String sql = "SELECT * FROM OfferedVacations WHERE vacation_id ="+"'"+Integer.toString(vId)+"'";
+        ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+        data = getArrayFromTable(sql);
+        return data;
     }
 
     public ArrayList<ArrayList<String>> selectVacationRequest(String signdUser) {
-        String sql = "SELECT VacationsRequests.vacation_id,VacationsRequests.user_id FROM VacationsRequests JOIN OfferedVacations " +
-                "On VacationsRequests.vacation_id= OfferedVacations.vacation_id where OfferedVacations.seller_id = " + "'" + signdUser + "'";;
-
-        try(Connection conn = this.connect();
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql)) {
-            ResultSetMetaData md = resultSet.getMetaData();
-            int columns = md.getColumnCount();
-            ArrayList<ArrayList<String>> rowsList = new ArrayList<ArrayList<String>>();
-            while (resultSet.next()) {
-                ArrayList<String> row = new ArrayList<String>();
-                for (int i = 1; i <= columns; ++i) {
-                    row.add(resultSet.getString(i));
-                }
-                rowsList.add(row);
-            }
-            return rowsList;
-        } catch (SQLException e){
-            System.out.println(e.getMessage());
-        }
-        return null;
+        String sql = "SELECT VacationsRequests.vacation_id,VacationsRequests.buyer_id FROM VacationsRequests JOIN OfferedVacations " +
+                "On VacationsRequests.vacation_id= OfferedVacations.vacation_id where OfferedVacations.seller_id = " + "'" + signdUser + "'";
+        ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+        data = getArrayFromTable(sql);
+        return data;
     }
+
+    public ArrayList<ArrayList<String>> selectApprovePayVacations() {
+        String thisUser = Main.signedUserName;
+        String sql = "SELECT vacation_id,buyer_id FROM VacationsRequests WHERE accepted_by_seller =1 And seller_id=" + "'" + thisUser + "'";
+        ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+        data = getArrayFromTable(sql);
+        return data;
+    }
+
+    public ArrayList<ArrayList<String>> selectToPayVacations() {
+        String thisUser = Main.signedUserName;
+        String sql = "SELECT vacation_id FROM VacationsRequests WHERE accepted_by_seller = 1 AND buyer_id=" + "'" + thisUser + "'";
+        ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+        data = getArrayFromTable(sql);
+        return data;
+    }
+
+    public ArrayList<ArrayList<String>> selectDeclinedRequests() {
+        String thisUser = Main.signedUserName;
+        String sql = "SELECT vacation_id,seller_id FROM VacationsRequests WHERE accepted_by_seller = -1 AND buyer_id=" + "'" + thisUser + "'";
+        ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+        data = getArrayFromTable(sql);
+        return data;
+    }
+
+    public String selectUserByVID(int vID) {
+        String userName = "";
+        String sql = "SELECT seller_id FROM OfferedVacations WHERE vacation_id=" + vID;
+        ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+        data = getArrayFromTable(sql);
+        if(data.size()>0) {
+            userName = data.get(0).get(0);
+            return userName;
+        }
+        else{
+            return null;
+        }
+    }
+
 }

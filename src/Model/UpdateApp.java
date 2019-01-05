@@ -97,7 +97,7 @@ public class UpdateApp extends SqlApp {
     }
 
 
-    public void updateVacation(int vacationID, int numAdultTickets, int numKidTickets, int numBabyTickets, int totalPrice, String destination, String flightCompany, String startDate, String endDate, String vacationType, String accommodationIncluded, String flightBackIncluded, String sLuggageDetails) {
+       public void updateVacation(int vacationID, int numAdultTickets, int numKidTickets, int numBabyTickets, int totalPrice, String destination, String flightCompany, String startDate, String endDate, String vacationType, String accommodationIncluded, String flightBackIncluded, String sLuggageDetails) {
         String oldStartDate = "";
         String oldEndDate = "";
         int oldNumAdult = 0;
@@ -193,6 +193,35 @@ public class UpdateApp extends SqlApp {
                 pstmt.setInt(11, oldPrice);
             pstmt.setString(12, View.Main.signedUserName);
             pstmt.setInt(13, vacationID);
+            // update Parameters
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+    public void updateAproved(int vacationID,String buyerId) {
+        String sqlSet = "UPDATE VacationsRequests SET accepted_by_seller = ? WHERE vacation_id = ? AND buyer_id="+"'"+buyerId+"'";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sqlSet)) {
+            // set the corresponding param
+            pstmt.setInt(1, 1);
+                pstmt.setInt(2, vacationID);
+            // update Parameters
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void updateDeclinedRequest(int vacationID) {
+        String sqlSet = "UPDATE VacationsRequests SET accepted_by_seller = ? WHERE vacation_id = ? ";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sqlSet)) {
+            // set the corresponding param
+            pstmt.setInt(1, -1);
+            pstmt.setInt(2, vacationID);
             // update Parameters
             pstmt.executeUpdate();
         } catch (SQLException e) {

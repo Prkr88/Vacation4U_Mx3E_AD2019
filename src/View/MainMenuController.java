@@ -64,6 +64,7 @@ public class MainMenuController extends Controller {
         ArrayList<ArrayList<String>> resultSetList = null;
         SelectApp selectApp = new SelectApp();
         resultSetList = selectApp.selectVacationRequest(Main.signedUserName);
+        Main.approveMode = 0;
         FlightReqController fdc = new FlightReqController();
         fdc.setRequestList(resultSetList);
         fdc.showTable();

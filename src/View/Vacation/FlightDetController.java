@@ -1,6 +1,8 @@
 package View.Vacation;
 
 import Controller.Controller;
+import Model.DeleteApp;
+import Model.InsertApp;
 import Model.Model;
 import View.Main;
 import View.ScreensController;
@@ -30,7 +32,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
+import java.util.Date;
+import java.text.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,9 +71,12 @@ public class FlightDetController extends Controller implements Initializable{
         fList.clear();
         for (int i=0; i<flightsList.size();i++){
             int iVacID = Integer.parseInt((flightsList.get(i)).get(0));
-            Flight f = new Flight(iVacID, (flightsList.get(i)).get(2), (flightsList.get(i)).get(3),
-                    (flightsList.get(i)).get(10),Integer.parseInt((flightsList.get(i)).get(12)),(flightsList.get(i)).get(11),(flightsList.get(i)).get(7),(flightsList.get(i)).get(8),Integer.parseInt((flightsList.get(i)).get(4)),Integer.parseInt((flightsList.get(i)).get(5)),Integer.parseInt((flightsList.get(i)).get(6)),(flightsList.get(i)).get(1));
-            fList.add(f);
+            String sellerId = (flightsList.get(i)).get(1);
+            if (!sellerId.equals(Main.signedUserName)) {
+                Flight f = new Flight(iVacID, (flightsList.get(i)).get(2), (flightsList.get(i)).get(3),
+                        (flightsList.get(i)).get(10), Integer.parseInt((flightsList.get(i)).get(12)), (flightsList.get(i)).get(11), (flightsList.get(i)).get(7), (flightsList.get(i)).get(8), Integer.parseInt((flightsList.get(i)).get(4)), Integer.parseInt((flightsList.get(i)).get(5)), Integer.parseInt((flightsList.get(i)).get(6)), (flightsList.get(i)).get(1));
+                fList.add(f);
+            }
         }
 
         /*
@@ -126,10 +132,22 @@ public class FlightDetController extends Controller implements Initializable{
     @FXML
     private void checkOut(ActionEvent event){
         int vId = -1;
+        InsertApp insertApp = new InsertApp();
+        DeleteApp deleteApp = new DeleteApp();
+        String sellrID = "";
+        String buyerID = Main.signedUserName;
+        int price = 0;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        String date_s = dateFormat.format(date);
         for (int i = 0; i <fList.size() && vId == -1 ; i++) {
             if(fList.get(i).isChecked()){
                 vId = fList.get(i).getFDATA_id();
                 Main.toBuy = fList.get(i);
+                sellrID = fList.get(i).getFDATA_seller();
+                price = fList.get(i).getFDATA_cost();
+                insertApp.insertVacationRequest(vId,buyerID,sellrID);
+                //deleteApp.deleteOfferedVacations(vId);
             }
         }
         if(vId==-1){
