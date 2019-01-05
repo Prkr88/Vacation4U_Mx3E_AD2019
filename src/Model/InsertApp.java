@@ -78,7 +78,7 @@ public class InsertApp extends SqlApp{
     }
 
     public void insertSwapRequestVacation(int iVac_A, String sUser_A, int iVac_B, String sUser_B) {
-        String sql = "INSERT INTO SwapRequestsVacations() VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO SwapRequestsVacations(username_A, vID_A, vID_B, userName_B, confirm_A) VALUES(?,?,?,?,?)";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             //NOTE: validate that VACATION ID is inserted automatically
@@ -86,7 +86,7 @@ public class InsertApp extends SqlApp{
             pstmt.setString(2, iVac_A + "");
             pstmt.setString(3, iVac_B + "");
             pstmt.setString(4, sUser_B);
-            pstmt.setString(4, "W");
+            pstmt.setString(5, "W");
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());

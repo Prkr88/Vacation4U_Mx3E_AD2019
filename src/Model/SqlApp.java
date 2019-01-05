@@ -84,7 +84,7 @@ public class SqlApp {
     }
 
     public ArrayList<ArrayList<String>> displayVacations() {
-        String sql = "SELECT * FROM OfferedVacations WHERE seller_id=" +"'" + Main.signedUserName + "'";
+        String sql = "SELECT * FROM OfferedVacations";
         ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
         data = getArrayFromTable(sql);
         return data;

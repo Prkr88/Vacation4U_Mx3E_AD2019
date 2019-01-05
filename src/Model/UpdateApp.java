@@ -98,11 +98,10 @@ public class UpdateApp extends SqlApp {
 
     public void swapRequestUpdate () {
         String user_A = Main.signedUserName;
-        String sql = "UPDATE SwapRequestsVacations SET confirm_A = ? WHERE userName_A = " +
-                "'" + user_A + "'";
+        String sql = "UPDATE SwapRequestsVacations SET confirm_A = ? WHERE userName_A = " + "'" + user_A + "'";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(5, "Y");
+            pstmt.setString(1, "Y");
             pstmt.executeUpdate();
 
         } catch (SQLException e) {

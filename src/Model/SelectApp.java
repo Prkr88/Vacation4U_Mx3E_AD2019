@@ -75,14 +75,17 @@ public class SelectApp extends SqlApp{
         return data;
     }
 
-    public String selectSwapConfirmation() {
+    public String[] selectSwapConfirmation() {
         String sql = "SELECT * FROM SwapRequestsVacations WHERE userName_B=" + "'" + Main.signedUserName + "'";
-        String res;
-
+        String[] res = new String[5];
         try (Connection conn = this.connect();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)) {
-            res = rs.getString("confirm_A");
+            res[0] = rs.getString("userName_A");
+            res[1] = rs.getString("vID_A");
+            res[2] = rs.getString("vID_B");
+            res[3] = rs.getString("userName_B");
+            res[4] = rs.getString("confirm_A");
             return res;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -92,8 +95,8 @@ public class SelectApp extends SqlApp{
     }
 
     public String[] selectSwapRequestVacation() {
-        String sql = "SELECT * FROM SwapOfferedVacations WHERE userName_A=" + "'" + Main.signedUserName + "'";
-        String[] res = new String[5];
+        String sql = "SELECT * FROM SwapRequestsVacations WHERE userName_A=" + "'" + Main.signedUserName + "'";
+        String[] res = new String[2];
 
         try (Connection conn = this.connect();
              Statement stmt  = conn.createStatement();
@@ -106,6 +109,13 @@ public class SelectApp extends SqlApp{
             int i;
         }
         return null;
+    }
+
+    public ArrayList<ArrayList<String>> selectSwapRequests(){
+        String sql = "SELECT * FROM OfferedVacations";
+        ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+        data = getArrayFromTable(sql);
+        return data;
     }
 
     public ArrayList<ArrayList<String>> selectSwapVacation(){

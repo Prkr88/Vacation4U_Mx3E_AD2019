@@ -67,20 +67,8 @@ public class MainMenuController extends Controller {
 
     @FXML
     private void SwapVacation (ActionEvent event) throws IOException {
-        //SwapVacationsController svc = new SwapVacationsController();
-        //svc.initSwapScreen();
         super.myController.setScreen(Main.screenSwapVacationID);
     }
-
-/*
-    private void initSwapScreen() {
-        SelectApp selectApp = new SelectApp();
-        resultSetList = selectApp.selectOfferedVacation(date1, date2, price, dest);
-        FlightDetController fdc = new FlightDetController();
-        fdc.setFlightList(resultSetList);
-        fdc.showTable();
-    }
-*/
 
     @FXML
     public void getRequests(ActionEvent event) throws IOException {

@@ -80,11 +80,14 @@ public class SwapVacationsController extends Controller implements Initializable
 
     public void setFlightList(ArrayList<ArrayList<String>> flightsList) {
         this.fList.clear();
-        for (int i=0; i<flightsList.size();i++){
+        for (int i=0; i<flightsList.size();i++) {
             int iVacID = Integer.parseInt((flightsList.get(i)).get(0));
-            Flight f = new Flight(iVacID, (flightsList.get(i)).get(2), (flightsList.get(i)).get(3),
-                    (flightsList.get(i)).get(10),Integer.parseInt((flightsList.get(i)).get(12)),(flightsList.get(i)).get(11),(flightsList.get(i)).get(7),(flightsList.get(i)).get(8),Integer.parseInt((flightsList.get(i)).get(4)),Integer.parseInt((flightsList.get(i)).get(5)),Integer.parseInt((flightsList.get(i)).get(6)),(flightsList.get(i)).get(1));
-            this.fList.add(f);
+            String swapperId = (flightsList.get(i).get(1));
+            if (!swapperId.equals(Main.signedUserName)) {
+                Flight f = new Flight(iVacID, (flightsList.get(i)).get(2), (flightsList.get(i)).get(3),
+                        (flightsList.get(i)).get(10), Integer.parseInt((flightsList.get(i)).get(12)), (flightsList.get(i)).get(11), (flightsList.get(i)).get(7), (flightsList.get(i)).get(8), Integer.parseInt((flightsList.get(i)).get(4)), Integer.parseInt((flightsList.get(i)).get(5)), Integer.parseInt((flightsList.get(i)).get(6)), (flightsList.get(i)).get(1));
+                this.fList.add(f);
+            }
         }
     }
 
@@ -157,7 +160,20 @@ public class SwapVacationsController extends Controller implements Initializable
             System.out.println("flight not selected");
         }
         else{
-            model.swapInsertRequest(iVacID_A, sUser_A, iVacID_B, sUser_B);
+            try {
+                model.swapInsertRequest(iVacID_A, sUser_A, iVacID_B, sUser_B);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText(null);
+                alert.setContentText("Swapping request was sent successfully!");
+                alert.showAndWait();
+                Stage stage = (Stage) swap_mine.getScene().getWindow();
+                stage.close();
+                super.myController.setScreen(Main.screenMainMenuID);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -165,7 +181,7 @@ public class SwapVacationsController extends Controller implements Initializable
     public void displayVacations(ActionEvent event) throws IOException {
         ArrayList<ArrayList<String>> result = model.displayVacation();
         FlightDetController fdc = new FlightDetController();
-        fdc.setFlightList(result);
+        fdc.setFlightList(result, ViewMode.mine, "");
         fdc.showTable();
     }
 

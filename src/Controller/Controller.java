@@ -60,9 +60,9 @@ public class Controller implements ControlledScreen {
                 pleaseEnter.setText("Login Success");
                 pleaseEnter.setFill(Color.GREEN);
                 Main.signedUserName = textField_UserName.getText();
-                //checkSwapRequests();
-                //checkSwapConfirmation();
                 showMainMenu();
+                checkSwapRequests();
+                checkSwapConfirmation();
             }catch(IOException e){
                 e.printStackTrace();
             }
@@ -80,6 +80,7 @@ public class Controller implements ControlledScreen {
             if (res[0] != null && res[1] != null) {
                 String otherUserID = res[0];
                 String otherUserVac = res[1];
+                myController.setScreen(Main.screenSwapRequestID);
             }
         }
         catch (Exception e) {
@@ -90,9 +91,25 @@ public class Controller implements ControlledScreen {
     public void checkSwapConfirmation() {
         try {
             SelectApp sa = new SelectApp();
-            String res = sa.selectSwapConfirmation();
-            if (res != null) {
-                String confirm_A = res;
+            String res[] = new String[5];
+            res = sa.selectSwapConfirmation();
+            if (res[4].equals("Y")) {
+                String user_A = res[0];
+                String vacID_A = res[1];
+                String vacID_B = res[2];
+                String user_B = res[3];
+                int iVacID_A = Integer.parseInt(vacID_A);
+                int iVacID_B = Integer.parseInt(vacID_B);
+                model.deleteOfferedVacations(iVacID_A);
+                model.deleteOfferedVacations(iVacID_B);
+                DeleteApp da = new DeleteApp();
+                da.deleteAfterSwap(iVacID_A, iVacID_B);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText(null);
+                alert.setContentText("Your Vacations have been changed successfully!");
+                alert.showAndWait();
+
             }
         }
         catch (Exception e) {

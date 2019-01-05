@@ -10,35 +10,35 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="799.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Vacation.SwapVacationsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="681.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Vacation.SwapVacationsController">
     <children>
-        <ScrollPane layoutX="-2.0" prefHeight="400.0" prefWidth="800.0">
+        <ScrollPane layoutX="-2.0" prefHeight="400.0" prefWidth="682.0">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                     <children>
-                        <TableView fx:id="flightTable" layoutX="4.0" layoutY="3.0" prefHeight="394.0" prefWidth="800.0">
+                        <TableView fx:id="flightTable" layoutX="4.0" layoutY="3.0" prefHeight="394.0" prefWidth="682.0">
                             <columns>
                                 <TableColumn fx:id="tb_choose" prefWidth="55.0" text="Choose">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="FDATA_check" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="tb_f_departure" prefWidth="64.0" text="departure">
+                                <TableColumn fx:id="tb_f_departure" prefWidth="84.0" text="departure">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="FDATA_check" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="tb_f_return" prefWidth="60.20001220703125" text="return">
+                                <TableColumn fx:id="tb_f_return" prefWidth="65.0" text="return">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="FDATA_f_return" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="tb_destination" prefWidth="75.0" text="destination">
+                                <TableColumn fx:id="tb_destination" prefWidth="76.0" text="destination">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="FDATA_destination" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="tb_cost" prefWidth="52.20001220703125" text="cost">
+                                <TableColumn fx:id="tb_cost" prefWidth="57.0" text="cost">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="FDATA_cost" />
                                     </cellValueFactory>
@@ -48,37 +48,37 @@
                                 <!--<PropertyValueFactory property="FDATA_id"/>-->
                                 <!--</cellValueFactory>-->
                                 <!--</TableColumn>-->
-                                <TableColumn fx:id="tb_back" prefWidth="74.79998779296875" text="flight back">
+                                <TableColumn fx:id="tb_back" prefWidth="63.0" text="flight back">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="FDATA_back" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="tb_f_company" prefWidth="73.79998779296875" text="flight com">
+                                <TableColumn fx:id="tb_f_company" prefWidth="84.0" text="flight com">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="FDATA_company" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="tb_type" prefWidth="57.4000244140625" text="type">
+                                <TableColumn fx:id="tb_type" prefWidth="50.0" text="type">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="FDATA_vacType" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="tb_A" prefWidth="23.0" text="A">
+                                <TableColumn fx:id="tb_A" minWidth="4.0" prefWidth="24.0" text="A">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="FDATA_A" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="tb_K" prefWidth="23.0" text="K">
+                                <TableColumn fx:id="tb_K" minWidth="3.0" prefWidth="25.0" text="K">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="FDATA_K" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="tb_B" prefWidth="23.0" text="B">
+                                <TableColumn fx:id="tb_B" minWidth="1.0" prefWidth="30.0" text="B">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="FDATA_B" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="tb_seller" prefWidth="52.0" text="Seller">
+                                <TableColumn fx:id="tb_seller" prefWidth="62.0" text="Seller">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="FDATA_seller" />
                                     </cellValueFactory>
@@ -89,15 +89,21 @@
                 </AnchorPane>
             </content>
         </ScrollPane>
-        <Button fx:id="swap_mine" layoutX="63.0" layoutY="444.0" mnemonicParsing="false" onAction="#requestSwap" prefHeight="25.0" prefWidth="104.0" text="Swap with mine" />
-        <Button fx:id="cancel" layoutX="215.0" layoutY="444.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="25.0" prefWidth="104.0" text="Cancel" />
-      <Button fx:id="addmine" layoutX="594.0" layoutY="444.0" mnemonicParsing="false" onAction="#addMine" prefHeight="25.0" prefWidth="77.0" text="Add mine" />
-      <TextField fx:id="vac_id" layoutX="464.0" layoutY="444.0" prefHeight="25.0" prefWidth="118.0" promptText="Vacation ID" />
-      <Text fill="WHITE" layoutX="374.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Couldn't find a vacation you want? Offer Yours Now!" wrappingWidth="314.8034362792969">
+        <Button fx:id="swap_mine" layoutX="166.0" layoutY="457.0" mnemonicParsing="false" onAction="#requestSwap" prefHeight="25.0" prefWidth="93.0" text="Request Swap" />
+        <Button fx:id="cancel" layoutX="327.0" layoutY="482.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="25.0" prefWidth="54.0" text="Cancel" />
+      <Button fx:id="addmine" layoutX="593.0" layoutY="457.0" mnemonicParsing="false" onAction="#addMine" prefHeight="25.0" prefWidth="74.0" text="Offer" />
+      <TextField fx:id="vac_id" layoutX="25.0" layoutY="457.0" prefHeight="25.0" prefWidth="135.0" promptText="Your Vacation ID" />
+      <Text fill="#ff6161" layoutX="374.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Couldn't find a vacation you want? Offer yours now!" wrappingWidth="314.8034362792969">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Text>
-      <Button layoutX="374.0" layoutY="444.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" onAction="#displayVacations" text="View All" />
+      <Button layoutX="286.0" layoutY="432.0" mnemonicParsing="false" onAction="#displayVacations" prefHeight="25.0" prefWidth="135.0" text="View All My Vacations" />
+      <Text fill="#54ff2e" layoutX="17.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Found your desired vacation? Swap with yours now!" wrappingWidth="314.8034362792969">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Text>
+      <TextField layoutX="450.0" layoutY="457.0" prefHeight="25.0" prefWidth="135.0" promptText="Your Vacation ID" />
     </children>
 </AnchorPane>

@@ -38,6 +38,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+enum ViewMode {all, mine, specific, others;}
+
 public class FlightDetController extends Controller implements Initializable{
 
     public static Controller myController;
@@ -66,12 +68,33 @@ public class FlightDetController extends Controller implements Initializable{
     private static ObservableList<Flight> fList = FXCollections.observableArrayList();
     public  Stage stage = new Stage();
 
-    public void setFlightList(ArrayList<ArrayList<String>> flightsList) {
+    //mode 0 - show all vacations
+    //mode 1 - show only my vacations
+    //mode 2 - show only other peoples vacations
+
+    public void setFlightList(ArrayList<ArrayList<String>> flightsList, ViewMode vm, String otherUserVacID) {
         fList.clear();
         for (int i=0; i<flightsList.size();i++){
             int iVacID = Integer.parseInt((flightsList.get(i)).get(0));
             String sellerId = (flightsList.get(i)).get(1);
-            if (!sellerId.equals(Main.signedUserName)) {
+            String vacId = (flightsList.get(i)).get(0);
+
+            if (vm == ViewMode.all) {
+                Flight f = new Flight(iVacID, (flightsList.get(i)).get(2), (flightsList.get(i)).get(3),
+                        (flightsList.get(i)).get(10), Integer.parseInt((flightsList.get(i)).get(12)), (flightsList.get(i)).get(11), (flightsList.get(i)).get(7), (flightsList.get(i)).get(8), Integer.parseInt((flightsList.get(i)).get(4)), Integer.parseInt((flightsList.get(i)).get(5)), Integer.parseInt((flightsList.get(i)).get(6)), (flightsList.get(i)).get(1));
+                fList.add(f);
+            }
+            if (vm == ViewMode.mine && sellerId.equals(Main.signedUserName)) {
+                Flight f = new Flight(iVacID, (flightsList.get(i)).get(2), (flightsList.get(i)).get(3),
+                        (flightsList.get(i)).get(10), Integer.parseInt((flightsList.get(i)).get(12)), (flightsList.get(i)).get(11), (flightsList.get(i)).get(7), (flightsList.get(i)).get(8), Integer.parseInt((flightsList.get(i)).get(4)), Integer.parseInt((flightsList.get(i)).get(5)), Integer.parseInt((flightsList.get(i)).get(6)), (flightsList.get(i)).get(1));
+                fList.add(f);
+            }
+            if (vm == ViewMode.others && !sellerId.equals(Main.signedUserName)) {
+                Flight f = new Flight(iVacID, (flightsList.get(i)).get(2), (flightsList.get(i)).get(3),
+                        (flightsList.get(i)).get(10), Integer.parseInt((flightsList.get(i)).get(12)), (flightsList.get(i)).get(11), (flightsList.get(i)).get(7), (flightsList.get(i)).get(8), Integer.parseInt((flightsList.get(i)).get(4)), Integer.parseInt((flightsList.get(i)).get(5)), Integer.parseInt((flightsList.get(i)).get(6)), (flightsList.get(i)).get(1));
+                fList.add(f);
+            }
+            if (vm == ViewMode.specific && vacId.equals(otherUserVacID)) {
                 Flight f = new Flight(iVacID, (flightsList.get(i)).get(2), (flightsList.get(i)).get(3),
                         (flightsList.get(i)).get(10), Integer.parseInt((flightsList.get(i)).get(12)), (flightsList.get(i)).get(11), (flightsList.get(i)).get(7), (flightsList.get(i)).get(8), Integer.parseInt((flightsList.get(i)).get(4)), Integer.parseInt((flightsList.get(i)).get(5)), Integer.parseInt((flightsList.get(i)).get(6)), (flightsList.get(i)).get(1));
                 fList.add(f);

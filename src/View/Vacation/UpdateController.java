@@ -69,7 +69,7 @@ public class UpdateController extends Controller{
     public void displayVacations(ActionEvent event) throws IOException {
         ArrayList<ArrayList<String>> result = model.displayVacation();
         FlightDetController fdc = new FlightDetController();
-        fdc.setFlightList(result);
+        fdc.setFlightList(result, ViewMode.mine, "");
         fdc.showTable();
     }
 

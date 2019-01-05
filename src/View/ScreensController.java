@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import Controller.*;
+import View.Vacation.SwapRequestController;
 import View.Vacation.SwapVacationsController;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
