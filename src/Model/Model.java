@@ -52,8 +52,10 @@ public class Model {
 
     /* VACATION */
 
-    public void addVacation(int iAdultAmount,int iChildAmount,int iBabyAmount, int iTotalPrice, String strDestination, String strAirline, String strDepDate, String strArrivalDate,String strVacType, String sLodge, String sReturn, String strLuggageDetails) {
-        insertApp.insertVacation(iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate,strVacType, sLodge, sReturn, strLuggageDetails);
+    public int addVacation(int iAdultAmount,int iChildAmount,int iBabyAmount, int iTotalPrice, String strDestination, String strAirline, String strDepDate, String strArrivalDate,String strVacType, String sLodge, String sReturn, String strLuggageDetails) {
+        int opp = 0;
+        opp = insertApp.insertVacation(iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate,strVacType, sLodge, sReturn, strLuggageDetails);
+        return opp;
     }
 
     public ArrayList<ArrayList<String>> displayVacation() { return selectApp.displayVacations(); }

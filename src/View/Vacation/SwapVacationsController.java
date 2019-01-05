@@ -82,9 +82,12 @@ public class SwapVacationsController extends Controller implements Initializable
         this.fList.clear();
         for (int i=0; i<flightsList.size();i++){
             int iVacID = Integer.parseInt((flightsList.get(i)).get(0));
-            Flight f = new Flight(iVacID, (flightsList.get(i)).get(2), (flightsList.get(i)).get(3),
-                    (flightsList.get(i)).get(10),Integer.parseInt((flightsList.get(i)).get(12)),(flightsList.get(i)).get(11),(flightsList.get(i)).get(7),(flightsList.get(i)).get(8),Integer.parseInt((flightsList.get(i)).get(4)),Integer.parseInt((flightsList.get(i)).get(5)),Integer.parseInt((flightsList.get(i)).get(6)),(flightsList.get(i)).get(1));
-            this.fList.add(f);
+            String swapperId = (flightsList.get(i)).get(1);
+            if(!swapperId.equals(Main.signedUserName)) {
+                Flight f = new Flight(iVacID, (flightsList.get(i)).get(2), (flightsList.get(i)).get(3),
+                        (flightsList.get(i)).get(10), Integer.parseInt((flightsList.get(i)).get(12)), (flightsList.get(i)).get(11), (flightsList.get(i)).get(7), (flightsList.get(i)).get(8), Integer.parseInt((flightsList.get(i)).get(4)), Integer.parseInt((flightsList.get(i)).get(5)), Integer.parseInt((flightsList.get(i)).get(6)), (flightsList.get(i)).get(1));
+                this.fList.add(f);
+            }
         }
     }
 

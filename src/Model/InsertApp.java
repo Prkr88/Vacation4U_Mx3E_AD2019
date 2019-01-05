@@ -1,6 +1,7 @@
 package Model;
 
 import View.Main;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -37,7 +38,7 @@ public class InsertApp extends SqlApp{
         }
     }
 
-    public void insertVacation(int iAdultAmount, int iChildAmount, int iBabyAmount, int iTotalPrice, String strDestination, String strAirline, String strDepDate, String strArrivalDate, String strVacType, String sLodge, String sReturn, String strLuggageDetails) {
+    public int insertVacation(int iAdultAmount, int iChildAmount, int iBabyAmount, int iTotalPrice, String strDestination, String strAirline, String strDepDate, String strArrivalDate, String strVacType, String sLodge, String sReturn, String strLuggageDetails) {
         String sqlRead = "SELECT * FROM OfferedVacations ORDER BY vacation_id DESC LIMIT 1";
         String thisID = null;
         try (Connection conn = this.connect();
@@ -48,9 +49,19 @@ public class InsertApp extends SqlApp{
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        String sqlReadSold = "SELECT * FROM SoldVacations ORDER BY vacation_id DESC LIMIT 1";
+        String otherID = null;
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sqlReadSold)){
+             otherID = rs.getString("vacation_id");
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
         int last_id;
         if (thisID != null)
-            last_id = Integer.parseInt(thisID)+1;
+            last_id = Math.max(Integer.parseInt(thisID),Integer.parseInt(otherID))+1;
         else
             last_id = 1;
         String sql = "INSERT INTO OfferedVacations(vacation_id,seller_id,start_date,end_date,num_adult_tickets,num_kid_tickets,num_baby_tickets,flight_company,vacation_type,accom_included,destination,flight_back_included,price,luggage_details) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -74,7 +85,9 @@ public class InsertApp extends SqlApp{
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            return 0;
         }
+        return 1;
     }
 
     public void insertSwapRequestVacation(int iVac_A, String sUser_A, int iVac_B, String sUser_B) {
