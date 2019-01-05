@@ -160,7 +160,7 @@ public class FlightDetController extends Controller implements Initializable{
             alert.setHeaderText(null);
             alert.setContentText("Order Request Sent Successfuly!");
             alert.showAndWait();
-            Main.staticController.setScreen(Main.screenPaymentMethodID);
+            Main.staticController.setScreen(Main.screenMainMenuID);
         }
     }
 
