@@ -39,7 +39,7 @@
                 </AnchorPane>
             </content>
         </ScrollPane>
-        <Button fx:id="Aprove" layoutX="300.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" onAction="#checkOut" text="Aprove Selected" />
+        <Button fx:id="approve" layoutX="300.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" onAction="#checkOut" text="Approve Selected" />
         <Button fx:id="cancel" layoutX="650.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" onAction="#closeTable" text="cancel" />
     </children>
 </AnchorPane>

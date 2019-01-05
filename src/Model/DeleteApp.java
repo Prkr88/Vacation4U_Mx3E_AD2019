@@ -38,15 +38,15 @@ public class DeleteApp extends SqlApp {
      * Deletes Vacation Request if a Buyer regrets
      *
      * @param vacationID to delete
-     * @param userID     of user name.
+     * @param buyerID     of user name.
      */
-    public void deleteVacationRequest(int vacationID, String userID) {
-        String sql = "DELETE FROM VacationsRequests WHERE vacation_id = ? AND user_id= ?";
+    public void deleteVacationRequest(int vacationID, String buyerID) {
+        String sql = "DELETE FROM VacationsRequests WHERE vacation_id = ? AND buyer_id= ?";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             // set the corresponding param
             pstmt.setInt(1, vacationID);
-            pstmt.setString(2, userID);
+            pstmt.setString(2, buyerID);
             // execute the delete statement
             pstmt.executeUpdate();
         } catch (SQLException e) {

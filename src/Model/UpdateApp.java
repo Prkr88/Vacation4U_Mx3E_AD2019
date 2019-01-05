@@ -111,7 +111,7 @@ public class UpdateApp extends SqlApp {
     }
 
 
-    public void updateVacation(int vacationID, int numAdultTickets, int numKidTickets, int numBabyTickets, int totalPrice, String destination, String flightCompany, String startDate, String endDate, String vacationType, String accommodationIncluded, String flightBackIncluded, String sLuggageDetails) {
+       public void updateVacation(int vacationID, int numAdultTickets, int numKidTickets, int numBabyTickets, int totalPrice, String destination, String flightCompany, String startDate, String endDate, String vacationType, String accommodationIncluded, String flightBackIncluded, String sLuggageDetails) {
         String oldStartDate = "";
         String oldEndDate = "";
         int oldNumAdult = 0;
@@ -214,24 +214,40 @@ public class UpdateApp extends SqlApp {
         }
     }
 
-    public void updateAcceptedBySeller(int vacationID, String sellerID) {
-        String sql = "UPDATE VacationsRequests SET accepted_by_seller = ? WHERE vacation_id = " +
-                "'" + vacationID + "' AND seller_id = " + "'" + sellerID + "'";
-        try (Connection conn = this.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, 1);
-            pstmt.executeUpdate();
 
+    public void updateAproved(int vacationID,String buyerId) {
+        String sqlSet = "UPDATE VacationsRequests SET accepted_by_seller = ? WHERE vacation_id = ? AND buyer_id="+"'"+buyerId+"'";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sqlSet)) {
+            // set the corresponding param
+            pstmt.setInt(1, 1);
+                pstmt.setInt(2, vacationID);
+            // update Parameters
+            pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
+    public void updateDeclinedRequest(int vacationID) {
+        String sqlSet = "UPDATE VacationsRequests SET accepted_by_seller = ? WHERE vacation_id = ? ";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sqlSet)) {
+            // set the corresponding param
+            pstmt.setInt(1, -1);
+            pstmt.setInt(2, vacationID);
+            // update Parameters
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
-//    public static void main(String[] args) {
-//        UpdateApp uA = new UpdateApp();
-//        uA.updateAcceptedBySeller(1, "Matan");
-//    }
-
+/*
+    public static void main(String[] args) {
+        UpdateApp uA = new UpdateApp();
+        uA.upadateVacationDetalis(1,"3-3-3","3-4-3",2,1,0,"varna","El-Al","pleasure",1,1,2000);
+    }
+*/
 
 }

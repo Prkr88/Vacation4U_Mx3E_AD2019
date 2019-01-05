@@ -1,5 +1,6 @@
 package View;
 
+        import Controller.Controller;
         import View.Vacation.Flight;
         import View.Vacation.FlightDetController;
         import View.Vacation.Request;
@@ -65,6 +66,8 @@ public class Main extends Application {
     public static Flight toBuy;
     public static Flight toSwap;
     public static Request toAprove;
+    public static Controller loginController;
+    public static int approveMode = 1; //0 for request ,1 for approve payment ,2 declined
 
     @Override
     public void start(Stage primaryStage) throws Exception {

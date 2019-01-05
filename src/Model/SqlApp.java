@@ -85,7 +85,13 @@ public class SqlApp {
 
     public ArrayList<ArrayList<String>> displayVacations() {
         String sql = "SELECT * FROM OfferedVacations WHERE seller_id=" +"'" + Main.signedUserName + "'";
+        ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+        data = getArrayFromTable(sql);
+        return data;
+    }
 
+    public ArrayList<ArrayList<String>> getArrayFromTable(String sql)
+    {
         try(Connection conn = this.connect();
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sql)) {
@@ -104,6 +110,8 @@ public class SqlApp {
             System.out.println(e.getMessage());
         }
         return null;
+
+
     }
 
     public ArrayList<ArrayList<String>> displaySwapVacations() {

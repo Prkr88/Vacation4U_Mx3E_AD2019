@@ -123,15 +123,17 @@ public class InsertApp extends SqlApp{
 
     /**inserts new user to Users Table
      * @param vacationID vacationID Requested
-     * @param userID userID of the user requested
+     * @param buyerID userID of the user requested
      */
-    public void insertVacationRequest(int vacationID , String userID) {
-        String sql = "INSERT INTO VacationsRequests(vacation_id,user_id) VALUES(?,?)";
+    public void insertVacationRequest(int vacationID , String buyerID,String sellerID) {
+        String sql = "INSERT INTO VacationsRequests(vacation_id,buyer_id,seller_id,accepted_by_seller) VALUES(?,?,?,?)";
         if(vacationRequestQueue(vacationID)<20) {
             try (Connection conn = this.connect();
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setInt(1, vacationID);
-                pstmt.setString(2, userID);
+                pstmt.setString(2, buyerID);
+                pstmt.setString(3, sellerID);
+                pstmt.setInt(4, 0);
                 pstmt.executeUpdate();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -139,6 +141,24 @@ public class InsertApp extends SqlApp{
         }
         else{
             System.out.println("Cannot add more requests for this Vacation.");
+        }
+    }
+
+
+    public void insertToSold(int vacationID , String buyerId,String sellerId,String date_s, int price) {
+        String sql = "INSERT INTO SoldVacations(vacation_id ,buyer_id,seller_id,date, price) VALUES(?,?,?,?,?)";
+        if(vacationRequestQueue(vacationID)<20) {
+            try (Connection conn = this.connect();
+                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setInt(1, vacationID);
+                pstmt.setString(2, buyerId);
+                pstmt.setString(3, sellerId);
+                pstmt.setString(4, date_s);
+                pstmt.setInt(5, price);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 

@@ -2,15 +2,19 @@ package Controller;
 
 import View.Main;
 import Model.*;
+import Model.Model;
 import View.ScreensController;
+import View.Vacation.FlightReqController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Controller class responsible for communicating between the View and Model classes
@@ -36,7 +40,9 @@ public class Controller implements ControlledScreen {
     private ImageView logoImage;
 
     private Model model = new Model();
-
+    private int checkSold = 0;
+    private int checktoPay = 0;
+    private int checkDeclined = 0;
     @Override
     public void setScreenParent(ScreensController screenParent) {
         myController = screenParent;
@@ -101,12 +107,79 @@ public class Controller implements ControlledScreen {
     }
 
     /* function listens to open the Create Form */
-    public void showMainMenu() throws IOException { myController.setScreen(View.Main.screenMainMenuID); }
+    public void showMainMenu() throws IOException {
+        myController.setScreen(View.Main.screenMainMenuID);
+        Main.loginController = this;
+        checkVactionsUpdate();
+    }
 
     /* function listens to open the Main Menu */
     public void showLoginScreen() throws IOException{
         Main.signedUserName="";
         myController.setScreen(Main.screenLoginID);
+    }
+
+    /* checks for sold vacations */
+    public void checkVactionsUpdate() throws IOException {
+        ArrayList<ArrayList<String>> resultSetListApprovePayment = null;
+        ArrayList<ArrayList<String>> resultSetListToPay = null;
+        ArrayList<ArrayList<String>> resultSetListDeclinedRequests = null;
+        ArrayList<ArrayList<String>> resultSetListSwapR_A = null;
+        ArrayList<ArrayList<String>> resultSetListSwapR_B = null;
+        SelectApp selectApp = new SelectApp();
+        DeleteApp deleteApp = new DeleteApp();
+        FlightReqController frc = new FlightReqController();
+        if (this.checkSold == 0)
+        {
+            this.checkSold = 1;
+            resultSetListApprovePayment = selectApp.selectApprovePayVacations();
+            if(resultSetListApprovePayment.size() > 0) {
+                showMessage("Appending User Confirmation", "One or more of your Vacations Awating Payment. \nPlease confirm cash Transfer to complete the deal. ");
+                frc.setRequestList(resultSetListApprovePayment);
+                frc.showTable();
+            }
+        }
+        if (this.checktoPay == 0)
+        {
+            resultSetListToPay = selectApp.selectToPayVacations();
+            this.checktoPay = 1 ;
+            if(resultSetListToPay.size() > 0) {
+                String seller_id = "";
+                String vId_s = resultSetListToPay.get(0).get(0);
+                int vId = Integer.parseInt(vId_s);
+                seller_id = selectApp.selectUserByVID(vId);
+                if (seller_id != null) {
+                    showMessage("Paymet needed", seller_id + "\nhas approved a deal with you.\nPlease Transfer him payment in cash to complete the sale");
+                }
+            }
+        }
+        if (this.checkDeclined == 0)
+        {
+            resultSetListDeclinedRequests = selectApp.selectDeclinedRequests();
+            this.checkDeclined = 1 ;
+            if(resultSetListDeclinedRequests.size() > 0) {
+                String seller_id = "";
+                for (int i = 0; i <resultSetListDeclinedRequests.size() ; i++) {
+                    String vId_s = resultSetListDeclinedRequests.get(i).get(0);
+                    int vId = Integer.parseInt(vId_s);
+                    seller_id = resultSetListDeclinedRequests.get(i).get(1);
+                    if (seller_id != null) {
+                        showMessage("Request Declined", "UsesId: "+seller_id + "\nhas Declined your offer.\non vacation #"+vId_s +"\nGood luck next time!");
+                        deleteApp.deleteVacationRequest(vId,Main.signedUserName);
+                    }
+                }
+
+            }
+        }
+
+    }
+    /* checks for sold vacations */
+    public void showMessage(String title,String msg) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 
     @FXML
