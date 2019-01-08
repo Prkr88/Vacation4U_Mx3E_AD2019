@@ -106,17 +106,6 @@ public class DeleteApp extends SqlApp {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        String sql2 = "DELETE FROM SwapRequestsVacations WHERE vID_A= ? AND vID_B= ?";
-        try (Connection conn = this.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql2)) {
-            // set the corresponding param
-            pstmt.setInt(1, vID_A);
-            pstmt.setInt(2, vID_B);
-            // execute the delete statement
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
         String sql3 = "DELETE FROM VacationsRequests WHERE vacation_id= ?";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql3)) {
@@ -137,6 +126,22 @@ public class DeleteApp extends SqlApp {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void deleteAfterSwapConfirmation(int vID_A, int vID_B) {
+        String sql2 = "DELETE FROM SwapRequestsVacations WHERE vID_A= ? AND vID_B= ?";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql2)) {
+            // set the corresponding param
+            pstmt.setInt(1, vID_A);
+            pstmt.setInt(2, vID_B);
+            // execute the delete statement
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
     }
 
 

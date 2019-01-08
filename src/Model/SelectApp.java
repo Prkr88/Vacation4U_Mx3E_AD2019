@@ -96,13 +96,16 @@ public class SelectApp extends SqlApp{
 
     public String[] selectSwapRequestVacation() {
         String sql = "SELECT * FROM SwapRequestsVacations WHERE userName_A=" + "'" + Main.signedUserName + "'";
-        String[] res = new String[2];
+        String[] res = new String[5];
 
         try (Connection conn = this.connect();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)) {
-            res[0] = rs.getString("vID_B");
-            res[1] = rs.getString("userName_B");
+            res[0] = rs.getString("userName_A");
+            res[1] = rs.getString("vID_A");
+            res[2] = rs.getString("vID_B");
+            res[3] = rs.getString("userName_B");
+            res[4] = rs.getString("confirm_A");
             return res;
         } catch (SQLException e) {
             System.out.println(e.getMessage());

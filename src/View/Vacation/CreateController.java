@@ -115,10 +115,27 @@ public class CreateController extends Controller implements Initializable {
             String strChildAmount = TXTBX_child_amount.getText();
             String strBabyAmount = TXTBX_baby_amount.getText();
             String strTotalPrice = TXTBX_price.getText();
-            int iAdultAmount = Integer.parseInt(strAdultAmount);
-            int iChildAmount = Integer.parseInt(strChildAmount);
-            int iBabyAmount = Integer.parseInt(strBabyAmount);
-            int iTotalPrice = Integer.parseInt(strTotalPrice);
+            int iAdultAmount = 0, iChildAmount = 0, iBabyAmount = 0, iTotalPrice = 0;
+            try {
+                iAdultAmount = Integer.parseInt(strAdultAmount);
+            } catch (Exception e) {
+                iAdultAmount = 0;
+            }
+            try {
+                iChildAmount = Integer.parseInt(strChildAmount);
+            } catch (Exception e) {
+                iChildAmount = 0;
+            }
+            try {
+                iBabyAmount = Integer.parseInt(strBabyAmount);
+            } catch (Exception e) {
+                iBabyAmount = 0;
+            }
+            try {
+                iTotalPrice = Integer.parseInt(strTotalPrice);
+            } catch (Exception e) {
+                iTotalPrice = 0;
+            }
             String strDepDD = TXTBX_departure_DD.getText();
             String strDepMM = TXTBX_departure_MM.getText();
             String strDepYYYY = TXTBX_departure_YYYY.getText();
@@ -141,18 +158,23 @@ public class CreateController extends Controller implements Initializable {
                 sReturn = "yes";
             else
                 sReturn = "no";
-            //String strVacType = "beach";
-            String strVacType = comboType.getValue();
+            String strVacType = "";
+            try { strVacType = comboType.getValue(); } catch (Exception e) { strVacType = "other"; }
+            if (strVacType == null)
+                 strVacType = "other";
+            if (strVacType.equals(""))
+                strVacType = "other";
             String strLuggageDetails = TXTBX_luggage_details.getText();
-            int opp = 0;
-            opp = model.addVacation(iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, strVacType, sLodge, sReturn, strLuggageDetails);
-            if (opp == 0) {
+            if ((iAdultAmount == 0 && iChildAmount == 0 && iBabyAmount == 0) || iTotalPrice == 0 || strDepDD.equals("") || strDepMM.equals("") || strDepYYYY.equals("")
+                    || strArriveDD.equals("") || strArriveMM.equals("") || strArriveYYYY.equals("") || strAirline.equals("")) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Input Error");
                 alert.setHeaderText(null);
-                alert.setContentText("Please fill all the fields.");
+                alert.setContentText("Please fill obligated fields marked red.");
                 alert.showAndWait();
             } else {
+                int opp = 0;
+                opp = model.addVacation(iAdultAmount, iChildAmount, iBabyAmount, iTotalPrice, strDestination, strAirline, strDepDate, strArrivalDate, strVacType, sLodge, sReturn, strLuggageDetails);
                 try {
                     this.TXTBX_adult_amount.clear();
                     this.TXTBX_child_amount.clear();
@@ -174,21 +196,25 @@ public class CreateController extends Controller implements Initializable {
                     this.urbanImage.setVisible(false);
                     this.selectedType.setVisible(false);
                     this.comboType.setPromptText("-choose-");
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Input Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Your vacation has been successfully posted.");
+                    alert.showAndWait();
                     super.showMainMenu();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Input Error");
             alert.setHeaderText(null);
-            alert.setContentText("Please fill all the fields.\n\n(or unlock db if in debug)");
+            alert.setContentText("Please fill obligated fields marked red.\n\n(or unlock db if in debug mode)");
             alert.showAndWait();
         }
     }
-
 
     @FXML
     private void cancelAction(ActionEvent event) {

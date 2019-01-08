@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Optional;
 import View.User.PasswordInputDialog;
 
@@ -28,11 +29,7 @@ public class DeleteController extends Controller {
         alert.setHeaderText(null);
         alert.setContentText("Vacation Deleted Successfully");
         alert.showAndWait();
-        try {
-            super.showLoginScreen();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        super.myController.setScreen(Main.screenMainMenuID);
     } else {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Cancel");
@@ -47,6 +44,14 @@ public class DeleteController extends Controller {
     }
 
 }
+
+    @FXML
+    public void displayVacations(ActionEvent event) throws IOException {
+        ArrayList<ArrayList<String>> result = model.displayVacation();
+        FlightDetController fdc = new FlightDetController();
+        fdc.setFlightList(result, ViewMode.mine, "");
+        fdc.showTable(false);
+    }
 
     @FXML
     private void cancelAction(ActionEvent event) {

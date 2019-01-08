@@ -24,11 +24,7 @@ public class UpdateController extends Controller{
     @FXML
     private TextField TXTBX_baby_amount;
     @FXML
-    private TextField TXTBX_adult_price;
-    @FXML
-    private TextField TXTBX_child_price;
-    @FXML
-    private TextField TXTBX_baby_price;
+    private TextField TXTBX_price;
     @FXML
     private TextField TXTBX_destination;
     @FXML
@@ -70,7 +66,7 @@ public class UpdateController extends Controller{
         ArrayList<ArrayList<String>> result = model.displayVacation();
         FlightDetController fdc = new FlightDetController();
         fdc.setFlightList(result, ViewMode.mine, "");
-        fdc.showTable();
+        fdc.showTable(false);
     }
 
     @FXML
@@ -80,17 +76,13 @@ public class UpdateController extends Controller{
         String strAdultAmount = TXTBX_adult_amount.getText();
         String strChildAmount = TXTBX_child_amount.getText();
         String strBabyAmount = TXTBX_baby_amount.getText();
-        String strAdultPrice = TXTBX_adult_price.getText();
-        String strChildPrice = TXTBX_child_price.getText();
-        String strBabyPrice = TXTBX_baby_price.getText();
+        String strTotalPrice = TXTBX_price.getText();
         int iAdultAmount = 0, iChildAmount = 0, iBabyAmount = 0;
         int iAdultPrice = 0, iChildPrice = 0, iBabyPrice = 0;
         try { iAdultAmount = Integer.parseInt(strAdultAmount); } catch (Exception e) {}
         try { iChildAmount = Integer.parseInt(strChildAmount); } catch (Exception e) {}
         try { iBabyAmount = Integer.parseInt(strBabyAmount); } catch (Exception e) {}
-        try { iAdultPrice = Integer.parseInt(strAdultPrice); } catch (Exception e) {}
-        try { iChildPrice = Integer.parseInt(strChildPrice); } catch (Exception e) {}
-        try { iBabyPrice = Integer.parseInt(strBabyPrice); } catch (Exception e) {}
+        try { iAdultPrice = Integer.parseInt(strTotalPrice); } catch (Exception e) {}
         int iTotalAmount = iAdultAmount + iChildAmount + iBabyAmount;
         int iTotalPrice = iAdultPrice + iChildPrice + iBabyPrice;
         String strDepDD = TXTBX_departure_DD.getText();

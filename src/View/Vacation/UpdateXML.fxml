@@ -17,9 +17,9 @@
         fx:controller="View.CreateXML"
 -->
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Vacation.UpdateController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Vacation.UpdateController">
     <children>
-        <Pane prefHeight="486.0" prefWidth="133.0" style="-fx-background-color: #27de5e;">
+        <Pane prefHeight="524.0" prefWidth="133.0" style="-fx-background-color: #27de5e;">
             <children>
                 <Label fx:id="selectedType" layoutX="6.0" layoutY="25.0" prefHeight="141.0" prefWidth="121.0" />
             </children></Pane>

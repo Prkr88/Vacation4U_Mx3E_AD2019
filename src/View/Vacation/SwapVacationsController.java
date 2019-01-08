@@ -59,6 +59,8 @@ public class SwapVacationsController extends Controller implements Initializable
     @FXML
     private TextField vac_id;
     @FXML
+    private TextField vac_id_to_swap;
+    @FXML
     public Button cancel;
     @FXML
     public Button swap_mine;
@@ -134,46 +136,47 @@ public class SwapVacationsController extends Controller implements Initializable
     }
 
     @FXML
-    private void requestSwap(ActionEvent event){
+    private void requestSwap(ActionEvent event) {
         int iVacID_A = -1;
         String sUser_A = "";
         String sUser_B = Main.signedUserName;
         int iVacID_B = -1;
         try {
-            String sVacID_B = vac_id.getText();
+            String sVacID_B = vac_id_to_swap.getText();
             iVacID_B = Integer.parseInt(sVacID_B);
-        }
-        catch (Exception e) {
+            for (int i = 0; i < fList.size() && iVacID_A == -1; i++) {
+                if (fList.get(i).isChecked()) {
+                    iVacID_A = fList.get(i).getFDATA_id();
+                    sUser_A = fList.get(i).getFDATA_seller();
+                }
+            }
+            if (iVacID_A == -1) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Vacation ID Alert");
+                alert.setHeaderText(null);
+                alert.setContentText("Please choose Vacation ID by marking its checkbox");
+                alert.showAndWait();
+            } else {
+                try {
+                    model.swapInsertRequest(iVacID_A, sUser_A, iVacID_B, sUser_B);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Success");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Swapping request was sent successfully!");
+                    alert.showAndWait();
+                    Stage stage = (Stage) swap_mine.getScene().getWindow();
+                    stage.close();
+                    super.myController.setScreen(Main.screenMainMenuID);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Vacation ID Alert");
             alert.setHeaderText(null);
             alert.setContentText("Your Vacation ID is missing.");
             alert.showAndWait();
-        }
-        for (int i = 0; i <fList.size() && iVacID_A == -1 ; i++) {
-            if(fList.get(i).isChecked()){
-                iVacID_A = fList.get(i).getFDATA_id();
-                sUser_A = fList.get(i).getFDATA_seller();
-            }
-        }
-        if(iVacID_A==-1){
-            System.out.println("flight not selected");
-        }
-        else{
-            try {
-                model.swapInsertRequest(iVacID_A, sUser_A, iVacID_B, sUser_B);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Success");
-                alert.setHeaderText(null);
-                alert.setContentText("Swapping request was sent successfully!");
-                alert.showAndWait();
-                Stage stage = (Stage) swap_mine.getScene().getWindow();
-                stage.close();
-                super.myController.setScreen(Main.screenMainMenuID);
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
         }
     }
 
@@ -182,7 +185,7 @@ public class SwapVacationsController extends Controller implements Initializable
         ArrayList<ArrayList<String>> result = model.displayVacation();
         FlightDetController fdc = new FlightDetController();
         fdc.setFlightList(result, ViewMode.mine, "");
-        fdc.showTable();
+        fdc.showTable(false);
     }
 
     @FXML

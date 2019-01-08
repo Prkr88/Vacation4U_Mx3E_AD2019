@@ -78,7 +78,7 @@ public class FindVacationController extends Controller {
         resultSetList = selectApp.selectOfferedVacation(date1, date2, price, dest);
         FlightDetController fdc = new FlightDetController();
         fdc.setFlightList(resultSetList, ViewMode.others, "");
-        fdc.showTable();
+        fdc.showTable(true);
 //        ObservableList<String> vacations = FXCollections.observableArrayList();
 //        listView = new ListView<>();
 //        listView.setPrefSize(700, 700);

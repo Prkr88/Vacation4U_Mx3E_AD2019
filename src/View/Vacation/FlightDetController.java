@@ -141,8 +141,12 @@ public class FlightDetController extends Controller implements Initializable{
     }
 
 
-    public void showTable() throws IOException {
-        FileInputStream fileInputStream = new FileInputStream(new File("src/View/Vacation/FlightDetails.fxml"));
+    public void showTable(boolean buy) throws IOException {
+        FileInputStream fileInputStream = null;
+        if (buy)
+            fileInputStream = new FileInputStream(new File("src/View/Vacation/FlightDetails.fxml"));
+        else
+            fileInputStream = new FileInputStream(new File("src/View/Vacation/FlightDetailsWithoutBuy.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(fileInputStream);
         Scene scene = new Scene(root, 800, 450);

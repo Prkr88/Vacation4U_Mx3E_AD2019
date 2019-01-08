@@ -7,16 +7,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="413.0" prefWidth="675.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.User.UpdateController">
+<AnchorPane prefHeight="524.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.User.UpdateController">
    <children>
-      <Pane prefHeight="462.0" prefWidth="109.0" style="-fx-background-color: #27de5e;" />
+      <Pane prefHeight="524.0" prefWidth="109.0" style="-fx-background-color: #27de5e;" />
       <TextField fx:id="update_fName" layoutX="179.0" layoutY="93.0" prefHeight="25.0" prefWidth="205.0" promptText="First Name" />
       <TextField layoutX="179.0" layoutY="166.0" prefHeight="25.0" prefWidth="205.0" promptText="User Name" visible="false" />
       <TextField fx:id="update_lname" layoutX="435.0" layoutY="93.0" prefHeight="25.0" prefWidth="205.0" promptText="Last Name" />
       <TextField fx:id="update_password" layoutX="435.0" layoutY="166.0" prefHeight="25.0" prefWidth="205.0" promptText="Password" />
       <TextField fx:id="update_city" layoutX="435.0" layoutY="241.0" prefHeight="25.0" prefWidth="205.0" promptText="City" />
-      <Button fx:id="btn_done" layoutX="274.0" layoutY="323.0" mnemonicParsing="false" onAction="#updateUserData" prefHeight="25.0" prefWidth="109.0" text="Done" />
-      <Button fx:id="btn_cancel" layoutX="435.0" layoutY="323.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="109.0" text="Cancel" />
+      <Button fx:id="btn_done" layoutX="249.0" layoutY="372.0" mnemonicParsing="false" onAction="#updateUserData" prefHeight="25.0" prefWidth="109.0" text="Update" />
+      <Button fx:id="btn_cancel" layoutX="410.0" layoutY="372.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="109.0" text="Cancel" />
       <Text fill="#27de5e" layoutX="179.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Form" wrappingWidth="178.66670506447554">
          <font>
             <Font name="System Bold" size="18.0" />

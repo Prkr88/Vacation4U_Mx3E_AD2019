@@ -49,6 +49,7 @@ public class InsertApp extends SqlApp{
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
         String sqlReadSold = "SELECT * FROM SoldVacations ORDER BY vacation_id DESC LIMIT 1";
         String otherID = null;
         try (Connection conn = this.connect();
@@ -57,8 +58,9 @@ public class InsertApp extends SqlApp{
              otherID = rs.getString("vacation_id");
         }
         catch (SQLException e) {
-            System.out.println(e.getMessage());
+            otherID = "1";
         }
+
         int last_id;
         if (thisID != null)
             last_id = Math.max(Integer.parseInt(thisID),Integer.parseInt(otherID))+1;
@@ -75,10 +77,10 @@ public class InsertApp extends SqlApp{
             pstmt.setString(5, iAdultAmount +"");
             pstmt.setString(6, iChildAmount+ "");
             pstmt.setString(7, iBabyAmount+ "");
-            pstmt.setString(8, strAirline);
+            pstmt.setString(8, strDestination);
             pstmt.setString(9, strVacType);
             pstmt.setString(10, sLodge);
-            pstmt.setString(11, strDestination);
+            pstmt.setString(11, strAirline);
             pstmt.setString(12, sReturn);
             pstmt.setString(13, iTotalPrice +"");
             pstmt.setString(14, strLuggageDetails);

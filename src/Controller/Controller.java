@@ -56,13 +56,17 @@ public class Controller implements ControlledScreen {
         System.out.println("Login Attempt!");
         if(model.isMember(textField_UserName.getText(),textField_Pass.getText())){
             System.out.println("User Loged In");
+            boolean ansRequests = false;
             try {
                 pleaseEnter.setText("Login Success");
                 pleaseEnter.setFill(Color.GREEN);
                 Main.signedUserName = textField_UserName.getText();
-                showMainMenu();
-                checkSwapRequests();
                 checkSwapConfirmation();
+                ansRequests = checkSwapRequests();
+                if (ansRequests)
+                    myController.setScreen(Main.screenSwapRequestID);
+                else
+                    showMainMenu();
             }catch(IOException e){
                 e.printStackTrace();
             }
@@ -73,19 +77,20 @@ public class Controller implements ControlledScreen {
         }
     }
 
-    private void checkSwapRequests() {
+    private boolean checkSwapRequests() {
         try {
             SelectApp sa = new SelectApp();
             String[] res = sa.selectSwapRequestVacation();
-            if (res[0] != null && res[1] != null) {
-                String otherUserID = res[0];
-                String otherUserVac = res[1];
-                myController.setScreen(Main.screenSwapRequestID);
+            if (res != null) {
+                String confirmStatus = res[4];
+                if (confirmStatus.equals("W"))
+                    return true;
             }
         }
         catch (Exception e) {
             int i;
         }
+        return false;
     }
 
     public void checkSwapConfirmation() {
@@ -94,16 +99,19 @@ public class Controller implements ControlledScreen {
             String res[] = new String[5];
             res = sa.selectSwapConfirmation();
             if (res[4].equals("Y")) {
-                String user_A = res[0];
-                String vacID_A = res[1];
-                String vacID_B = res[2];
-                String user_B = res[3];
-                int iVacID_A = Integer.parseInt(vacID_A);
-                int iVacID_B = Integer.parseInt(vacID_B);
-                model.deleteOfferedVacations(iVacID_A);
-                model.deleteOfferedVacations(iVacID_B);
-                DeleteApp da = new DeleteApp();
-                da.deleteAfterSwap(iVacID_A, iVacID_B);
+                try {
+                    String user_A = res[0];
+                    String vacID_A = res[1];
+                    String vacID_B = res[2];
+                    String user_B = res[3];
+                    int iVacID_A = Integer.parseInt(vacID_A);
+                    int iVacID_B = Integer.parseInt(vacID_B);
+                    DeleteApp da = new DeleteApp();
+                    da.deleteAfterSwapConfirmation(iVacID_A, iVacID_B);
+                }
+                catch (Exception e) {
+                    int i;
+                }
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Success");
                 alert.setHeaderText(null);

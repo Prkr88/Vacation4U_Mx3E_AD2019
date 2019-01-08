@@ -50,7 +50,7 @@ public class ReadController extends Controller {
         ArrayList<ArrayList<String>> result = model.displayVacation();
         FlightDetController fdc = new FlightDetController();
         fdc.setFlightList(result, ViewMode.mine, "");
-        fdc.showTable();
+        fdc.showTable(false);
     }
 
     public void readVacationData(ActionEvent event) {
